@@ -67,6 +67,9 @@ bizmandu.com##.text-center.mobile-site.mt-3.sticky-bottom
 ||www.bizshala.com/upload/*/*.gif$image
 www.bizshala.com##.wrap > .ad-banner-img
 
+! https://clickmandu.com
+||clickmandu.com/*.gif$image
+
 ! https://www.corporatenepal.com
 ||corporatenepalcdn.prixacdn.net/*/*.gif$image
 
