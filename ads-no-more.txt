@@ -1,7 +1,7 @@
 [Adblock Plus 2.0]
-! Version: 202407241800
+! Version: 202407241802
 ! Title: AdBlock List for Nepal
-! Last modified: 24 Jul 2024 18:00 UTC
+! Last modified: 24 Jul 2024 18:02 UTC
 ! Expires: 4 days (update frequency)
 ! Don't hesitate to report any unblocked adverts or problems
 
@@ -125,6 +125,12 @@ goalnepal.com##*[class*="adbox"]
 ||hamrakura.com/*/*.gif$image
 ||hamrakura.com/uploads/advertisement/*/$image
 hamrakura.com##*.d-block
+
+! https://hamrobazaar.com
+||hamrobazaar.blr1.cdn.digitaloceanspaces.com/feature_ads/*.gif$image
+hamrobazaar.com##.topBanner
+hamrobazaar.com##.inBetweenAds
+||hamrobazaar.blr1.cdn.digitaloceanspaces.com/Admin/AdContentDesktop/*.gif$object
 
 ! https://www.hamrokhelkud.com
 ||www.hamrokhelkud.com/*/*.gif$image
