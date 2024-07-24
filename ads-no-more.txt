@@ -107,6 +107,9 @@ ekantipur.com###roadblock-ad
 ekantipur.com##.liscence-quiz-set.quiz-wrapper
 ekantipur.com##.static-sponsor
 
+! https://emountaintv.com/ne/
+emountaintv.com##.partners-container
+
 ! https://english.onlinekhabar.com
 
 ! https://farakdhar.com
