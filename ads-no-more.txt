@@ -1,7 +1,7 @@
 [Adblock Plus 2.0]
-! Version: 202407230800
+! Version: 202407241800
 ! Title: AdBlock List for Nepal
-! Last modified: 24 Jul 2024 08:00 UTC
+! Last modified: 24 Jul 2024 18:00 UTC
 ! Expires: 4 days (update frequency)
 ! Don't hesitate to report any unblocked adverts or problems
 
@@ -330,6 +330,9 @@ reportersnepal.com##.col-md-4 > section.widget
 
 ! https://sancharkendra.com
 ||sancharkendra.com/*/*.gif$image
+
+! https://setopati.com
+www.setopati.com##.whatspp
 
 ! https://shilapatra.com
 ||shilapatra.com/uploads/bigyaapan/*$image
