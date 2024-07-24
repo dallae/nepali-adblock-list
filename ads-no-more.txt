@@ -298,6 +298,10 @@ merokhel.com##.widget_media_image
 ! https://nayapage.com
 ||nayapage.com/uploads/bigyapan/*$image
 
+! https://www.nepalclicks.com
+||www.nepalclicks.com/*.gif$image
+www.nepalclicks.com##.sc-ads
+
 ! https://www.nepalipatra.com
 www.nepalipatra.com##.show.fade.modal-backdrop
 www.nepalipatra.com##.show.modal-load.fade.modal
