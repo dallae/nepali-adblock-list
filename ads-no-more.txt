@@ -44,8 +44,8 @@ arthadabali.com##section.small-section > .uk-container > .uk-grid.uk-grid-medium
 
 ! https://bankingkhabar.com
 ||bankingkhabar.com/*/*.gif$image
-| 04/Web-Banner-VOTING-OPEN-01.jpg$image
-| 04/850X450PX-announcement-post.jpg$image
+||bankingkhabar.com/wp-content/uploads/2024/04/Web-Banner-VOTING-OPEN-01.jpg$image
+||bankingkhabar.com/wp-content/uploads/2024/04/850X450PX-announcement-post.jpg$image
 
 ! https://barnanmedia.com
 
@@ -136,7 +136,7 @@ hellokhabar.com###tdi_76
 
 ! https://www.himalini.com
 ||www.himalini.com/*/*.gif$image
-| 07/9483168f-d79c-41cc-a854-d73ee86eceb6.jpeg$image
+||www.himalini.com/wp-content/uploads/2024/07/9483168f-d79c-41cc-a854-d73ee86eceb6.jpeg$image
 www.himalini.com###text-40 > .textwidget > p
 
 ! https://www.himalkhabar.com
@@ -150,7 +150,7 @@ www.imagekhabar.com##div.uk-grid-stack.uk-grid-match.uk-grid:nth-of-type(2)
 
 ! https://www.kalakarmi.com
 ||www.kalakarmi.com/*/*.gif$image
-| 05/Head*.jpg$image
+||www.kalakarmi.com/wp-content/uploads/2024/05/Head*.jpg$image
 www.kalakarmi.com##*.ads
 
 ! https://kantipath.com
