@@ -61,6 +61,8 @@ www.bizkhabar.com##section.widget:nth-of-type(3)
 bizmandu.com##.sidebar-advs
 bizmandu.com##.biz-ad-block.text-center
 bizmandu.com###__roadblock__
+bizmandu.com##.text-center.mobile-site.mt-3.sticky-bottom
+
 
 ! https://www.bizshala.com
 ||www.bizshala.com/upload/*/*.gif$image
