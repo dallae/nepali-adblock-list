@@ -1,7 +1,7 @@
 [Adblock Plus 2.0]
-! Version: 202407241802
+! Version: 202407242027
 ! Title: AdBlock List for Nepal
-! Last modified: 24 Jul 2024 18:02 UTC
+! Last modified: 24 Jul 2024 20:27 UTC
 ! Expires: 4 days (update frequency)
 ! Don't hesitate to report any unblocked adverts or problems
 
@@ -139,6 +139,9 @@ hamrobazaar.com##.inBetweenAds
 ||hamrokhotang.com/*/*.gif$image
 @@hamrokhotang.com/wp-content/uploads/2020/04/hamrokhotang.gif$image
 hamrokhotang.com##.td-is-sticky.td-pb-span4.tdc-column.vc_column_container.wpb_column.tdi_59.vc_column
+
+! https://hamropatro.com
+||www.hamropatro.com/images/rotating-ads/*.gif$image
 
 ! https://hellokhabar.com
 ||hellokhabar.com/*/*.gif$image
