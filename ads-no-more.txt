@@ -204,12 +204,6 @@ himalpost.com##.widget
 ! himalpress.com
 ||himalpress.com/*.gif$image
 
-! http://prastakhabar.com
-||prastakhabar.com/public/images/advertisements/*$image
-prastakhabar.com##.sticky-row.row > .col-xs-12.col-sm-4.col-md-4 > a
-prastakhabar.com##.container > a
-prastakhabar.com##.top.barbarian
-
 ! imagekhabar.com
 ||www.imagekhabar.com/*/*.gif$image
 www.imagekhabar.com##div.uk-grid-stack.uk-grid-match.uk-grid:nth-of-type(2)
@@ -458,6 +452,12 @@ www.prasashan.com##.hide-mbl.mt-4.col-md-12 > section.widget
 ||www.prasashan.com/*.gif$image
 www.prasashan.com##div.hide-mbl.mt-4:nth-of-type(42)
 www.prasashan.com##div.mt-3:nth-of-type(2)
+
+! prastakhabar.com
+||prastakhabar.com/public/images/advertisements/*$image
+prastakhabar.com##.sticky-row.row > .col-xs-12.col-sm-4.col-md-4 > a
+prastakhabar.com##.container > a
+prastakhabar.com##.top.barbarian
 
 ! rajdhanidaily.com
 ||rajdhanidaily.com/*.gif$image
