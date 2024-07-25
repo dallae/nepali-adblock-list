@@ -49,7 +49,7 @@ arthasarokar.com##*[id*=esn_ad], *[class*=esn_ad], [id*="esn_twin_ad"]
 
 ! barnanmedia.com
 
-! www.bizkhabar.com
+! bizkhabar.com
 ||www.bizkhabar.com/*/*.gif$image
 www.bizkhabar.com##[href="https://www.prabhubank.com/"]
 www.bizkhabar.com##.uk-width-1-4\@m
@@ -63,7 +63,7 @@ bizmandu.com##.biz-ad-block.text-center
 bizmandu.com###__roadblock__
 bizmandu.com##.text-center.mobile-site.mt-3.sticky-bottom
 
-! www.bizshala.com
+! bizshala.com
 ||www.bizshala.com/upload/*/*.gif$image
 www.bizshala.com##.wrap > .ad-banner-img
 
@@ -80,7 +80,7 @@ dainiki.com##div.uk-grid-stack.uk-grid.uk-margin-remove:nth-of-type(2)
 dainiki.com##.uk-grid-stack.uk-grid.uk-center.uk-margin-remove > .uk-first-column.adsimage.uk-width-1-1\@m
 dainiki.com##.uk-margin > section.widget
 
-! www.dcnepal.com
+! dcnepal.com
 ||www.dcnepal.com/*/*.gif$image
 ||creative.hamropatro.com/*/*.gif$image
 www.dcnepal.com###page > .ad-container
@@ -91,7 +91,7 @@ deshsanchar.com##.top-special-news > div.justify-content-center.d-flex.widget
 deshsanchar.com##div.justify-content-center.d-flex.widget:nth-of-type(13)
 deshsanchar.com##.ad-space-1.ad-space
 
-! www.eadarsha.com
+! eadarsha.com
 ||i0.wp.com/www.eadarsha.com/*/*.gif$image
 www.eadarsha.com##div.widget-sidebar.widget:nth-of-type(1)
 
