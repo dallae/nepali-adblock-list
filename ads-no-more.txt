@@ -76,8 +76,6 @@ www.bizshala.com##.ad-banner-img
 ! dainiki.com
 ||dainiki.com/*/*.gif$image
 ||dainiki.com/*/*.avif$image
-dainiki.com##div.uk-grid-stack.uk-grid.uk-margin-remove:nth-of-type(2)
-dainiki.com##.uk-grid-stack.uk-grid.uk-center.uk-margin-remove > .uk-first-column.adsimage.uk-width-1-1\@m
 dainiki.com##.widget
 
 ! dcnepal.com
