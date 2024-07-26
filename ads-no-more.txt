@@ -1,7 +1,7 @@
 [Adblock Plus 2.0]
-! Version: 202407252335
+! Version: 202407261854
 ! Title: AdBlock List for Nepal
-! Last modified: 25 Jul 2024 23:35 UTC
+! Last modified: 26 Jul 2024 18:54 UTC
 ! Expires: 4 days (update frequency)
 ! Don't hesitate to report any unblocked adverts or problems
 
@@ -39,7 +39,7 @@ www.arthapath.com##.widget
 
 ! arthasarokar.com
 ||arthasarokar.com/*.gif$image
-arthasarokar.com##*[id*=esn_ad], *[class*=esn_ad], [id*="esn_twin_ad"]
+arthasarokar.com##*[class*="_ad"]
 
 ! arthikpage.com
 ||onlinearthik.com/*.gif$image
