@@ -1,7 +1,7 @@
 [Adblock Plus 2.0]
-! Version: 202407261854
+! Version: 202407261901
 ! Title: AdBlock List for Nepal
-! Last modified: 26 Jul 2024 18:54 UTC
+! Last modified: 26 Jul 2024 19:01 UTC
 ! Expires: 4 days (update frequency)
 ! Don't hesitate to report any unblocked adverts or problems
 
@@ -37,10 +37,6 @@ arthadabali.com##[class*="uk-width-1-4@m"]
 ||www.arthapath.com/*.gif$image
 www.arthapath.com##.widget
 
-! arthasarokar.com
-||arthasarokar.com/*.gif$image
-arthasarokar.com##*[class*="_ad"]
-
 ! arthikpage.com
 ||onlinearthik.com/*.gif$image
 ||arthikpage.com/*.gif$image
@@ -57,11 +53,7 @@ arthasarokar.com##*[class*="_ad"]
 ! barnanmedia.com
 
 ! bizkhabar.com
-||www.bizkhabar.com/*/*.gif$image
-www.bizkhabar.com##[href="https://www.prabhubank.com/"]
-www.bizkhabar.com##.uk-width-1-4\@m
-www.bizkhabar.com##div.uk-margin-medium-top:nth-of-type(4)
-www.bizkhabar.com##section.widget:nth-of-type(3)
+bizkhabar.com##.widget
 
 ! bizmandu.com
 ||bizmandu.com/*/*.gif$image
@@ -556,3 +548,4 @@ ujyaaloonline.com##.instagram-media
 ! yohokhabar.com
 ||yohokhabar.com/*.gif$image
 yohokhabar.com##.widget
+
