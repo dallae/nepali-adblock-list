@@ -53,7 +53,8 @@ www.arthapath.com##.widget
 ! barnanmedia.com
 
 ! bizkhabar.com
-bizkhabar.com##.widget
+||www.bizkhabar.com/*.gif$image
+www.bizkhabar.com##.widget
 
 ! bizmandu.com
 ||bizmandu.com/*/*.gif$image
