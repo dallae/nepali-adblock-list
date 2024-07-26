@@ -333,12 +333,10 @@ nagariknews.nagariknetwork.com##[id^="adverts"]
 www.nepalclicks.com##.sc-ads
 
 ! nepalipatra.com
+||nepalipatra.ap-south-1.linodeobjects.com/*.gif$image
 www.nepalipatra.com##.show.fade.modal-backdrop
 www.nepalipatra.com##.show.modal-load.fade.modal
 www.nepalipatra.com##.modal-content
-www.nepalipatra.com##.col-12 > .rd-ads
-
-||nepalipatra.ap-south-1.linodeobjects.com/*.gif$image
 www.nepalipatra.com##.rd-ads
 www.nepalipatra.com##.show-mb
 www.nepalipatra.com##div[id="myModal"]
