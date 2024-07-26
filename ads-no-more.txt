@@ -71,7 +71,6 @@ www.bizshala.com##.ad-banner-img
 ||clickmandu.com/*.gif$image
 
 ! corporatenepal.com
-||corporatenepalcdn.prixacdn.net/*/*.gif$image
 
 ! dainiki.com
 ||dainiki.com/*/*.gif$image
