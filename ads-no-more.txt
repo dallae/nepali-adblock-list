@@ -31,7 +31,7 @@ www.arghakhanchi.com##.size-medium.attachment-medium.wp-image-81960.image
 
 ! arthadabali.com
 ||arthadabali.com/*.gif$image
-arthadabali.com##section.small-section > .uk-container > .uk-grid.uk-grid-medium > .uk-width-1-4\@m > .position-sticky
+arthadabali.com##[class*="uk-width-1-4@m"]
 
 ! arthapath.com
 ||www.arthapath.com/*.gif$image
