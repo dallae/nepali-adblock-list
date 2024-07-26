@@ -58,10 +58,10 @@ www.bizkhabar.com##.widget
 
 ! bizmandu.com
 ||bizmandu.com/*/*.gif$image
-bizmandu.com##.sidebar-advs
-bizmandu.com##.biz-ad-block.text-center
+bizmandu.com##*[class*="-ad"]
 bizmandu.com###__roadblock__
-bizmandu.com##.text-center.mobile-site.mt-3.sticky-bottom
+bizmandu.com##.share-button
+bizmandu.com##.sticky-bottom
 
 ! bizshala.com
 ||www.bizshala.com/upload/*/*.gif$image
