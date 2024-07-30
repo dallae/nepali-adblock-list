@@ -49,7 +49,7 @@ Once installed, the adblock list will automatically start filtering ads and nuis
 
 ## Contributing
 
-We welcome contributions from the community! To contribute:
+Contributions are always welcome from the community! To contribute:
 
 1. Fork the repository.
 2. Create a new branch with your feature or fix: `git checkout -b feature-branch-name`
