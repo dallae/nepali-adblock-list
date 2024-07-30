@@ -1,9 +1,12 @@
 [Adblock Plus 2.0]
-! Version: 202407300841
-! Title: AdBlock List for Nepal
-! Last modified: 30 Jul 2024 08:41 UTC
-! Expires: 03 Aug 2024 08:41 UTC
+! Version: 202407302231
+! Title: 🇳🇵 AdBlock List for Nepal
+! Last modified: 30 Jul 2024 22:31 UTC
+! Expires: 03 Aug 2024 22:31 UTC
 ! Don't hesitate to report any unblocked adverts or problems
+
+! 18nepal.com
+||www.18nepal.com/*.gif$image
 
 ! aarthiknews.com
 ||adalytics.prixacdn.net/*.gif$image
@@ -18,9 +21,9 @@
 
 ! annapurnapost.com
 
-! aparadhkhabar.com
-www.aparadhkhabar.com##.header-ads
-||1.bp.blogspot.com/*/ad728.gif
+! anticorruptionpost.com
+anticorruptionpost.com##.sidebar_ads-wrap
+||anticorruptionpost.com/*.gif$image
 
 ! arghakhanchi.com
 www.arghakhanchi.com##.m4.sm12.col
@@ -54,9 +57,6 @@ www.arthapath.com##.widget
 ||bankingkhabar.com/wp-content/uploads/2024/04/850X450PX-announcement-post.jpg$image
 ||bankingkhabar.com/wp-content/uploads/2024/04/Web-Banner-VOTING-OPEN-01.jpg$image
 
-! banksnepal.com
-||banksnepal.com/storage/assets/frontend/advertisements/*$image
-
 ! barnanmedia.com
 
 ! bizkhabar.com
@@ -69,9 +69,6 @@ bizmandu.com##*[class*="-ad"]
 bizmandu.com##.share-button
 bizmandu.com##.sticky-bottom
 ||bizmandu.com/*/*.gif$image
-
-! bizpati.com
-||bizpati.com/uploads/bannerads/*$image
 
 ! bizshala.com
 www.bizshala.com##.ad-banner-img
@@ -143,12 +140,6 @@ www.filmykhabar.com##div[style*="width: 670px; height: 180px; margin-top: 16px;"
 ghatanarabichar.com##div.wrap:nth-of-type(4)
 ||ghatanarabichar.com/*/*.gif$image
 
-! ghumphir.com
-www.ghumphir.com###gam-ad-16
-www.ghumphir.com##.gm-ad
-www.ghumphir.com##.gm-ad-section
-||www.ghumphir.com/*.gif$image
-
 ! goalnepal.com
 goalnepal.com##*[class*="adbox"]
 ||goalnepal.com/*/*.gif$image
@@ -212,11 +203,6 @@ www.imagekhabar.com##div.uk-grid-stack.uk-grid-match.uk-grid:nth-of-type(2)
 jagarannews.com##.widget
 ||jagarannews.com/*.gif$image
 
-! jaljalaonline.com
-www.jaljalaonline.com##.advertisement
-www.jaljalaonline.com##.widget
-||www.jaljalaonline.com/*.gif$image
-
 ! janaaastha.com
 
 ! janatatimes.com
@@ -279,6 +265,10 @@ www.khasokhas.com##div.row:nth-of-type(5)
 
 ! khelpati.com
 ||www.khelpati.com/uploads/bigyaapan/*$image
+
+! kirtionline.com
+kirtionline.com##.td-a-rec-id-custom-spot
+||kirtionline.com/*.gif$image
 
 ! krishipatrika.com
 krishipatrika.com##.col-md-8.col-xs-12 > .wp-block-image
@@ -350,9 +340,6 @@ nepalipost.com##.topad
 nepalkhabar.com##*[class*="bannergroup"]
 nepalkhabar.com##*[class*="npad"]
 
-! nepalnews.com
-||nepalnews.com/assets/adverts/*$image
-
 ! nepalpress.com
 www.nepalpress.com###primary > .section-np-space > .uk-container
 www.nepalpress.com##*[class*="npad"]
@@ -367,9 +354,6 @@ nepalrastriyadainik.com##div.generic-ad
 
 ! nepalsamaya.com
 ||nepalsamaya.com/uploads/bigyaapan/*$image
-
-! nepaltara.com
-||nepaltara.com/*.gif$image
 
 ! nepalviews.com
 www.nepalviews.com##*[class*="gam-nvad"]
@@ -563,15 +547,6 @@ ujyaaloonline.com##.instagram-media
 
 ! ukeraa.com
 
-! updatekhabar.com
-updatekhabar##.widget
-||updatekhabar.com/*.gif$image
-
-! worlddainik.com
-worlddainik.com##.advertisement
-||worlddainik.com/*.gif$image
-
 ! yohokhabar.com
 yohokhabar.com##.widget
 ||yohokhabar.com/*.gif$image
-
