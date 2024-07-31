@@ -79,7 +79,6 @@ www.arthapath.com##.widget
 ! barnanmedia.com
 ||barnanmedia.com/*.gif$image
 
-
 ! bizkhabar.com
 www.bizkhabar.com##.widget
 ||www.bizkhabar.com/*.gif$image
@@ -126,7 +125,6 @@ dharananews.com##.ads-wrapper
 www.eadarsha.com##div.widget-sidebar.widget:nth-of-type(1)
 ||i0.wp.com/www.eadarsha.com/*.gif$image
 ||eadarsha.com/*.gif$image
-
 
 ! economistnepal.com
 economistnepal.com##.ads
@@ -397,7 +395,6 @@ nagariknews.nagariknetwork.com##[id^="adverts"]
 ||images.nagariknewscdn.com/*.gif$image
 ||nagariknews.nagariknetwork.com/*.gif$image
 
-
 ! nayapage.com
 ||nayapage.com/uploads/bigyapan/*$image
 ||nayapage.com/*.gif$image
@@ -490,6 +487,7 @@ onlinetvnepal.com##section.widget:nth-of-type(2)
 www.osnepal.com##.gap.gap2.section > .container > .row > .mt-4.mt-lg-0.col-lg-4
 www.osnepal.com##.mt-4.mt-lg-0.col-lg-4
 www.osnepal.com##div:nth-of-type(4)
+||www.osnepal.com/*.gif$image
 
 ! ourbiratnagar.net
 ourbiratnagar.net###tns1-item0 > .a-253.a-single
@@ -607,7 +605,7 @@ www.setopati.com##.whatspp
 ! shilapatra.com
 shilapatra.com##.modalbox
 ||shilapatra.com/uploads/bigyaapan/*$image
-|| shilapatra.com/*.gif$image
+||shilapatra.com/*.gif$image
 
 ! spotlightnepal.com
 www.spotlightnepal.com##.pl2-l.w-30-l.w-100.fl
@@ -630,10 +628,10 @@ sunaulopana.com##.jeg_socialshare
 
 ! surakshyanews.com
 ||www.surakshyanews.com/uploads/bigyaapan/*$image
-surakshyanews.com/*.gif$image
+||surakshyanews.com/*.gif$image
 
 ! suryakhabar.com
-suryakhabar.com/*.gif$image
+||suryakhabar.com/*.gif$image
 
 ! sutranews.com
 www.sutranews.com##*[class*="ads"],[id*="Ads"]
@@ -649,7 +647,7 @@ www.sutranews.com##div.uk-grid-stack.uk-grid.uk-text-center.uk-grid-medium.uk-fl
 
 ! techpana.com
 techpana.com##*[class*="adalyticsblock"]
-techpana.com/*.gif$image
+||techpana.com/*.gif$image
 
 ! telegraphnepal.com
 www.telegraphnepal.com##.leftbar
