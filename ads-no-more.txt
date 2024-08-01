@@ -8,6 +8,14 @@
 ! 18nepal.com
 ||www.18nepal.com/*.gif$image
 
+! 24newsfire.com
+||24newsfire.com/*.gif$image
+24newsfire.com##.wp-image-8281
+24newsfire.com##.heateor_sss_sharing_ul
+
+! 8848newsnepal.com
+||8848newsnepal.com/*.gif$image
+
 ! aarthikbazarnews.com
 aarthikbazarnews.com##*[class*="no-vigyapan"]
 aarthikbazarnews.com##.no-news-details-post-status
@@ -850,12 +858,12 @@ ujyaaloonline.com##.instagram-media
 ||ujyaaloonline.com/*.gif$image
 
 ! ukaalo.com
-||ukaalo.com/*.gif$image
+||www.ukaalo.com/*.gif$image
 ||www.googletagmanager.com/gtag/js?id=G-YS9CDL8BW1$script,domain=www.ukaalo.com
 ||www.ukaalo.com/Admin/Advertisement/*$image
 
 ! ukeraa.com
-||ukerra.com/*.gif$image
+||www.ukerra.com/*.gif$image
 
 ! yohokhabar.com
 yohokhabar.com##.widget
