@@ -38,15 +38,15 @@ anticorruptionpost.com##.sidebar_ads-wrap
 ||anticorruptionpost.com/*.gif$image
 
 ! arghakhanchi.com
+www.arghakhanchi.com##.ad-sidebar
+www.arghakhanchi.com##.wp-image-81960
+www.arghakhanchi.com##.cookieinfo
 www.arghakhanchi.com##.m4.sm12.col
-www.arghakhanchi.com##.rd-ads
-www.arghakhanchi.com##.size-medium.attachment-medium.wp-image-81960.image
-www.arghakhanchi.com##.x18lvrbx.x126k92a.x1yc453h.x1mh8g0r.x12nagc.x11i5rnm.x1gslohp.xkhd6sd.x18d9i69.x4uap5.xexx8yu.xe8uvvx.html-div
-www.arghakhanchi.com##p:nth-of-type(6)
-||ap-south-1.linodeobjects.com/*.gif$image
-||ekagajcdn.prixacdn.net/*.gif$image
+www.arghakhanchi.com##.xe8uvvx
+www.arghakhanchi.com##.fb-xfbml-parse-ignore
 ||www.arghakhanchi.com/*.gif$image
-||www.kendrabindu.com/*.gif$image
+||ap-south-1.linodeobjects.com/*.gif$image
+||kendrabindu.com/*UCAN.jpg$image
 
 ! arisenepal.com
 arisenepal.com##.advertise
@@ -335,6 +335,7 @@ kendrabindu.com##.widget
 kendrabindu.com##aside:nth-of-type(1)
 kendrabindu.com##div.uk-margin-small-bottom.uk-text-center:nth-of-type(4)
 ||kendrabindu.com/*.gif$image
+||www.kendrabindu.com/*.gif$image
 ||kendrabindu.com/*.webp$image
 
 ! khabarbatika.com
