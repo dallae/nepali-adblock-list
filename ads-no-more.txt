@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Version: 202408010652
+! Version: 202408010856
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 01 Aug 2024 06:52 UTC
-! Expires: 05 Aug 2024 06:52 UTC
+! Last modified: 01 Aug 2024 08:56 UTC
+! Expires: 05 Aug 2024 08:56 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -22,6 +22,11 @@ aarthikbazarnews.com##.no-news-details-post-status
 ! abhiyandaily.com
 ||abhiyandaily.com/*.gif$image
 
+! actpronepal.com
+actpronepal.com##.small-ad
+||actpronepal.com/*.gif$image
+||actpronepal.com/*.webp$image
+
 ! advancekhabar.com
 ||advancekhabar.com/*.gif$image
 
@@ -39,14 +44,14 @@ anticorruptionpost.com##.sidebar_ads-wrap
 
 ! arghakhanchi.com
 www.arghakhanchi.com##.ad-sidebar
-www.arghakhanchi.com##.wp-image-81960
 www.arghakhanchi.com##.cookieinfo
-www.arghakhanchi.com##.m4.sm12.col
-www.arghakhanchi.com##.xe8uvvx
 www.arghakhanchi.com##.fb-xfbml-parse-ignore
-||www.arghakhanchi.com/*.gif$image
+www.arghakhanchi.com##.m4.sm12.col
+www.arghakhanchi.com##.wp-image-81960
+www.arghakhanchi.com##.xe8uvvx
 ||ap-south-1.linodeobjects.com/*.gif$image
 ||kendrabindu.com/*UCAN.jpg$image
+||www.arghakhanchi.com/*.gif$image
 
 ! arisenepal.com
 arisenepal.com##.advertise
@@ -72,6 +77,11 @@ www.arthapath.com##.widget
 ! baahrakhari.com
 ||12khari.top/*.gif$image
 ||baahrakhari.com/*.gif$image
+
+! baghpailanews.com
+baghpailanews.com##.adv-box-wrap
+baghpailanews.com##.advertise
+||baghpailanews.com/*.gif$image
 
 ! bankepost.com
 bankepost.com##.size-large.wp-block-image
@@ -108,6 +118,12 @@ www.bizshala.com##.ad-banner-img
 ! chotkari.com
 chotkari.com/*.gif$image
 
+! cinnepal.com
+www.cinnepal.com##.bsac-float-center
+www.cinnepal.com##.bsac-image
+www.cinnepal.com##.widget_better-ads
+||www.cinnepal.com/*.gif$image
+
 ! clickmandu.com
 ||clickmandu.com/*.gif$image
 
@@ -126,6 +142,9 @@ dainiki.com##.widget
 www.dcnepal.com##.ad-container
 ||creative.hamropatro.com/*.gif$image
 ||www.dcnepal.com/*.gif$image
+
+! dekhapadhi.com
+||www.dekhapadhi.com/*.gif$image
 
 ! dharananews.com
 dharananews.com##.ads-wrapper
@@ -171,10 +190,17 @@ epratibimba.com##.horizental-ad-image
 epratibimba.com##.single-post-advertisement
 ||epratibimba.com/*.gif$image
 
+! erukum.com
+||erukum.com/*.gif$image
+
 ! euttardayitwa.com
 euttardayitwa.com##.heateor_sss_sharing_ul
 euttardayitwa.com##.widget
 ||euttardayitwa.com/*.gif$image
+
+! everestfujinews.com
+everestfujinews.com##.advertisement
+||everestfujinews.com/*.gif$image
 
 ! everesttimesnews.com
 www.everesttimesnews.com##.adsimage
@@ -209,6 +235,13 @@ ghatanarabichar.com##div.wrap:nth-of-type(4)
 ! goalnepal.com
 goalnepal.com##*[class*="adbox"]
 ||goalnepal.com/*.gif$image
+
+! hamaarbirgunj.com
+hamaarbirgunj.com##.uk-margin-medium-top
+hamaarbirgunj.com##.uk-margin-small-top:nth-of-type(4)
+hamaarbirgunj.com##.uk-width-1-4\@l:nth-of-type(3)
+hamaarbirgunj.com##div.uk-margin-small-top
+||hamaarbirgunj.com/*.gif$image
 
 ! hamrakura.com
 hamrakura.com##*.d-block
@@ -335,8 +368,8 @@ kendrabindu.com##.widget
 kendrabindu.com##aside:nth-of-type(1)
 kendrabindu.com##div.uk-margin-small-bottom.uk-text-center:nth-of-type(4)
 ||kendrabindu.com/*.gif$image
-||www.kendrabindu.com/*.gif$image
 ||kendrabindu.com/*.webp$image
+||www.kendrabindu.com/*.gif$image
 
 ! khabarbatika.com
 khabarbatika.com###sidebar-right
@@ -391,6 +424,12 @@ krishipatrika.com##div.sidebar-section > figure.wp-block-image
 krishipatrika.com##figure.wp-block-image:nth-of-type(3)
 ||krishipatrika.com/*.gif$image
 
+! krishiraibar.com
+krishiraibar.com##div.row:nth-of-type(2)
+krishiraibar.com##div.row:nth-of-type(5)
+krishiraibar.com##div.row:nth-of-type(7)
+||krishiraibar.com/*.gif$image
+
 ! laligurash.com
 laligurash.com##.ads
 ||laligurash.com/*.gif$image
@@ -438,6 +477,16 @@ www.mirmireonline.com##.widget
 nagariknews.nagariknetwork.com##[id^="adverts"]
 ||images.nagariknewscdn.com/*.gif$image
 ||nagariknews.nagariknetwork.com/*.gif$image
+
+! nagarkotnews.com
+||nagarkotnews.com/*.gif$image
+||nagarkotnews.com/application/uploads/sponsor/*$image
+
+! nayannews.com
+nayannews.com##.td_spot_img_all
+nayannews.com##.tdi_124
+nayannews.com##.tdi_87
+||nayannews.com/*.gif$image
 
 ! nayapage.com
 ||nayapage.com/*.gif$image
@@ -510,6 +559,12 @@ neplays.com##.pbottom--30.ptop--30.col-md-4.main--sidebar
 ! newbusinessage.com
 ||www.newbusinessage.com/img/sponsor/*$image
 
+! newsnepalhub.com
+newsnepalhub.com##div.banner-add
+www.newsnepalhub.com##.footer-logo-address.footer-box > .img-responsive
+||www.newsnepalhub.com/*.gif$image
+||www.newsnepalhub.com/uploads/Advertizement/*$image
+
 ! newsofnepal.com
 ||newsofnepal.com/*.gif$image
 
@@ -517,6 +572,17 @@ neplays.com##.pbottom--30.ptop--30.col-md-4.main--sidebar
 @@newspolar.com/wp-content/themes/newspolar_finale/img/logo.gif
 newspolar.com##.widget
 ||newspolar.com/*.gif$image
+
+! omkartimes.com
+omkartimes.com##.ads-box
+omkartimes.com##.sn-ad
+||omkartimes.com/*.gif$image
+
+! onlineharpal.com
+onlineharpal.com###wpgtr_stickyads_textcss_container
+onlineharpal.com##.entry-sec.reaction-sec
+onlineharpal.com##.smeta-extra
+||onlineharpal.com/*.gif$image
 
 ! onlinekhabar.com
 www.onlinekhabar.com##.nh_widget_wrap
@@ -633,6 +699,17 @@ reportersnepal.com##div.row:nth-of-type(14)
 ! sabastaentertainment.com
 sabastaentertainment.com##.widget
 ||sabastaentertainment.com/*.gif$image
+
+! safalsamachar.com
+www.safalsamachar.com##.post-footer
+||www.safalsamachar.com/*.gif
+||www.safalsamachar.com/ads/*$image
+
+! sajhadarpan.com
+www.sajhadarpan.com##.advertise
+www.sajhadarpan.com##.advertisesidebar
+www.sajhadarpan.com##.facebookcomments
+||www.sajhadarpan.com/*.gif$image
 
 ! sallerikhabar.com
 www.sallerikhabar.com##.widget
