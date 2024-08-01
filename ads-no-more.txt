@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Version: 202408010856
+! Version: 202408012205
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 01 Aug 2024 08:56 UTC
-! Expires: 05 Aug 2024 08:56 UTC
+! Last modified: 01 Aug 2024 22:05 UTC
+! Expires: 05 Aug 2024 22:05 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -94,6 +94,12 @@ bankepost.com##.size-large.wp-block-image
 
 ! barnanmedia.com
 ||barnanmedia.com/*.gif$image
+
+! bishownews.com
+www.bishownews.com##.bisho-after-content_2
+www.bishownews.com##.bisho-content_7
+www.bishownews.com##.wp-image-18388
+||www.bishownews.com/*.gif$image
 
 ! bizkhabar.com
 www.bizkhabar.com##.widget
@@ -336,6 +342,9 @@ www.kalakarmi.com##*.ads
 ||www.kalakarmi.com/*.gif$image
 ||www.kalakarmi.com/wp-content/uploads/2024/05/Head*.jpg$image
 
+! kantikhabar.com
+||www.kantikhabar.com/*.gif$image
+
 ! kantipath.com
 ||kantipath.com/*.gif$image
 
@@ -482,6 +491,14 @@ nagariknews.nagariknetwork.com##[id^="adverts"]
 ||nagarkotnews.com/*.gif$image
 ||nagarkotnews.com/application/uploads/sponsor/*$image
 
+! namastetimes.com
+namastetimes.com###fb-comments
+||namastetimes.com/*.gif$image
+
+! nayaakhabar.com
+nayaakhabar.com##.cube-container
+||nayaakhabar.com/*.gif$image
+
 ! nayannews.com
 nayannews.com##.td_spot_img_all
 nayannews.com##.tdi_124
@@ -511,6 +528,10 @@ www.nepalipatra.com##div[class*="modal-backdrop"]
 www.nepalipatra.com##div[id="myModal"]
 ||nepalipatra.ap-south-1.linodeobjects.com/*.gif$image
 ||nepalipatra.com/*.gif$image
+
+! nepalipatro.com.np
+nepalipatro.com.np##.col-lg-9 > .justify-content-center.align-items-center.d-flex
+||nepalipatro.com.np/*.gif$image
 
 ! nepalipost.com #non_https_site
 nepalipost.com###text-6
@@ -705,6 +726,10 @@ www.safalsamachar.com##.post-footer
 ||www.safalsamachar.com/*.gif
 ||www.safalsamachar.com/ads/*$image
 
+! saharatvkhabar.com
+saharatvkhabar.com##.wp-image-416
+||saharatvkhabar.com/*.gif$image
+
 ! sajhadarpan.com
 www.sajhadarpan.com##.advertise
 www.sajhadarpan.com##.advertisesidebar
@@ -764,6 +789,10 @@ suchanachautari.com##.elementor-element-a5e26c7
 ||suchanachautari-com.stackstaging.com/*.gif$image
 ||suchanachautari.com/*.gif$image
 ||suchanachautari.com/*.webp$image
+
+! sunapatinews.com
+sunapatinews.com##.elementor-2527.elementor
+||sunapatinews.com/*.gif$image
 
 ! sunaulopana.com
 sunaulopana.com##*[class*="popup"]
