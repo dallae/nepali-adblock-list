@@ -240,6 +240,7 @@ www.filmykhabar.com##div[style*="width: 670px; height: 180px; margin-top: 16px;"
 ##*[id*="bigya"]
 ##.desktop-ad
 ##.mobile-ad
+||*.prixacdn.net/media/advertisements/*$image
 ||*.prixacdn.net/*.gif$image
 
 ! ghatanarabichar.com
@@ -615,6 +616,7 @@ onlineharpal.com##.smeta-extra
 
 ! onlinekhabar.com
 www.onlinekhabar.com##.nh_widget_wrap
+www.onlinekhabar.com##.ok-post-emoji
 www.onlinekhabar.com##.ok_roadblock
 ||www.onlinekhabar.com/*.gif$image
 
