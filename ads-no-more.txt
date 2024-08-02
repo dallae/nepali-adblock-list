@@ -349,7 +349,7 @@ jeetpurkhabar.com##.widget_media_image.widget_block
 ! kalakarmi.com
 www.kalakarmi.com##*.ads
 ||www.kalakarmi.com/*.gif$image
-||www.kalakarmi.com/wp-content/uploads/2024/05/Head*.jpg$image
+||www.kalakarmi.com/*Head*.jpg$image
 
 ! kantikhabar.com
 ||www.kantikhabar.com/*.gif$image
@@ -364,9 +364,9 @@ www.karobardaily.com##div.mb-2:nth-of-type(4)
 ||www.karobardaily.com/*.gif$image
 
 ! kathmandukhabar.com
-kathmandukhabar.com##.lazyloaded.ls-is-cached.size-large.attachment-large.wp-image-6133.image
-kathmandukhabar.com##.lazyloaded.size-full.attachment-full.wp-image-11272.image
-kathmandukhabar.com##.lazyloaded.size-medium.attachment-medium.wp-image-6132.image
+kathmandukhabar.com##.wp-image-6133.image
+kathmandukhabar.com##.wp-image-11272.image
+kathmandukhabar.com##.wp-image-6132.image
 ||kathmandukhabar.com/*.gif$image
 
 ! kathmandupati.com
@@ -461,8 +461,9 @@ www.madheshvani.com##.myad_home
 ||madheshvani.com/*.gif$image
 
 ! makalukhabar.com
-www.makalukhabar.com##.home-after-main-menu.gam-ad-position-wrap > .gam-each-ad
 www.makalukhabar.com##.is-full-widescreen-ad
+www.makalukhabar.com##.section-ad-space
+www.makalukhabar.com##.gam-each-ad
 ||www.makalukhabar.com/*.gif$image
 
 ! mediadabali.com
@@ -473,8 +474,8 @@ merokhel.com##.widget_media_image
 ||merokhel.com/*.gif$image
 
 ! merolagani.com
-||images.merolagani.com//*.gif$image
-||images.merolagani.com//content/bigyapan/*$image
+||images.merolagani.com/*.gif$image
+||images.merolagani.com/content/bigyapan/*$image
 ||merolagani.com/*.gif$image
 
 ! mirmireonline.com
