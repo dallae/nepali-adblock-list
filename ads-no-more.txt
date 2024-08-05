@@ -1,17 +1,17 @@
 [Adblock Plus 2.0]
-! Version: 202408012205
+! Version: 202408052345
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 01 Aug 2024 22:05 UTC
-! Expires: 05 Aug 2024 22:05 UTC
+! Last modified: 05 Aug 2024 23:45 UTC
+! Expires: 09 Aug 2024 23:45 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
 ||www.18nepal.com/*.gif$image
 
 ! 24newsfire.com
-||24newsfire.com/*.gif$image
-24newsfire.com##.wp-image-8281
 24newsfire.com##.heateor_sss_sharing_ul
+24newsfire.com##.wp-image-8281
+||24newsfire.com/*.gif$image
 
 ! 8848newsnepal.com
 ||8848newsnepal.com/*.gif$image
@@ -235,13 +235,15 @@ www.filmykhabar.com##div[style*="width: 670px; height: 180px; margin-top: 16px;"
 ! generic filters
 ##*[class*="adalyticsblock"]
 ##*[class*="bigya"]
+##*[class*="emoji"]
 ##*[class*="share"]
+##*[class*="sharing"]
 ##*[class*="social"]
 ##*[id*="bigya"]
 ##.desktop-ad
 ##.mobile-ad
-||*.prixacdn.net/media/advertisements/*$image
 ||*.prixacdn.net/*.gif$image
+||*.prixacdn.net/media/advertisements/*$image
 
 ! ghatanarabichar.com
 ghatanarabichar.com##div.wrap:nth-of-type(4)
@@ -364,9 +366,9 @@ www.karobardaily.com##div.mb-2:nth-of-type(4)
 ||www.karobardaily.com/*.gif$image
 
 ! kathmandukhabar.com
-kathmandukhabar.com##.wp-image-6133.image
 kathmandukhabar.com##.wp-image-11272.image
 kathmandukhabar.com##.wp-image-6132.image
+kathmandukhabar.com##.wp-image-6133.image
 ||kathmandukhabar.com/*.gif$image
 
 ! kathmandupati.com
@@ -378,10 +380,10 @@ www.kathmandupati.com##.widget
 ||kathmandupress.com/uploads/bigyaapan/*$image
 
 ! kendrabindu.com
-kendrabindu.com##.widget
-kendrabindu.com##.custom-model-ah-video
-kendrabindu.com##.comment
 @@kendrabindu.com/*logo.gif$image
+kendrabindu.com##.comment
+kendrabindu.com##.custom-model-ah-video
+kendrabindu.com##.widget
 ||kendrabindu.com/*.gif$image
 ||kendrabindu.com/*.webp$image
 
@@ -461,9 +463,9 @@ www.madheshvani.com##.myad_home
 ||madheshvani.com/*.gif$image
 
 ! makalukhabar.com
+www.makalukhabar.com##.gam-each-ad
 www.makalukhabar.com##.is-full-widescreen-ad
 www.makalukhabar.com##.section-ad-space
-www.makalukhabar.com##.gam-each-ad
 ||www.makalukhabar.com/*.gif$image
 
 ! mediadabali.com
@@ -489,8 +491,8 @@ www.mirmireonline.com##.widget
 ||nagarikkhabar.com/*.gif$image
 
 ! nagariknews.nagariknetwork.com
-nagariknews.nagariknetwork.com##[id^="adverts"]
 nagariknews.nagariknetwork.com##.view-in-app
+nagariknews.nagariknetwork.com##[id^="adverts"]
 ||images.nagariknewscdn.com/*.gif$image
 ||nagariknews.nagariknetwork.com/*.gif$image
 
@@ -858,13 +860,69 @@ ujyaaloonline.com##.instagram-media
 ||ujyaaloonline.com/*.gif$image
 
 ! ukaalo.com
-||www.ukaalo.com/*.gif$image
 ||www.googletagmanager.com/gtag/js?id=G-YS9CDL8BW1$script,domain=www.ukaalo.com
+||www.ukaalo.com/*.gif$image
 ||www.ukaalo.com/Admin/Advertisement/*$image
 
 ! ukeraa.com
 ||www.ukerra.com/*.gif$image
 
+! yalambartimes.com
+yalambartimes.com##.widget
+||yalambartimes.com/*.gif$image
+
+! yanglenews.com
+yanglenews.com##.adertise_wrapper
+yanglenews.com##.total-views-read
+yanglenews.com##.update_sm_thumb
+yanglenews.com##div[id^="pum-"]
+||yanglenews.com/*.gif$image
+||yanglenews.com/media/pum/pum-site-scripts.js
+
+! yatradaily.com
+||yatradaily.com/*.gif$image
+
+! yesnepalnews.com
+||i0.wp.com/yesnepalnews.com/*.webp$image
+||yesnepalnews.com/*.gif$image
+
+! yessamachar.com
+yessamachar.com##.td-a-rec-id-custom-spot
+||yessamachar.com/*.gif$image
+
+! yetikhabar.com
+www.yetikhabar.com##.wp-image-13592
+www.yetikhabar.com##.wp-image-26751
+||www.yetikhabar.com/*.gif$image
+
+! yobela.com
+yobela.com##section.widget
+||yobela.com/*.gif$image
+
 ! yohokhabar.com
 yohokhabar.com##.widget
 ||yohokhabar.com/*.gif$image
+
+! youthofdang.com
+youthofdang.com##.bn-ds-1
+youthofdang.com##.bn-ds-11
+youthofdang.com##.bn-ds-8
+youthofdang.com##.mb-3.col-bn-ds.col-xs-12.col-sm-12
+youthofdang.com##.noselect.reactions
+youthofdang.com##div.row:nth-of-type(4)
+
+! youthpana.com
+youthpana.com##.in__between_ads||youthpana.com/*.gif$image
+
+! yugdarpan.com
+www.yugdarpan.com##.post-views
+www.yugdarpan.com##.sidebar-header.sidebar
+||www.yugdarpan.com/*.gif$image
+
+! yuwasandesh.com
+@@www.yuwasandesh.com/*yuwasandesh-logo.gif$image
+||www.yuwasandesh.com/*.gif$image
+
+! zen1news.com
+||www.zen1news.com/*.gif$image
+||www.zen1news.com/*1718518510-LjUF0.jpg$image
