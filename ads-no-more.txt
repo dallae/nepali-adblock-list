@@ -490,6 +490,7 @@ www.mirmireonline.com##.widget
 
 ! nagariknews.nagariknetwork.com
 nagariknews.nagariknetwork.com##[id^="adverts"]
+nagariknews.nagariknetwork.com##.view-in-app
 ||images.nagariknewscdn.com/*.gif$image
 ||nagariknews.nagariknetwork.com/*.gif$image
 
