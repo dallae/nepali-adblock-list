@@ -645,13 +645,13 @@ www.osnepal.com##div:nth-of-type(4)
 ||www.osnepal.com/*.gif$image
 
 ! ourbiratnagar.net
-ourbiratnagar.net###tns1-item0 > .a-253.a-single
+ourbiratnagar.net##.gofollow
 ourbiratnagar.net##.floating_buttons
-ourbiratnagar.net##.show.fade.modal
-ourbiratnagar.net##.show.fade.modal-backdrop
-ourbiratnagar.net##div.cat.py-2.checkIfEmpty.av_block
+ourbiratnagar.net##.av_block
+ourbiratnagar.net##.da-reactions-outer
+ourbiratnagar.net##.user_poll_block
+ourbiratnagar.net##+js(set-constant, document.body.classList.remove, 'modal-open')
 ||ourbiratnagar.net/*.gif$image
-||ourbiratnagar.net/*/Ob-media-July-scrolling-design.jpg$image
 
 ! palikanews.com
 www.palikanews.com##.ads
