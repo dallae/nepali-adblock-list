@@ -882,12 +882,17 @@ yanglenews.com##div[id^="pum-"]
 ||yatradaily.com/*.gif$image
 
 ! yesnepalnews.com
+yesnepalnews.com##.box-ads
 ||i0.wp.com/yesnepalnews.com/*.webp$image
 ||yesnepalnews.com/*.gif$image
 
 ! yessamachar.com
+yessamachar.com##.td_spot_img_all
+yessamachar.com##.td-a-rec-id-custom-spot
+yessamachar.com##.tdi_236
 yessamachar.com##.td-a-rec-id-custom-spot
 ||yessamachar.com/*.gif$image
+
 
 ! yetikhabar.com
 www.yetikhabar.com##.wp-image-13592
@@ -911,7 +916,8 @@ youthofdang.com##.noselect.reactions
 youthofdang.com##div.row:nth-of-type(4)
 
 ! youthpana.com
-youthpana.com##.in__between_ads||youthpana.com/*.gif$image
+youthpana.com##.in__between_ads
+||youthpana.com/*.gif$image
 
 ! yugdarpan.com
 www.yugdarpan.com##.post-views
