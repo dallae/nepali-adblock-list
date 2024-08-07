@@ -1,15 +1,14 @@
 [Adblock Plus 2.0]
-! Version: 202408052345
+! Version: 202408072159
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 05 Aug 2024 23:45 UTC
-! Expires: 09 Aug 2024 23:45 UTC
+! Last modified: 07 Aug 2024 21:59 UTC
+! Expires: 11 Aug 2024 21:59 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
 ||www.18nepal.com/*.gif$image
 
 ! 24newsfire.com
-24newsfire.com##.heateor_sss_sharing_ul
 24newsfire.com##.wp-image-8281
 ||24newsfire.com/*.gif$image
 
@@ -96,9 +95,9 @@ bankepost.com##.size-large.wp-block-image
 ||bankepost.com/*.gif$image
 
 ! bankingkhabar.com
-||bankingkhabar.com/*/*.gif$image
 ||bankingkhabar.com/*/850X450PX-announcement-post.jpg$image
 ||bankingkhabar.com/*/Web-Banner-VOTING-OPEN-01.jpg$image
+||bankingkhabar.com/*.gif$image
 
 ! barnanmedia.com
 ||barnanmedia.com/*.gif$image
@@ -240,6 +239,8 @@ www.filmykhabar.com##div[style*="width: 670px; height: 180px; margin-top: 16px;"
 ##*[class*="social"]
 ##*[id*="bigya"]
 ##.desktop-ad
+##.heateor_sss_sharing_ul
+##.in__between_ads
 ##.mobile-ad
 ||*.prixacdn.net/*.gif$image
 ||*.prixacdn.net/media/advertisements/*$image
@@ -645,12 +646,12 @@ www.osnepal.com##div:nth-of-type(4)
 ||www.osnepal.com/*.gif$image
 
 ! ourbiratnagar.net
-ourbiratnagar.net##.gofollow
-ourbiratnagar.net##.floating_buttons
+ourbiratnagar.net##+js(set-constant, document.body.classList.remove, 'modal-open')
 ourbiratnagar.net##.av_block
 ourbiratnagar.net##.da-reactions-outer
+ourbiratnagar.net##.floating_buttons
+ourbiratnagar.net##.gofollow
 ourbiratnagar.net##.user_poll_block
-ourbiratnagar.net##+js(set-constant, document.body.classList.remove, 'modal-open')
 ||ourbiratnagar.net/*.gif$image
 
 ! palikanews.com
@@ -887,12 +888,10 @@ yesnepalnews.com##.box-ads
 ||yesnepalnews.com/*.gif$image
 
 ! yessamachar.com
+yessamachar.com##.td-a-rec-id-custom-spot
 yessamachar.com##.td_spot_img_all
-yessamachar.com##.td-a-rec-id-custom-spot
 yessamachar.com##.tdi_236
-yessamachar.com##.td-a-rec-id-custom-spot
 ||yessamachar.com/*.gif$image
-
 
 ! yetikhabar.com
 www.yetikhabar.com##.wp-image-13592
@@ -919,14 +918,79 @@ youthofdang.com##div.row:nth-of-type(4)
 youthpana.com##.in__between_ads
 ||youthpana.com/*.gif$image
 
+! youthsofbirgunj
+youthsofbirgunj.com##.elementor-widget-image
+||youthsofbirgunj.com/*.gif$image
+
+! youtvnepal.com
+youtvnepal.com##.border
+youtvnepal.com##div.py-5.container-fluid
+||youtvnepal.com/*.gif$image
+||youtvnepal.com/wp-content/uploads/2024/03/IMG-20240321-WA0012*.jpg$image
+
+! yugantarkhabar.com
+yugantarkhabar.com##.col-md-10.col-sm-10.col-xs-12
+yugantarkhabar.com##div.mb15.mt15.col-xs-12
+||yugantarkhabar.com/*.gif$image
+
+! yugawani.com
+yugawani.com##div[style*="background:#ebebeb; height:150x; width:100%; line-height:150px; text-align:center; color:#ccc;"]
+||yugawani.com/*.gif$image
+
 ! yugdarpan.com
+www.yugdarpan.com###comments-template
+www.yugdarpan.com###pg-32-7
 www.yugdarpan.com##.post-views
 www.yugdarpan.com##.sidebar-header.sidebar
 ||www.yugdarpan.com/*.gif$image
 
+! yugdhara.com
+yugdhara.com##div.ad-wrap
+yugdhara.com/*.gif$image
+
+! yugkhabar.com
+yugkhabar.com##.cnt_cnt_ads
+yugkhabar.com##.widget_media_image
+||yugkhabar.com/*.gif$image
+
+! yugnepal.com
+yugnepal.com##.advertisement-wrap
+yugnepal.com##.sidebar-add
+||yugnepal.com/*.gif$image
+
+! yugnews.com
+www.yugnews.com##.custom-ad-section
+www.yugnews.com##.floating-sidebar
+www.yugnews.com##.widget_media_image
+||www.yugnews.com/*.gif$image
+
+! yugpost.com
+yugpost.com##.elementor-widget-shortcode
+yugpost.com##.wpra-reactions-wrap
+||yugpost.com/*.gif$image
+
+! yugpress.com
+yugpress.com###reaction_buttons_post13828
+yugpress.com##.tdi_118
+||yugpress.com/*.gif#image
+
+! yugyandaily.com
+yugyandaily.com###wpdevar_comment_1
+yugyandaily.com##*[class*="pum-"]
+yugyandaily.com##+js(set-constant, document.body.style.overflow, 'auto')
+yugyandaily.com##.add-container.container
+||yugyandaily.com/*.gif$image
+
+! yuwadaily.com
+yuwadaily.com##*[class*="__ads"]
+yuwadaily.com##.mb-20.text-center
+||yuwadaily.com/*.gif$image||yuwadaily.com/*.webp$image
+
 ! yuwasandesh.com
 @@www.yuwasandesh.com/*yuwasandesh-logo.gif$image
+@@yuwasandesh.com/images/*logo*.gif
 ||www.yuwasandesh.com/*.gif$image
+||yuwasandesh.com/*.gif$image
 
 ! zen1news.com
 ||www.zen1news.com/*.gif$image
