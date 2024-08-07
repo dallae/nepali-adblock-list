@@ -404,7 +404,6 @@ khabarhub.com##.widget
 khabarkheti.com##.td-all-devices
 khabarkheti.com##.tdi_72
 khabarkheti.com##.tdi_82
-khabarkheti.com##.wpra-reactions-container
 ||khabarkheti.com/*.gif$image
 ||khabarkheti.com/ad*$image
 
@@ -648,7 +647,6 @@ www.osnepal.com##div:nth-of-type(4)
 ! ourbiratnagar.net
 ourbiratnagar.net##+js(set-constant, document.body.classList.remove, 'modal-open')
 ourbiratnagar.net##.av_block
-ourbiratnagar.net##.da-reactions-outer
 ourbiratnagar.net##.floating_buttons
 ourbiratnagar.net##.gofollow
 ourbiratnagar.net##.user_poll_block
@@ -781,7 +779,6 @@ www.sawalnepal.com##.in__between_ads
 
 ! setokhabar.com
 www.setokhabar.com##.advertisement
-www.setokhabar.com##.goji-reactions
 www.setokhabar.com##.inside_ads
 www.setokhabar.com##.widget_media_image
 ||www.setokhabar.com/*.gif$image
@@ -929,7 +926,6 @@ youthofdang.com##.bn-ds-1
 youthofdang.com##.bn-ds-11
 youthofdang.com##.bn-ds-8
 youthofdang.com##.mb-3.col-bn-ds.col-xs-12.col-sm-12
-youthofdang.com##.noselect.reactions
 youthofdang.com##div.row:nth-of-type(4)
 
 ! youthpana.com
@@ -984,7 +980,6 @@ www.yugnews.com##.widget_media_image
 
 ! yugpost.com
 yugpost.com##.elementor-widget-shortcode
-yugpost.com##.wpra-reactions-wrap
 ||yugpost.com/*.gif$image
 
 ! yugpress.com
