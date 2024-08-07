@@ -241,7 +241,7 @@ www.filmykhabar.com##div[style*="width: 670px; height: 180px; margin-top: 16px;"
 ##.heateor_sss_sharing_ul
 ##.in__between_ads
 ##.mobile-ad
-##*[class*="reactions"]
+##*[class*="reaction"]
 ||*.prixacdn.net/*.gif$image
 ||*.prixacdn.net/media/advertisements/*$image
 
@@ -609,7 +609,6 @@ omkartimes.com##.sn-ad
 
 ! onlineharpal.com
 onlineharpal.com###wpgtr_stickyads_textcss_container
-onlineharpal.com##.entry-sec.reaction-sec
 onlineharpal.com##.smeta-extra
 ||onlineharpal.com/*.gif$image
 
@@ -983,7 +982,6 @@ yugpost.com##.elementor-widget-shortcode
 ||yugpost.com/*.gif$image
 
 ! yugpress.com
-yugpress.com###reaction_buttons_post13828
 yugpress.com##.tdi_118
 ||yugpress.com/*.gif#image
 
