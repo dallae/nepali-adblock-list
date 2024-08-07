@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Version: 202408072251
+! Version: 202408072322
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 07 Aug 2024 22:51 UTC
-! Expires: 11 Aug 2024 22:51 UTC
+! Last modified: 07 Aug 2024 23:22 UTC
+! Expires: 11 Aug 2024 23:22 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -241,6 +241,7 @@ www.filmykhabar.com##div[style*="width: 670px; height: 180px; margin-top: 16px;"
 ##.heateor_sss_sharing_ul
 ##.in__between_ads
 ##.mobile-ad
+##*[class*="reactions"]
 ||*.prixacdn.net/*.gif$image
 ||*.prixacdn.net/media/advertisements/*$image
 
@@ -778,6 +779,13 @@ www.sansarnews.com##[class*="_ad"]
 www.sawalnepal.com##.in__between_ads
 ||www.sawalnepal.com/*.gif$image
 
+! setokhabar.com
+www.setokhabar.com##.advertisement
+www.setokhabar.com##.goji-reactions
+www.setokhabar.com##.inside_ads
+www.setokhabar.com##.widget_media_image
+||www.setokhabar.com/*.gif$image
+
 ! setopati.com
 www.setopati.com##.whatspp
 ||setopati.com/*.gif$image
@@ -842,9 +850,16 @@ www.telegraphnepal.com##.leftbar
 thecinematimes.com##.widget
 ||thecinematimes.com/*.gif$image
 
+! thefilmnepal.com
+||www.thefilmnepal.com/*.gif$image
+
 ! thenepaltop.com
 www.thenepaltop.com##.widget
 ||www.thenepaltop.com/*.gif$image
+
+! thuloparda.com
+www.thuloparda.com##.widget
+||www.thuloparda.com/*.gif$image
 
 ! topnepalnews.com
 topnepalnews.com##.mobImageAds
@@ -865,6 +880,10 @@ ujyaaloonline.com##.instagram-media
 
 ! ukeraa.com
 ||www.ukerra.com/*.gif$image
+
+! uskhabar.com
+uskhabar.com##.widget_media_image
+||uskhabar.com/*.gif$image
 
 ! yalambartimes.com
 yalambartimes.com##.widget
