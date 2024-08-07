@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Version: 202408072159
+! Version: 202408072251
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 07 Aug 2024 21:59 UTC
-! Expires: 11 Aug 2024 21:59 UTC
+! Last modified: 07 Aug 2024 22:51 UTC
+! Expires: 11 Aug 2024 22:51 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -95,9 +95,9 @@ bankepost.com##.size-large.wp-block-image
 ||bankepost.com/*.gif$image
 
 ! bankingkhabar.com
+||bankingkhabar.com/*.gif$image
 ||bankingkhabar.com/*/850X450PX-announcement-post.jpg$image
 ||bankingkhabar.com/*/Web-Banner-VOTING-OPEN-01.jpg$image
-||bankingkhabar.com/*.gif$image
 
 ! barnanmedia.com
 ||barnanmedia.com/*.gif$image
@@ -207,7 +207,6 @@ epratibimba.com##.single-post-advertisement
 ||erukum.com/*.gif$image
 
 ! euttardayitwa.com
-euttardayitwa.com##.heateor_sss_sharing_ul
 euttardayitwa.com##.widget
 ||euttardayitwa.com/*.gif$image
 
@@ -984,8 +983,8 @@ yugyandaily.com##.add-container.container
 ! yuwadaily.com
 yuwadaily.com##*[class*="__ads"]
 yuwadaily.com##.mb-20.text-center
-||yuwadaily.com/*.webp$image
 ||yuwadaily.com/*.gif$image
+||yuwadaily.com/*.webp$image
 
 ! yuwasandesh.com
 @@www.yuwasandesh.com/*yuwasandesh-logo.gif$image
