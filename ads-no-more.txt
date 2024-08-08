@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Version: 202408072322
+! Version: 202408080059
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 07 Aug 2024 23:22 UTC
-! Expires: 11 Aug 2024 23:22 UTC
+! Last modified: 08 Aug 2024 00:59 UTC
+! Expires: 12 Aug 2024 00:59 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -11,6 +11,11 @@
 ! 24newsfire.com
 24newsfire.com##.wp-image-8281
 ||24newsfire.com/*.gif$image
+
+! 3ghumti.com
+www.3ghumti.com##div.ads
+www.3ghumti.com##div[style*="width:100%;margin-bottom:10px;"]
+||www.3ghumti.com/*.gif$image
 
 ! 8848newsnepal.com
 ||8848newsnepal.com/*.gif$image
@@ -233,6 +238,7 @@ www.filmykhabar.com##div[style*="width: 670px; height: 180px; margin-top: 16px;"
 ! generic filters
 ##*[class*="adalyticsblock"]
 ##*[class*="bigya"]
+##*[class*="reaction"]
 ##*[class*="share"]
 ##*[class*="sharing"]
 ##*[class*="social"]
@@ -241,7 +247,6 @@ www.filmykhabar.com##div[style*="width: 670px; height: 180px; margin-top: 16px;"
 ##.heateor_sss_sharing_ul
 ##.in__between_ads
 ##.mobile-ad
-##*[class*="reaction"]
 ||*.prixacdn.net/*.gif$image
 ||*.prixacdn.net/media/advertisements/*$image
 
@@ -659,6 +664,11 @@ www.palikanews.com##.ads
 www.pardafas.com##[class*="ad"]
 ||pardafas.com/*.gif$image
 
+! parichaya.com
+parichaya.com##.active.more-stories-text-2.right
+parichaya.com##.adcontainer
+||parichaya.com/*.gif$image
+
 ! parichitkhabar.com
 www.parichitkhabar.com##+js(set-constant, document.body.classList.remove, 'modal-open')
 www.parichitkhabar.com##div[class*="modal-backdrop"]
@@ -708,6 +718,11 @@ prastakhabar.com##.top.barbarian
 ! rajdhanidaily.com
 ||rajdhanidaily.com/*.gif$image
 
+! ramailochha.com
+ramailochha.com##.wp-image-51631
+ramailochha.com##.wp-image-51670
+||ramailochha.com/*.gif$image
+
 ! ramroonline.com
 ||ramroonline.com/*.gif$image
 
@@ -748,7 +763,12 @@ www.sallerikhabar.com##.widget
 www.sallerikhabar.com##[class*="heateor_sss_"]
 ||i0.wp.com/www.sallerikhabar.com/*.gif$image
 
+! samachardesk.com
+||samachardesk.com/*.gif$image
+
 ! samacharpati.com
+samacharpati.com##.mausam
+samacharpati.com##.rashiFal
 ||samacharpati.com/*.gif$image
 
 ! samajtimes.com
@@ -761,6 +781,9 @@ samajtimes.com##.widget
 
 ! sancharkendra.com
 ||sancharkendra.com/*.gif$image
+
+! sanghunews.com
+||sanghunews.com/*.gif$image
 
 ! sankalpakhabar.com
 sankalpakhabar.com##.widget
