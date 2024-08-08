@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Version: 202408080059
+! Version: 202408082200
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 08 Aug 2024 00:59 UTC
-! Expires: 12 Aug 2024 00:59 UTC
+! Last modified: 08 Aug 2024 22:00 UTC
+! Expires: 12 Aug 2024 22:00 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -107,6 +107,10 @@ bankepost.com##.size-large.wp-block-image
 ! barnanmedia.com
 ||barnanmedia.com/*.gif$image
 
+! bikastimes.com
+bikastimes.com##section.widget
+||bikastimes.com/*.gif$image
+
 ! bishownews.com
 www.bishownews.com##.bisho-after-content_2
 www.bishownews.com##.bisho-content_7
@@ -133,6 +137,11 @@ www.bizshala.com##.ad-banner-img
 ! breaknlinks.com
 ||breaknlinks.com/*.gif$image
 
+! celebritynepal.com
+celebritynepal.com##.vce-ad-container
+celebritynepal.com##[id*="media_image"]
+||celebritynepal.com/*.gif$image
+
 ! chotkari.com
 chotkari.com/*.gif$image
 
@@ -156,6 +165,16 @@ dainiki.com##.widget
 ||dainiki.com/*.avif$image
 ||dainiki.com/*.gif$image
 
+! dainiknepal.com
+www.dainiknepal.com##.sr_bot
+www.dainiknepal.com##div.advt_bx
+||www.dainiknepal.com/*.gif$image
+
+! dalitonline.com
+dalitonline.com##.small-ads
+dalitonline.com##div.ads
+||dalitonline.com/*.gif$image
+
 ! dcnepal.com
 www.dcnepal.com##.ad-container
 ||creative.hamropatro.com/*.gif$image
@@ -168,6 +187,9 @@ www.dcnepal.com##.ad-container
 dharananews.com##.ads-wrapper
 ||dharananews.com/*.gif$image
 
+! drishyatv.com
+||drishyatv.com/*.gif$image
+
 ! eadarsha.com
 www.eadarsha.com##div.widget-sidebar.widget:nth-of-type(1)
 ||eadarsha.com/*.gif$image
@@ -177,6 +199,12 @@ www.eadarsha.com##div.widget-sidebar.widget:nth-of-type(1)
 economistnepal.com##.ads
 economistnepal.com##.img-reponsive
 ||economistnepal.com/*.gif$image
+
+! ehimalayatimes.com
+ehimalayatimes.com##.hide-has-labels
+ehimalayatimes.com##.show-modal.show.notification-modal.right_bottom.modal
+ehimalayatimes.com##[class*="ad-"]
+||ehimalayatimes.com/*.gif$image
 
 ! ejanakpurtoday.com
 ejanakpurtoday.com##.in__between_ads
@@ -200,7 +228,14 @@ ekantipur.com##.static-sponsor
 emountaintv.com##.partners-container
 ||emountaintv.com/*.gif$image
 
+! english.himalayatimes.com.np
+english.himalayatimes.com.np##.right_bottom.modal-list-wrap
+english.himalayatimes.com.np##.show-has-labels
+english.himalayatimes.com.np##[class*="ad-"]
+||english.himalayatimes.com.np/*.gif$image
+
 ! english.onlinekhabar.com
+||english.onlinekhabar.com/*.gif$image
 
 ! epratibimba.com
 epratibimba.com##.add
@@ -219,13 +254,28 @@ euttardayitwa.com##.widget
 everestfujinews.com##.advertisement
 ||everestfujinews.com/*.gif$image
 
+! everestmission.com
+everestmission.com##[class*="-add-place"]
+everestmission.com##[id*="evere-"]
+||everestmission.com/*.gif$image
+
 ! everesttimesnews.com
 www.everesttimesnews.com##.adsimage
 www.everesttimesnews.com##.widget
 ||www.everesttimesnews.com/*.gif$image
 
+! expresspana.com
+expresspana.com##.ads
+expresspana.com##.uk-grid.uk-grid-small.uk-grid-divider
+||expresspana.com/*.gif
+
 ! farakdhar.com
 ||farakdhar.com/*.gif$image
+
+! farakpatra.com
+www.farakpatra.com##.ads
+www.farakpatra.com##.widget
+||www.farakpatra.com/*.gif$image
 
 ! filmykhabar.com
 www.filmykhabar.com##.topheaderpic
@@ -304,6 +354,10 @@ hellokhabar.com###tdi_76
 hellokhabar.com##.td-ss-main-sidebar
 ||hellokhabar.com/*.gif$image
 
+! himalayadiary.com
+himalayadiary.com##.better-social-counter
+||himalayadiary.com/*.gif$image
+
 ! himalayandainik.com
 himalayandainik.com##.custom-bg
 himalayandainik.com##.hsn--ads--img
@@ -329,6 +383,16 @@ himalpost.com##.widget
 ! himalpress.com
 ||himalpress.com/*.gif$image
 
+! hulaksanchar.com
+hulaksanchar.com##.adds_menu
+hulaksanchar.com##.small-add
+||hulaksanchar.com/*.gif$image
+
+! iconkhabar.com
+iconkhabar.com##.gofollow
+iconkhabar.com##.wpra-rendered.wpra-plugin-container.wpra-reactions-wrap
+||iconkhabar.com/*.gif$image
+
 ! imagekhabar.com
 www.imagekhabar.com##div.uk-grid-stack.uk-grid-match.uk-grid:nth-of-type(2)
 ||www.imagekhabar.com/*/*.gif$image
@@ -340,11 +404,39 @@ jagarannews.com##.widget
 ! janaaastha.com
 ||janaaastha.com/*.gif$image
 
+! janaboli.com
+www.janaboli.com##.widget
+||janaboli.com/*.gif$image
+
+! janachasotimes.com
+janachasotimes.com##.jft_ads
+||janachasotimes.com/*.gif$image
+
+! janapatra.com
+www.janapatra.com/*.gif$image
+
+! janasamsad.com
+janasamsad.com##[class*="_ads"]
+||janasamsad.com/*.gif$image
+
 ! janatatimes.com
 janatatimes.com##.adsimage
 janatatimes.com##.widget
 ||i0.wp.com/janatatimes.com/*.gif
 ||janatatimes.com/*.gif$image
+
+! japansamachar.com
+japansamachar.com##.custom-modal
+japansamachar.com##.sb_container
+japansamachar.com##.sticky-ad
+japansamachar.com##div.w-full.md\:mb-0.mb-2
+||japansamachar.com/*.gif$image
+
+! jayhosh.com
+www.jayhosh.com##.alignnone
+www.jayhosh.com##.widget_media_image
+www.jayhosh.com##[id*="banner"]
+||www.jayhosh.com/*.gif$image
 
 ! jeetpurkhabar.com
 jeetpurkhabar.com##.elementor-widget-he-advertisement-banner
@@ -352,6 +444,9 @@ jeetpurkhabar.com##.vl-advertisment
 jeetpurkhabar.com##.widget_media_image.widget_block
 ||jeetpurkhabar.com/*.gif$image
 ||jeetpurkhabar.com/*.webp$image
+
+! joynepal.com
+||joynepal.com/*.gif$image
 
 ! kalakarmi.com
 www.kalakarmi.com##*.ads
@@ -384,6 +479,11 @@ www.kathmandupati.com##.widget
 ||kathmandupress.com/*.gif$image
 ||kathmandupress.com/uploads/bigyaapan/*$image
 
+! kbckhabar.com.au
+kbckhabar.com.au##.adsimage
+kbckhabar.com.au##.widget
+||kbckhabar.com.au/*.gif$image
+
 ! kendrabindu.com
 @@kendrabindu.com/*logo.gif$image
 kendrabindu.com##.comment
@@ -413,8 +513,9 @@ khabarkheti.com##.tdi_82
 ||khabarkheti.com/ad*$image
 
 ! kharibot.com
-||kharibot.com/*.gif$image
+kharibot.com##*[class*="ad"]
 ||kharibot.com/uploads/advertise/*$image
+||kharibot.com/*.gif$image
 
 ! khasokhas.com
 www.khasokhas.com##.code-block-10.code-block
@@ -472,6 +573,11 @@ www.makalukhabar.com##.is-full-widescreen-ad
 www.makalukhabar.com##.section-ad-space
 ||www.makalukhabar.com/*.gif$image
 
+! malikatoday.com
+malikatoday.com##*[class*="ads"]
+malikatoday.com##.float-right
+||malikatoday.com/*.gif$image
+
 ! mediadabali.com
 ||mediadabali.com/*.gif$image
 
@@ -487,6 +593,12 @@ merokhel.com##.widget_media_image
 ! mirmireonline.com
 www.mirmireonline.com##.widget
 ||www.mirmireonline.com/*.gif$image
+
+! missionlumbini.com
+missionlumbini.com##.ads
+missionlumbini.com##.share_list
+missionlumbini.com##.uk-first-column.uk-text-center.list-inline-item
+||missionlumbini.com/*.gif$image
 
 ! mynewsnepal.com
 ||mynewsnepal.com/*.gif$image
@@ -526,6 +638,13 @@ nayannews.com##.tdi_87
 nayapananews.com##.follow-us
 ||nayapananews.com/*.gif$image
 
+! nepalbishesh.com
+nepalbishesh.com##.advertisement-section
+nepalbishesh.com##.details-advertise-blocks
+nepalbishesh.com##.follow-liked
+nepalbishesh.com##.social-media-icon-section
+||nepalbishesh.com/*.gif$image
+
 ! nepalclicks.com
 www.nepalclicks.com##.sc-ads
 ||www.nepalclicks.com/*.gif$image
@@ -551,6 +670,13 @@ nepalipost.com###text-6
 nepalipost.com##.bottomad
 nepalipost.com##.topad
 ||nepalipost.com/*.gif$image
+
+! nepaliraibar.com
+nepaliraibar.com##.navbar-ad-section
+nepaliraibar.com##.widget_media_image
+nepaliraibar.com##.wp-image-43333.size-full.aligncenter
+nepaliraibar.com##.wp-image-66760.size-full.aligncenter
+||nepaliraibar.com/*.gif$image
 
 ! nepalkhabar.com
 nepalkhabar.com##*[class*="bannergroup"]
@@ -623,6 +749,12 @@ www.onlinekhabar.com##.ok-post-emoji
 www.onlinekhabar.com##.ok_roadblock
 ||www.onlinekhabar.com/*.gif$image
 
+! onlinenepal.com
+onlinenepal.com##.ads
+onlinenepal.com##.uk-first-column.uk-width-auto\@m
+onlinenepal.com##.widget
+||onlinenepal.com/*.gif$image
+
 ! onlinenewsnepal.com
 onlinenewsnepal.com##.show-check-also
 onlinenewsnepal.com##.stream-item-top-wrapper
@@ -667,6 +799,9 @@ www.pardafas.com##[class*="ad"]
 ! parichaya.com
 parichaya.com##.active.more-stories-text-2.right
 parichaya.com##.adcontainer
+parichaya.com##.post-share
+parichaya.com##.right.more-stories
+parichaya.com##.yio-type-image
 ||parichaya.com/*.gif$image
 
 ! parichitkhabar.com
@@ -721,6 +856,7 @@ prastakhabar.com##.top.barbarian
 ! ramailochha.com
 ramailochha.com##.wp-image-51631
 ramailochha.com##.wp-image-51670
+ramailochha.com##.wp-image-51889
 ||ramailochha.com/*.gif$image
 
 ! ramroonline.com
@@ -732,6 +868,14 @@ www.ratopati.com##.skip__banner-ad
 ||npcdn.ratopati.com/media/promo/*$image
 ||www.ratopati.com/*.gif$image
 
+! ratosamachar.com
+ratosamachar.com##.b-image
+||ratosamachar.com/*.gif$image
+
+! recordnepal.com
+www.recordnepal.com##.social-mobile
+||www.recordnepal.com/*.gif$image
+
 ! reportersnepal.com
 reportersnepal.com##.ads
 reportersnepal.com##.widget
@@ -742,6 +886,9 @@ reportersnepal.com##div.row:nth-of-type(14)
 ! sabastaentertainment.com
 sabastaentertainment.com##.widget
 ||sabastaentertainment.com/*.gif$image
+
+! sabdapati.com
+||www.sabdapati.com/*.gif$image
 
 ! safalsamachar.com
 www.safalsamachar.com##.post-footer
