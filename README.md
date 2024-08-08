@@ -1,6 +1,6 @@
 # AdBlock List for Nepal 🇳🇵
 
-Welcome to the AdBlock List for Nepal repository! This repository contains a curated list of filters to block unwanted advertisements, trackers, and other nuisances on the web for Nepali websites. The aim is to enhance browsing experience by providing a cleaner, faster, and more private internet (हल्का गफ हान्देको).
+Welcome to the AdBlock List for Nepal repository! This repository contains a curated list of filters to block unwanted advertisements, trackers, and other nuisances on the web for Nepali websites. The aim is to enhance browsing experience by providing a cleaner, faster, and more private internet.
 
 ## Table of Contents
 
