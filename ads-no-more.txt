@@ -590,6 +590,11 @@ merokhel.com##.widget_media_image
 ||images.merolagani.com/content/bigyapan/*$image
 ||merolagani.com/*.gif$image
 
+! meronews.com
+meronews.com##.cont_break_ads
+meronews.com##div.y
+||meronews.com/*.gif$image
+
 ! mirmireonline.com
 www.mirmireonline.com##.widget
 ||www.mirmireonline.com/*.gif$image
