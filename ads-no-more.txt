@@ -869,6 +869,8 @@ ramailochha.com##.wp-image-51889
 
 ! ratopati.com
 www.ratopati.com##.full-banner-adv
+www.ratopati.com##.dnn-popup-placeholder
+www.ratopati.com##.content-banner--single
 www.ratopati.com##.skip__banner-ad
 ||npcdn.ratopati.com/media/promo/*$image
 ||www.ratopati.com/*.gif$image
@@ -1024,6 +1026,10 @@ thecinematimes.com##.widget
 
 ! thefilmnepal.com
 ||www.thefilmnepal.com/*.gif$image
+
+! thehimalayantimes.com 
+thehimalayantimes.com###fixed-social
+||thehimalayantimes.com/*.gif$image
 
 ! thenepaltop.com
 www.thenepaltop.com##.widget
