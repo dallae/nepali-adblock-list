@@ -1033,6 +1033,7 @@ thecinematimes.com##.widget
 
 ! thehimalayantimes.com
 thehimalayantimes.com###fixed-social
+thehimalayantimes.com##.stayInTouch
 ||thehimalayantimes.com/*.gif$image
 
 ! thenepaltop.com
