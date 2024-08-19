@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Version: 202408082200
+! Version: 202408192205
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 08 Aug 2024 22:00 UTC
-! Expires: 12 Aug 2024 22:00 UTC
+! Last modified: 19 Aug 2024 22:05 UTC
+! Expires: 23 Aug 2024 22:05 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -219,7 +219,9 @@ ekagaj.com##div.sidebar > aside > .wrapper-box
 
 ! ekantipur.com
 ekantipur.com###roadblock-ad
+ekantipur.com##.custom-data
 ekantipur.com##.liscence-quiz-set.quiz-wrapper
+ekantipur.com##.sponsor-mobile
 ekantipur.com##.static-sponsor
 ||assets-cdn.ekantipur.com/*.gif$image
 ||ekantipur.com/*.gif$image
@@ -289,10 +291,12 @@ www.filmykhabar.com##div[style*="width: 670px; height: 180px; margin-top: 16px;"
 ##*[class*="adalyticsblock"]
 ##*[class*="bigya"]
 ##*[class*="reaction"]
+##*[class*="roadblock"]
 ##*[class*="share"]
 ##*[class*="sharing"]
 ##*[class*="social"]
 ##*[id*="bigya"]
+##*[id*="roadblock"]
 ##.desktop-ad
 ##.heateor_sss_sharing_ul
 ##.in__between_ads
@@ -514,8 +518,8 @@ khabarkheti.com##.tdi_82
 
 ! kharibot.com
 kharibot.com##*[class*="ad"]
-||kharibot.com/uploads/advertise/*$image
 ||kharibot.com/*.gif$image
+||kharibot.com/uploads/advertise/*$image
 
 ! khasokhas.com
 www.khasokhas.com##.code-block-10.code-block
@@ -868,10 +872,10 @@ ramailochha.com##.wp-image-51889
 ||ramroonline.com/*.gif$image
 
 ! ratopati.com
-www.ratopati.com##.full-banner-adv
-www.ratopati.com##.dnn-popup-placeholder
-www.ratopati.com##.content-banner--single
-www.ratopati.com##.skip__banner-ad
+www.ratopati.com##*[class*="banner"] [class*="ad"] [id*="popup"]
+www.ratopati.com##*[class*="placeholder"]
+www.ratopati.com##+js(set-constant, $.fn.addClass, trueFunc)
+www.ratopati.com##+js(set-constant, $.fn.removeClass, trueFunc)
 ||npcdn.ratopati.com/media/promo/*$image
 ||www.ratopati.com/*.gif$image
 
@@ -960,8 +964,8 @@ www.setokhabar.com##.widget_media_image
 ||www.setokhabar.com/*.gif$image
 
 ! setopati.com
-www.setopati.com##.whatspp
 www.setopati.com##.whatsapp
+www.setopati.com##.whatspp
 ||setopati.com/*.gif$image
 
 ! shilapatra.com
@@ -1027,7 +1031,7 @@ thecinematimes.com##.widget
 ! thefilmnepal.com
 ||www.thefilmnepal.com/*.gif$image
 
-! thehimalayantimes.com 
+! thehimalayantimes.com
 thehimalayantimes.com###fixed-social
 ||thehimalayantimes.com/*.gif$image
 
@@ -1062,6 +1066,39 @@ ujyaaloonline.com##.instagram-media
 ! uskhabar.com
 uskhabar.com##.widget_media_image
 ||uskhabar.com/*.gif$image
+
+! vanipress.com
+vanipress.com##.top__header__ads
+vanipress.com##div.banner__ads
+||vanipress.com/*.gif$image
+
+! waikhari.com
+www.waikhari.com##.widget
+||www.waikhari.com/*.gif$image
+
+! washkhabar.com
+washkhabar.com##.widget
+||washkhabar.com/*.gif$image
+
+! welcomekhabar.com
+||www.welcomekhabar.com/*.gif$image
+
+! whatthenepal.com
+whatthenepal.com##.td-a-rec-id-custom-spot
+||whatthenepal.com/*.gif$image
+
+! whitekhabar.com
+www.whitekhabar.com##.advertisement
+www.whitekhabar.com##.np_ads_palce
+||www.whitekhabar.com/*.gif$image
+
+! widenepalnews.com
+widenepalnews.com##.add-wrap
+||widenepalnews.com/*.gif$image
+
+! worldwidetvnepal.com
+worldwidetvnepal.com##.mb20.videos .heading_title_bg.heading_title > .color-red > .block-title [href]
+||worldwidetvnepal.com/*.gif$image
 
 ! yalambartimes.com
 yalambartimes.com##.widget
