@@ -61,6 +61,7 @@ www.arghakhanchi.com##.fb-xfbml-parse-ignore
 www.arghakhanchi.com##.m4.sm12.col
 www.arghakhanchi.com##.wp-image-81960
 www.arghakhanchi.com##.xe8uvvx
+www.arghakhanchi.com##.news-body > p:last-of-type
 ||ap-south-1.linodeobjects.com/*.gif$image
 ||kendrabindu.com/*UCAN.jpg$image
 ||www.arghakhanchi.com/*.gif$image
