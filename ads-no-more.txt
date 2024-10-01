@@ -984,6 +984,11 @@ shilapatra.com##.modalbox
 ||shilapatra.com/*.gif$image
 ||shilapatra.com/uploads/bigyaapan/*$image
 
+! sidhakura.com
+sidhakura.com##.contentsticky-ad-right
+||sidhakura.com/*.gif$image
+
+
 ! spotlightnepal.com
 www.spotlightnepal.com##.pl2-l.w-30-l.w-100.fl
 ||spotlightnepal.com/*.gif$image
