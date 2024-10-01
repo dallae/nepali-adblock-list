@@ -715,6 +715,9 @@ nepalrastriyadainik.com##div.generic-ad
 ||nepalsamaya.com/*.gif$image
 ||nepalsamaya.com/uploads/bigyaapan/*$image
 
+! nepalitelecom.com
+@@www.nepalitelecom.com##*[class*="share"]
+
 ! nepalviews.com
 www.nepalviews.com##*[class*="gam-nvad"]
 www.nepalviews.com##.sticky__banner
