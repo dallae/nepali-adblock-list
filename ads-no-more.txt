@@ -186,6 +186,8 @@ www.dcnepal.com##.ad-container
 
 ! deshsanchar.com
 deshsanchar.com##.cube-container
+deshsanchar.com##.widget
+deshsanchar.com##.code-block
 ||assets.deshsanchar.com/*/*.gif$image
 
 ! dharananews.com
