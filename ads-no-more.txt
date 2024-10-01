@@ -764,6 +764,8 @@ onlineharpal.com##.smeta-extra
 www.onlinekhabar.com##.nh_widget_wrap
 www.onlinekhabar.com##.ok-post-emoji
 www.onlinekhabar.com##.tribox-add
+www.onlinekhabar.com##.okam-ad-position-wrap
+www.onlinekhabar.com##.ok-full-widht-adv
 ||www.onlinekhabar.com/*.gif$image
 
 ! onlinenepal.com
