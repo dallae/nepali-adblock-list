@@ -1283,7 +1283,7 @@ yuwadaily.com##.mb-20.text-center
 
 ! yuwasandesh.com
 @@www.yuwasandesh.com/*yuwasandesh-logo.gif$image
-@@yuwasandesh.com/images/*logo*.gif
+@@yuwasandesh.com/wp/wp-content/uploads/2024/02/yuwasandesh-logo.gif
 ||www.yuwasandesh.com/*.gif$image
 ||yuwasandesh.com/*.gif$image
 
