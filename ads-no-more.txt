@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Version: 20241122004
+! Version: 20250122005
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 22 Nov 2024 00:04 UTC
-! Expires: 26 Oct 2024 00:04 UTC
+! Last modified: 11 Jan 2025 05:23 UTC
+! Expires: 16 Jan 2025 05:23 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -77,6 +77,9 @@ www.arghakhanchi.com##.news-body  > p:first-of-type
 ||www.arghakhanchi.com/wp-content/uploads/2024/03/Screenshot-2024-03-15-175004-1.png$image
 ||www.arghakhanchi.com/wp-content/uploads/2024/04/1d1ae8b5-9220-4f70-b673-ffa38c1e8a67.jpeg$image
 ||www.arghakhanchi.com/wp-content/uploads/2024/10/60f664d5-5486-4853-8958-123c0ccd9adc.jpeg$image
+||www.arghakhanchi.com/wp-content/uploads/2024/12/7598e203-b348-4cbb-8243-0bd40ac29483.jpeg$image
+||www.arghakhanchi.com/wp-content/uploads/2024/10/da5a79b6-d87c-47eb-b7dd-d64cec49e326.jpeg$image
+||www.arghakhanchi.com/wp-content/uploads/2022/11/278074443_706624880538669_6403904235405538296_n*.jpg$image
 ||scontent.fpkr1-1.fna.fbcdn.net/v/t39.30808-6/*$image
 ||ap-south-1.linodeobjects.com/*.gif$image
 ||kendrabindu.com/*UCAN.jpg$image
