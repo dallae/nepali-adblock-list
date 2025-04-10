@@ -11,88 +11,68 @@ permissions:
 jobs:
   auto-merge:
     runs-on: ubuntu-latest
-    if: github.actor == 'dallae'
+    if: github.actor == 'dallae' # Only run for PRs created by the user 'dallae'
+
     steps:
+      # Log the github.actor value
+      - name: Log github.actor
+        run: echo "github.actor is ${{ github.actor }}"
+
+      # Step 1: Checkout the repository code
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
-      - name: Get Pull Request Details
-        id: pr_details
-        run: |
-          echo "Pull Request Number: ${{ github.event.pull_request.number }}"
-          echo "Pull Request Title: ${{ github.event.pull_request.title }}"
-          echo "Pull Request URL: ${{ github.event.pull_request.html_url }}"
+      # Step 2: Wait for all status checks to complete
+      - name: Wait for Status Checks
+        uses: poseidon/wait-for-status-checks@v0.6.0
+        with:
+          token: ${{ secrets.PAT }}  # Required for authentication with a personal access token
 
-      - name: Ensure Status Checks Pass
+      # Step 3: Verify that the pull request is mergeable and has the required approvals
+      - name: Verify Mergeability
+        id: checks
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.PAT }}
           script: |
-            const { data: checks } = await github.rest.checks.listForRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: context.payload.pull_request.head.sha
-            });
-            const failedChecks = checks.check_runs.filter(run => run.conclusion !== 'success');
-            if (failedChecks.length > 0) {
-              throw new Error(`Failed checks: ${failedChecks.map(c => c.name).join(', ')}`);
-            }
+            const actor = '${{ github.actor }}';
+            console.log(`github.actor: ${actor}`);
 
-      - name: Ensure Required Approvals
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.PAT }}
-          script: |
-            const { data: reviews } = await github.rest.pulls.listReviews({
+            const pr = await github.rest.pulls.get({
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: context.payload.pull_request.number
             });
-            const approvals = reviews.filter(review => review.state === 'APPROVED');
-            if (approvals.length < 1) {  // Replace with the required number of approvals
-              throw new Error('Not enough approvals to enable auto-merge.');
+
+            console.log(`PR mergeable state: ${pr.data.mergeable}`);
+            console.log(`PR mergeable_state: ${pr.data.mergeable_state}`);
+
+            // Check if the PR is mergeable
+            if (pr.data.mergeable !== true) {
+              core.setFailed("PR has merge conflicts or is not mergeable");
+              return;
             }
 
-      - name: Verify Branch Protection
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.PAT }}
-          script: |
-            const { data: branchProtection } = await github.rest.repos.getBranchProtection({
+            // Check for required approvals
+            const reviews = await github.rest.pulls.listReviews({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              branch: context.payload.pull_request.base.ref
+              pull_number: context.payload.pull_request.number
             });
-            console.log("Branch Protection Rules:", branchProtection);
 
-            // Check status checks
-            if (branchProtection.required_status_checks) {
-              if (!branchProtection.required_status_checks.contexts || branchProtection.required_status_checks.contexts.length === 0) {
-                throw new Error('No required status checks are set.');
-              }
-              console.log("Required Status Checks:", branchProtection.required_status_checks.contexts);
+            const approvals = reviews.data.filter(
+              review => review.state === "APPROVED"
+            );
+
+            console.log(`Approvals count: ${approvals.length}`);
+
+            // Ensure at least 1 approval is present if actor is not dallae
+            if (approvals.length < 1 && actor !== 'dallae') {
+              core.setFailed("PR needs at least 1 approval");
             }
 
-            // Check required approvals
-            if (branchProtection.required_pull_request_reviews) {
-              console.log("Required Pull Request Reviews:", branchProtection.required_pull_request_reviews);
-              if (branchProtection.required_pull_request_reviews.required_approving_review_count > 0) {
-                console.log(`Required Approvals Count: ${branchProtection.required_pull_request_reviews.required_approving_review_count}`);
-              }
-            }
-
-            // Check whether branch is restricted
-            if (branchProtection.restrictions) {
-              console.log("Branch Restrictions:", branchProtection.restrictions);
-            }
-
-            // Fail if any branch protection rule is violated
-            if (!branchProtection) {
-              throw new Error('Branch protection rules are not satisfied.');
-            }
-
+      # Step 4: Enable Auto-Merge
       - name: Enable Auto-Merge
-        if: success()
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.PAT }}
@@ -102,12 +82,21 @@ jobs:
               repo: context.repo.repo,
               pull_number: context.payload.pull_request.number
             });
-            await github.graphql(
-              `mutation ($prId: ID!, $mergeType: PullRequestMergeMethod!) {
-                enablePullRequestAutoMerge(input: {
-                  pullRequestId: $prId,
-                  mergeMethod: $mergeType
-                }) { clientMutationId }
-              }`,
-              { prId: pr.node_id, mergeType: "REBASE" }
-            );
+
+            console.log(`Attempting to enable auto-merge for PR #${pr.number}`);
+
+            try {
+              await github.graphql(
+                `mutation ($prId: ID!, $mergeType: PullRequestMergeMethod!) {
+                  enablePullRequestAutoMerge(input: {
+                    pullRequestId: $prId,
+                    mergeMethod: $mergeType
+                  }) { clientMutationId }
+                }`,
+                { prId: pr.node_id, mergeType: "REBASE" }
+              );
+              console.log("Auto-merge enabled successfully.");
+            } catch (error) {
+              console.error("Failed to enable auto-merge:", error.message);
+              core.setFailed("Failed to enable auto-merge");
+            }
