@@ -11,45 +11,25 @@ permissions:
 jobs:
   auto-merge:
     runs-on: ubuntu-latest
-    if: github.actor == 'dallae'  # Replace with your username
+    if: github.actor == 'dallae'
     steps:
       - name: Enable Auto-Merge
         uses: actions/github-script@v7
-        env:
-          PAT: ${{ secrets.PAT }}  # Required for authentication
         with:
+          github-token: ${{ secrets.PAT }}  # PAT with repo permissions
           script: |
-            (async () => {
-              try {
-                console.log("Starting script execution...");
-                
-                console.log("Fetching pull request details...");
-                const { data: pr } = await github.rest.pulls.get({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  pull_number: context.payload.pull_request.number
-                });
-                console.log("Pull request details fetched successfully:", pr);
+            const { data: pr } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number
+            });
 
-                console.log("Enabling auto-merge for pull request...");
-                const response = await github.graphql(`
-                  mutation ($pullRequestId: ID!, $mergeMethod: PullRequestMergeMethod!) {
-                    enablePullRequestAutoMerge(input: {
-                      pullRequestId: $pullRequestId,
-                      mergeMethod: $mergeMethod
-                    }) {
-                      clientMutationId
-                    }
-                  }
-                `, {
-                  pullRequestId: pr.node_id,
-                  mergeMethod: "REBASE"  # Match your ruleset
-                });
-                console.log("Auto-merge enabled successfully:", response);
-
-                console.log("Script execution completed.");
-              } catch (error) {
-                console.error("An error occurred during script execution:", error);
-                throw error; // Re-throw the error to fail the workflow
-              }
-            })();
+            await github.graphql(
+              `mutation ($id: ID!, $method: PullRequestMergeMethod!) {
+                enablePullRequestAutoMerge(input: {
+                  pullRequestId: $id,
+                  mergeMethod: $method
+                }) { clientMutationId }
+              }`,
+              { id: pr.node_id, method: "REBASE" }
+            );
