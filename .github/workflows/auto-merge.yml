@@ -55,9 +55,11 @@ jobs:
               review => review.state === "APPROVED"
             );
             
-            // Ensure at least 1 approval is present (adjust this number as needed)
-            if (github.actor !== 'dallae' && approvals.length < 1) {
-              core.setFailed("PR needs at least 1 approval");
+            // Ensure at least 1 approval is present if actor is not dallae (adjust this number as needed)
+            if (github.actor !== 'dallae') {
+              if (approvals.length < 1) {
+                core.setFailed("PR needs at least 1 approval");
+              } 
             }
 
       # Step 4: Enable auto-merge for the pull request
