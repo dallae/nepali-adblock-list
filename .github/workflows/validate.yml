@@ -16,7 +16,7 @@ jobs:
       - name: Validate Adblock Syntax
         run: |
           # Check 1: Ensure no invalid lines (non-comment lines must start with ||, ##, etc.)
-          INVALID_LINES=$(grep -vE '^(!|@@|\|\||##|#|\s*$)' ads-no-more.txt || true)
+          INVALID_LINES=$(grep -vE '^(!|@@|\|\||##|#|[|\s*$)' ads-no-more.txt || true)
           if [ -n "$INVALID_LINES" ]; then
             echo "❌ Invalid syntax found. Lines must start with !, ##, ||, @@, or be empty."
             echo "$INVALID_LINES"
