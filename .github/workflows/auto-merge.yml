@@ -1,0 +1,41 @@
+name: Auto-Merge Owner's PRs
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+    # Only run if:
+    # 1. PR is created by YOU
+    # 2. The `validate` workflow has passed
+    if: |
+      github.actor == 'dallae' &&
+      contains(github.event.pull_request.labels.*.name, 'auto-merge')
+    steps:
+      - name: Auto-Approve PR
+        uses: actions/github-script@v7
+        env:
+          PAT: ${{ secrets.PAT }}
+        with:
+          script: |
+            await github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              event: 'APPROVE'
+            })
+
+      - name: Enable Rebase Merge
+        uses: actions/github-script@v7
+        env:
+          PAT: ${{ secrets.PAT }}
+        with:
+          script: |
+            await github.rest.pulls.enableAutomerge({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              merge_method: 'rebase'
+            })
