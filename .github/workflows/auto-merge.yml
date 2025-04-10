@@ -16,7 +16,7 @@ jobs:
       - name: Enable Auto-Merge
         uses: actions/github-script@v7
         with:
-          github-token: ${{ secrets.PAT }}  # PAT with repo permissions
+          github-token: ${{ secrets.PAT }}
           script: |
             const { data: pr } = await github.rest.pulls.get({
               owner: context.repo.owner,
@@ -25,11 +25,11 @@ jobs:
             });
 
             await github.graphql(
-              `mutation ($id: ID!, $method: PullRequestMergeMethod!) {
+              `mutation ($prId: ID!, $mergeType: PullRequestMergeMethod!) {
                 enablePullRequestAutoMerge(input: {
-                  pullRequestId: $id,
-                  mergeMethod: $method
+                  pullRequestId: $prId,
+                  mergeMethod: $mergeType
                 }) { clientMutationId }
               }`,
-              { id: pr.node_id, method: "REBASE" }
+              { prId: pr.node_id, mergeType: "REBASE" }
             );
