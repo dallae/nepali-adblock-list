@@ -14,6 +14,10 @@ jobs:
     if: github.actor == 'dallae' # Only run for PRs created by the user 'dallae'
 
     steps:
+      # Log the github.actor value
+      - name: Log github.actor
+        run: echo "github.actor is ${{ github.actor }}"
+
       # Step 1: Checkout the repository code
       - name: Checkout code
         uses: actions/checkout@v4
