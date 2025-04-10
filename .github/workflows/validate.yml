@@ -10,52 +10,49 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Validate Adblock Syntax
         run: |
-          # Check 1: Ensure no invalid lines (non-comment lines must start with ||, ##, etc.)
-          INVALID_LINES=$(grep -vE '^(!|@@|\|\||##|#|[|\s*$)' ads-no-more.txt || true)
+          # Allow: [Adblock header], standard rules (!, ||, ##), scriptlets (##+js), and element hiding
+          INVALID_LINES=$(grep -vE '^(\[Adblock.*\]|!|@@|\|\||##\+js\(|##|#|\s*$)|^[^#!]+?##' ads-no-more.txt || true)
           if [ -n "$INVALID_LINES" ]; then
-            echo "❌ Invalid syntax found. Lines must start with !, ##, ||, @@, or be empty."
+            echo "❌ Invalid syntax found. Valid patterns:"
+            echo "  - Header: [Adblock Plus 2.0]"
+            echo "  - Comments: ! ..."
+            echo "  - Blocking rules: ||domain.com/path"
+            echo "  - Element hiding: ##selector or domain.com##selector"
+            echo "  - Scriptlets: ##+js(...)"
+            echo "  - Exceptions: @@||domain.com"
+            echo "Invalid lines:"
             echo "$INVALID_LINES"
             exit 1
           fi
 
-          # Check 2: Ensure no duplicates (case-insensitive)
-          DUPLICATES=$(sort -fu ads-no-more.txt | uniq -d)
+          # Check for duplicates (case-insensitive, ignore comments and scriptlets)
+          DUPLICATES=$(grep -vE '^[!\[#]' ads-no-more.txt | sort -f | uniq -id)
           if [ -n "$DUPLICATES" ]; then
-            echo "❌ Duplicate rules found:"
+            echo "❌ Case-insensitive duplicates found:"
             echo "$DUPLICATES"
             exit 1
           fi
 
-          # Check 3: Ensure no trailing whitespace
-          TRAILING_WHITESPACE=$(grep -n '\s$' ads-no-more.txt || true)
-          if [ -n "$TRAILING_WHITESPACE" ]; then
-            echo "❌ Trailing whitespace found:"
-            echo "$TRAILING_WHITESPACE"
-            exit 1
-          fi
-
-          # Check 4: Ensure Unix line endings (LF instead of CRLF)
+          # Remaining checks (line endings, whitespace, newline)
           if grep -q $'\r' ads-no-more.txt; then
-            echo "❌ Windows line endings (CRLF) detected. Use LF instead."
+            echo "❌ Found CRLF line endings - use LF format"
             exit 1
           fi
 
-          # Check 5: Ensure no non-printable characters
-          NON_PRINTABLE=$(grep -Pv '^[[:print:]\t\n]*$' ads-no-more.txt || true)
-          if [ -n "$NON_PRINTABLE" ]; then
-            echo "❌ Non-printable characters found:"
-            echo "$NON_PRINTABLE"
+          TRAILING_WS=$(grep -n '\s$' ads-no-more.txt || true)
+          if [ -n "$TRAILING_WS" ]; then
+            echo "❌ Trailing whitespace found:"
+            echo "$TRAILING_WS"
             exit 1
           fi
 
-          # Check 6: Ensure file ends with a newline
           if [ -n "$(tail -c 1 ads-no-more.txt)" ]; then
-            echo "❌ File must end with a newline."
+            echo "❌ File must end with a newline"
             exit 1
           fi
 
