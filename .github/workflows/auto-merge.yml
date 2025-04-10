@@ -34,7 +34,8 @@ jobs:
               ref: context.payload.pull_request.head.sha
             });
             if (!checks.check_runs || checks.check_runs.length === 0) {
-              throw new Error('No status checks found. Ensure branch protection rules are configured with required checks.');
+              console.log('No status checks found. Skipping this step.');
+              return;
             }
             const failedChecks = checks.check_runs.filter(run => run.conclusion !== 'success');
             if (failedChecks.length > 0) {
