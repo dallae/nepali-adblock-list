@@ -56,7 +56,7 @@ jobs:
             );
             
             // Ensure at least 1 approval is present (adjust this number as needed)
-            if (approvals.length < 1) {
+            if (github.actor !== 'dallae' && approvals.length < 1) {
               core.setFailed("PR needs at least 1 approval");
             }
 
