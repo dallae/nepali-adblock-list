@@ -23,7 +23,7 @@ jobs:
           echo "Pull Request Title: ${{ github.event.pull_request.title }}"
           echo "Pull Request URL: ${{ github.event.pull_request.html_url }}"
 
-      - name: Check Status Checks
+      - name: Ensure Status Checks Pass
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.PAT }}
@@ -33,9 +33,12 @@ jobs:
               repo: context.repo.repo,
               ref: context.payload.pull_request.head.sha
             });
-            console.log("Status Checks:", checks);
+            const failedChecks = checks.check_runs.filter(run => run.conclusion !== 'success');
+            if (failedChecks.length > 0) {
+              throw new Error(`Failed checks: ${failedChecks.map(c => c.name).join(', ')}`);
+            }
 
-      - name: Check Approvals
+      - name: Ensure Required Approvals
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.PAT }}
@@ -45,49 +48,12 @@ jobs:
               repo: context.repo.repo,
               pull_number: context.payload.pull_request.number
             });
-            console.log("Reviews:", reviews);
-
-      - name: Check Branch Protection Rules
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.PAT }}
-          script: |
-            try {
-              const { data: branchProtection } = await github.rest.repos.getBranchProtection({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                branch: context.payload.pull_request.base.ref
-              });
-
-              console.log("Branch Protection Rules:", branchProtection);
-
-              // Log required status checks
-              if (!branchProtection.required_status_checks) {
-                console.log("Branch protection does not have required status checks set.");
-              } else {
-                console.log("Required Status Checks:", branchProtection.required_status_checks.contexts);
-              }
-
-              // Log required pull request reviews
-              if (!branchProtection.required_pull_request_reviews) {
-                console.log("Branch protection does not have required pull request reviews set.");
-              } else {
-                console.log("Required Approving Reviews:", branchProtection.required_pull_request_reviews.required_approving_review_count);
-              }
-
-              // Log restrictions on pushes
-              if (!branchProtection.restrictions) {
-                console.log("Branch protection does not have restrictions on pushes.");
-              } else {
-                console.log("Push Restrictions - Users:", branchProtection.restrictions.users);
-                console.log("Push Restrictions - Teams:", branchProtection.restrictions.teams);
-              }
-            } catch (error) {
-              console.error("Error fetching branch protection rules:", error.message);
-              throw error;
+            const approvals = reviews.filter(review => review.state === 'APPROVED');
+            if (approvals.length < 1) {  // Replace with the required number of approvals
+              throw new Error('Not enough approvals to enable auto-merge.');
             }
 
-      - name: Validate Auto-Merge Prerequisites
+      - name: Verify Branch Protection
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.PAT }}
@@ -97,31 +63,36 @@ jobs:
               repo: context.repo.repo,
               branch: context.payload.pull_request.base.ref
             });
+            console.log("Branch Protection Rules:", branchProtection);
 
-            const requiredChecks = branchProtection?.required_status_checks?.contexts || [];
-            const { data: checks } = await github.rest.checks.listForRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: context.payload.pull_request.head.sha
-            });
-
-            const failingChecks = checks.check_runs.filter(check => check.conclusion !== 'success' && requiredChecks.includes(check.name));
-            if (failingChecks.length > 0) {
-              throw new Error(`The following status checks have not passed: ${failingChecks.map(check => check.name).join(', ')}`);
+            // Check status checks
+            if (branchProtection.required_status_checks) {
+              if (!branchProtection.required_status_checks.contexts || branchProtection.required_status_checks.contexts.length === 0) {
+                throw new Error('No required status checks are set.');
+              }
+              console.log("Required Status Checks:", branchProtection.required_status_checks.contexts);
             }
 
-            const { data: reviews } = await github.rest.pulls.listReviews({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.payload.pull_request.number
-            });
+            // Check required approvals
+            if (branchProtection.required_pull_request_reviews) {
+              console.log("Required Pull Request Reviews:", branchProtection.required_pull_request_reviews);
+              if (branchProtection.required_pull_request_reviews.required_approving_review_count > 0) {
+                console.log(`Required Approvals Count: ${branchProtection.required_pull_request_reviews.required_approving_review_count}`);
+              }
+            }
 
-            const approvedReviews = reviews.filter(review => review.state === 'APPROVED');
-            if (approvedReviews.length < branchProtection.required_pull_request_reviews.required_approving_review_count) {
-              throw new Error('Not enough approving reviews to enable auto-merge.');
+            // Check whether branch is restricted
+            if (branchProtection.restrictions) {
+              console.log("Branch Restrictions:", branchProtection.restrictions);
+            }
+
+            // Fail if any branch protection rule is violated
+            if (!branchProtection) {
+              throw new Error('Branch protection rules are not satisfied.');
             }
 
       - name: Enable Auto-Merge
+        if: success()
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.PAT }}
@@ -131,7 +102,6 @@ jobs:
               repo: context.repo.repo,
               pull_number: context.payload.pull_request.number
             });
-
             await github.graphql(
               `mutation ($prId: ID!, $mergeType: PullRequestMergeMethod!) {
                 enablePullRequestAutoMerge(input: {
@@ -141,3 +111,4 @@ jobs:
               }`,
               { prId: pr.node_id, mergeType: "REBASE" }
             );
+
