@@ -19,24 +19,35 @@ jobs:
           PAT: ${{ secrets.PAT }}  # Required for authentication
         with:
           script: |
-            // Get pull request node ID
-            const { data: pr } = await github.rest.pulls.get({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.payload.pull_request.number
-            });
+            try {
+              console.log("Starting script execution...");
 
-            // GraphQL mutation to enable auto-merge
-            await github.graphql(`
-              mutation ($pullRequestId: ID!, $mergeMethod: PullRequestMergeMethod!) {
-                enablePullRequestAutoMerge(input: {
-                  pullRequestId: $pullRequestId,
-                  mergeMethod: $mergeMethod
-                }) {
-                  clientMutationId
+              console.log("Fetching pull request details...");
+              const { data: pr } = await github.rest.pulls.get({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.payload.pull_request.number
+              });
+              console.log("Pull request details fetched successfully:", pr);
+
+              console.log("Enabling auto-merge for pull request...");
+              const response = await github.graphql(`
+                mutation ($pullRequestId: ID!, $mergeMethod: PullRequestMergeMethod!) {
+                  enablePullRequestAutoMerge(input: {
+                    pullRequestId: $pullRequestId,
+                    mergeMethod: $mergeMethod
+                  }) {
+                    clientMutationId
+                  }
                 }
-              }
-            `, {
-              pullRequestId: pr.node_id,
-              mergeMethod: "REBASE"  # Match your ruleset
-            });
+              `, {
+                pullRequestId: pr.node_id,
+                mergeMethod: "REBASE"  # Match your ruleset
+              });
+              console.log("Auto-merge enabled successfully:", response);
+
+              console.log("Script execution completed.");
+            } catch (error) {
+              console.error("An error occurred during script execution:", error);
+              throw error; // Re-throw the error to fail the workflow
+            }
