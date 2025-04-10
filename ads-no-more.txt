@@ -171,7 +171,7 @@ celebritynepal.com##[id*="media_image"]
 ||celebritynepal.com/*.gif$image
 
 ! chotkari.com
-chotkari.com/*.gif$image
+||chotkari.com/*.gif$image
 
 ! cinnepal.com
 www.cinnepal.com##.bsac-float-center
@@ -379,7 +379,7 @@ hamrokhotang.com##.td-is-sticky.td-pb-span4.tdc-column.vc_column_container.wpb_c
 ||hamrokhotang.com/*.gif$image
 
 ! hamropatro.com
-|www.hamropatro.com/*.gif$image
+||www.hamropatro.com/*.gif$image
 ||www.hamropatro.com/images/rotating-ads/*$image
 
 ! healthaawaj.com
@@ -451,7 +451,7 @@ janachasotimes.com##.jft_ads
 ||janachasotimes.com/*.gif$image
 
 ! janapatra.com
-www.janapatra.com/*.gif$image
+||www.janapatra.com/*.gif$image
 
 ! janasamsad.com
 janasamsad.com##[class*="_ads"]
@@ -729,7 +729,7 @@ nepaliraibar.com##.wp-image-66760.size-full.aligncenter
 ! nepalkhabar.com
 nepalkhabar.com##*[class*="bannergroup"]
 nepalkhabar.com##*[class*="npad"]
-nepalkhabar.com/*.gif$image
+||nepalkhabar.com/*.gif$image
 
 ! nepalpress.com
 www.nepalpress.com###primary > .section-np-space > .uk-container
@@ -1238,7 +1238,7 @@ www.yugdarpan.com##.sidebar-header.sidebar
 
 ! yugdhara.com
 yugdhara.com##div.ad-wrap
-yugdhara.com/*.gif$image
+||yugdhara.com/*.gif$image
 
 ! yugkhabar.com
 yugkhabar.com##.cnt_cnt_ads
