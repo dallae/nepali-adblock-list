@@ -24,28 +24,40 @@ jobs:
           echo "Pull Request URL: ${{ github.event.pull_request.html_url }}"
 
       - name: Check Status Checks
-        run: |
-          echo "Checking status checks..."
-          # Use GitHub CLI or API to fetch and log status checks
-          gh pr checks ${{ github.event.pull_request.number }} --repo ${{ github.repository }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { data: checks } = await github.rest.checks.listForRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: context.payload.pull_request.head.sha
+            });
+            console.log("Status Checks:", checks);
 
       - name: Check Approvals
-        run: |
-          echo "Checking approvals..."
-          # Use GitHub CLI or API to fetch and log approval status
-          gh pr view ${{ github.event.pull_request.number }} --json reviews --repo ${{ github.repository }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { data: reviews } = await github.rest.pulls.listReviews({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number
+            });
+            console.log("Reviews:", reviews);
 
       - name: Check Branch Protection Rules
-        run: |
-          echo "Checking branch protection rules..."
-          # Use GitHub CLI or API to fetch and log branch protection rules
-          gh api /repos/${{ github.repository }}/branches/${{ github.event.pull_request.base.ref }}/protection
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { data: branchProtection } = await github.rest.repos.getBranchProtection({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              branch: context.payload.pull_request.base.ref
+            });
+            console.log("Branch Protection Rules:", branchProtection);
 
       - name: Enable Auto-Merge
         uses: actions/github-script@v7
