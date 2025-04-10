@@ -35,6 +35,8 @@ jobs:
         with:
           github-token: ${{ secrets.PAT }}
           script: |
+            console.log(`github.actor: ${{ github.actor }}`);
+
             const pr = await github.rest.pulls.get({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -58,8 +60,10 @@ jobs:
               review => review.state === "APPROVED"
             );
 
+            console.log(`Approvals count: ${approvals.length}`);
+
             // Ensure at least 1 approval is present if actor is not dallae
-            if (approvals.length < 1 && github.actor !== 'dallae') {
+            if (approvals.length < 1 && '${{ github.actor }}' !== 'dallae') {
               core.setFailed("PR needs at least 1 approval");
             }
 
