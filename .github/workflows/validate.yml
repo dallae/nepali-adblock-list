@@ -1,0 +1,62 @@
+name: Validate Adblock List
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate Adblock Syntax
+        run: |
+          # Check 1: Ensure no invalid lines (non-comment lines must start with ||, ##, etc.)
+          INVALID_LINES=$(grep -vE '^(!|@@|\|\||##|#|\s*$)' ads-no-more.txt || true)
+          if [ -n "$INVALID_LINES" ]; then
+            echo "❌ Invalid syntax found. Lines must start with !, ##, ||, @@, or be empty."
+            echo "$INVALID_LINES"
+            exit 1
+          fi
+
+          # Check 2: Ensure no duplicates (case-insensitive)
+          DUPLICATES=$(sort -fu ads-no-more.txt | uniq -d)
+          if [ -n "$DUPLICATES" ]; then
+            echo "❌ Duplicate rules found:"
+            echo "$DUPLICATES"
+            exit 1
+          fi
+
+          # Check 3: Ensure no trailing whitespace
+          TRAILING_WHITESPACE=$(grep -n '\s$' ads-no-more.txt || true)
+          if [ -n "$TRAILING_WHITESPACE" ]; then
+            echo "❌ Trailing whitespace found:"
+            echo "$TRAILING_WHITESPACE"
+            exit 1
+          fi
+
+          # Check 4: Ensure Unix line endings (LF instead of CRLF)
+          if grep -q $'\r' ads-no-more.txt; then
+            echo "❌ Windows line endings (CRLF) detected. Use LF instead."
+            exit 1
+          fi
+
+          # Check 5: Ensure no non-printable characters
+          NON_PRINTABLE=$(grep -Pv '^[[:print:]\t\n]*$' ads-no-more.txt || true)
+          if [ -n "$NON_PRINTABLE" ]; then
+            echo "❌ Non-printable characters found:"
+            echo "$NON_PRINTABLE"
+            exit 1
+          fi
+
+          # Check 6: Ensure file ends with a newline
+          if [ -n "$(tail -c 1 ads-no-more.txt)" ]; then
+            echo "❌ File must end with a newline."
+            exit 1
+          fi
+
+          echo "✅ All checks passed!"
