@@ -15,12 +15,28 @@ jobs:
     steps:
       - name: Enable Auto-Merge
         uses: actions/github-script@v7
+        env:
+          PAT: ${{ secrets.PAT }}  # Required for authentication
         with:
           script: |
-            // Enable auto-merge directly without approving
-            await github.rest.pulls.enableAutomerge({
+            // Get pull request node ID
+            const { data: pr } = await github.rest.pulls.get({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              pull_number: context.payload.pull_request.number,
-              merge_method: 'rebase'
+              pull_number: context.payload.pull_request.number
+            });
+
+            // GraphQL mutation to enable auto-merge
+            await github.graphql(`
+              mutation ($pullRequestId: ID!, $mergeMethod: PullRequestMergeMethod!) {
+                enablePullRequestAutoMerge(input: {
+                  pullRequestId: $pullRequestId,
+                  mergeMethod: $mergeMethod
+                }) {
+                  clientMutationId
+                }
+              }
+            `, {
+              pullRequestId: pr.node_id,
+              mergeMethod: "REBASE"  # Match your ruleset
             });
