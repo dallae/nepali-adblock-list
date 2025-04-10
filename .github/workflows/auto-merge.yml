@@ -11,32 +11,133 @@ permissions:
 jobs:
   auto-merge:
     runs-on: ubuntu-latest
-    if: github.actor == 'dallae'  # Replace with your username
+    if: github.actor == 'dallae'
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get Pull Request Details
+        id: pr_details
+        run: |
+          echo "Pull Request Number: ${{ github.event.pull_request.number }}"
+          echo "Pull Request Title: ${{ github.event.pull_request.title }}"
+          echo "Pull Request URL: ${{ github.event.pull_request.html_url }}"
+
+      - name: Check Status Checks
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PAT }}
+          script: |
+            const { data: checks } = await github.rest.checks.listForRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: context.payload.pull_request.head.sha
+            });
+            console.log("Status Checks:", checks);
+
+      - name: Check Approvals
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PAT }}
+          script: |
+            const { data: reviews } = await github.rest.pulls.listReviews({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number
+            });
+            console.log("Reviews:", reviews);
+
+      - name: Check Branch Protection Rules
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PAT }}
+          script: |
+            try {
+              const { data: branchProtection } = await github.rest.repos.getBranchProtection({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                branch: context.payload.pull_request.base.ref
+              });
+
+              console.log("Branch Protection Rules:", branchProtection);
+
+              // Log required status checks
+              if (!branchProtection.required_status_checks) {
+                console.log("Branch protection does not have required status checks set.");
+              } else {
+                console.log("Required Status Checks:", branchProtection.required_status_checks.contexts);
+              }
+
+              // Log required pull request reviews
+              if (!branchProtection.required_pull_request_reviews) {
+                console.log("Branch protection does not have required pull request reviews set.");
+              } else {
+                console.log("Required Approving Reviews:", branchProtection.required_pull_request_reviews.required_approving_review_count);
+              }
+
+              // Log restrictions on pushes
+              if (!branchProtection.restrictions) {
+                console.log("Branch protection does not have restrictions on pushes.");
+              } else {
+                console.log("Push Restrictions - Users:", branchProtection.restrictions.users);
+                console.log("Push Restrictions - Teams:", branchProtection.restrictions.teams);
+              }
+            } catch (error) {
+              console.error("Error fetching branch protection rules:", error.message);
+              throw error;
+            }
+
+      - name: Validate Auto-Merge Prerequisites
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PAT }}
+          script: |
+            const { data: branchProtection } = await github.rest.repos.getBranchProtection({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              branch: context.payload.pull_request.base.ref
+            });
+
+            const requiredChecks = branchProtection?.required_status_checks?.contexts || [];
+            const { data: checks } = await github.rest.checks.listForRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: context.payload.pull_request.head.sha
+            });
+
+            const failingChecks = checks.check_runs.filter(check => check.conclusion !== 'success' && requiredChecks.includes(check.name));
+            if (failingChecks.length > 0) {
+              throw new Error(`The following status checks have not passed: ${failingChecks.map(check => check.name).join(', ')}`);
+            }
+
+            const { data: reviews } = await github.rest.pulls.listReviews({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number
+            });
+
+            const approvedReviews = reviews.filter(review => review.state === 'APPROVED');
+            if (approvedReviews.length < branchProtection.required_pull_request_reviews.required_approving_review_count) {
+              throw new Error('Not enough approving reviews to enable auto-merge.');
+            }
+
       - name: Enable Auto-Merge
         uses: actions/github-script@v7
-        env:
-          PAT: ${{ secrets.PAT }}  # Required for authentication
         with:
+          github-token: ${{ secrets.PAT }}
           script: |
-            // Get pull request node ID
             const { data: pr } = await github.rest.pulls.get({
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: context.payload.pull_request.number
             });
 
-            // GraphQL mutation to enable auto-merge
-            await github.graphql(`
-              mutation ($pullRequestId: ID!, $mergeMethod: PullRequestMergeMethod!) {
+            await github.graphql(
+              `mutation ($prId: ID!, $mergeType: PullRequestMergeMethod!) {
                 enablePullRequestAutoMerge(input: {
-                  pullRequestId: $pullRequestId,
-                  mergeMethod: $mergeMethod
-                }) {
-                  clientMutationId
-                }
-              }
-            `, {
-              pullRequestId: pr.node_id,
-              mergeMethod: "REBASE"  # Match your ruleset
-            });
+                  pullRequestId: $prId,
+                  mergeMethod: $mergeType
+                }) { clientMutationId }
+              }`,
+              { prId: pr.node_id, mergeType: "REBASE" }
+            );
