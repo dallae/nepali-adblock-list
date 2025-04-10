@@ -11,60 +11,60 @@ permissions:
 jobs:
   auto-merge:
     runs-on: ubuntu-latest
-    if: github.actor == 'dallae'  # Only run for your own PRs
+    if: github.actor == 'dallae' # Only run for PRs created by the user 'dallae'
     steps:
+      # Step 1: Checkout the repository code
       - name: Checkout code
-        uses: actions/checkout@v4  # Use v4 (ensure repository allows it)
+        uses: actions/checkout@v4
 
-      - name: Get Pull Request Details
-        run: |
-          echo "PR Number: ${{ github.event.pull_request.number }}"
-          echo "PR Title: ${{ github.event.pull_request.title }}"
-
+      # Step 2: Wait for all status checks to complete
       - name: Wait for Status Checks
-        uses: fountainhead/action-wait-for-check@v2.0.0  # Wait for all checks to complete
+        uses: poseidon/wait-for-status-checks@v0.6.0
         with:
-          token: ${{ secrets.PAT }}
-          ref: ${{ github.event.pull_request.head.sha }}
-          check-name: "all"
-          timeout-seconds: 600
+          token: ${{ secrets.PAT }}  # Required for authentication with a personal access token
+          #ref: ${{ github.event.pull_request.head.sha }}  # SHA of the PR's HEAD commit
+          #check-names: "all"  # Wait for all checks to complete
+          #timeout-minutes: 10  # Set a 10-minute timeout for status checks
 
+      # Step 3: Verify that the pull request is mergeable and has the required approvals
       - name: Verify Mergeability
         id: checks
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.PAT }}
           script: |
-            // Check 1: Ensure PR is mergeable
             const pr = await github.rest.pulls.get({
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: context.payload.pull_request.number
             });
 
+            // Check if the PR is mergeable
             if (pr.data.mergeable !== true) {
-              core.setFailed("PR has conflicts or is not mergeable");
+              core.setFailed("PR has merge conflicts or is not mergeable");
             }
 
-            // Check 2: Verify required approvals
+            // Check for required approvals
             const reviews = await github.rest.pulls.listReviews({
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: context.payload.pull_request.number
             });
 
-            const approvedReviews = reviews.data.filter(
+            const approvals = reviews.data.filter(
               review => review.state === "APPROVED"
             );
             
-            if (approvedReviews.length < 1) {  # Adjust based on repo rules
-              core.setFailed("PR lacks required approvals");
+            // Ensure at least 1 approval is present (adjust this number as needed)
+            if (approvals.length < 1) {
+              core.setFailed("PR needs at least 1 approval");
             }
 
+      # Step 4: Enable auto-merge for the pull request
       - name: Enable Auto-Merge
         uses: actions/github-script@v7
         with:
-          github-token: ${{ secrets.PAT }}  # PAT with `repo` scope
+          github-token: ${{ secrets.PAT }}
           script: |
             try {
               await github.graphql(
@@ -76,11 +76,11 @@ jobs:
                 }`,
                 { 
                   prId: "${{ github.event.pull_request.node_id }}",
-                  mergeType: "REBASE"  # Or "MERGE"/"SQUASH"
+                  mergeType: "REBASE"  # Use "REBASE", "MERGE", or "SQUASH" based on your preference
                 }
               );
-              console.log("Auto-merge enabled successfully!");
+              console.log("✅ Auto-merge enabled successfully");
             } catch (error) {
-              core.error("Auto-merge failed: " + error.message);
+              core.error("❌ Auto-merge failed: " + error.message);
               core.setFailed(error.message);
             }
