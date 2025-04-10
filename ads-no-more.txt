@@ -70,7 +70,6 @@ www.arghakhanchi.com##.news-body  > p:first-of-type
 ||www.arghakhanchi.com/wp-content/uploads/2024/10/download.jpeg$image
 ||www.arghakhanchi.com/wp-content/uploads/2024/10/Screenshot-2024-10-05-115639.png
 ||www.arghakhanchi.com/wp-content/uploads/2024/10/Screenshot-2024-10-05-115639.png$image
-||www.arghakhanchi.com/wp-content/uploads/2024/10/download.jpeg$image
 ||www.arghakhanchi.com/wp-content/uploads/2024/09/457193619_1037690661696954_6599664553040738952_n-644x644.jpg$image
 ||www.arghakhanchi.com/wp-content/uploads/2023/10/Screenshot-2023-10-11-134629.png$image
 ||www.arghakhanchi.com/wp-content/uploads/2024/03/Screenshot-2024-03-15-174928.png$image
@@ -84,8 +83,6 @@ www.arghakhanchi.com##.news-body  > p:first-of-type
 ||ap-south-1.linodeobjects.com/*.gif$image
 ||kendrabindu.com/*UCAN.jpg$image
 ||www.arghakhanchi.com/*.gif$image
-||cdn.fbsbx.com/*.gif
-||scontent.fpkr1-1.fna.fbcdn.net/v/t39.30808-6/*$image
 ||cdn.fbsbx.com/*.gif$image
 
 ! arisenepal.com
