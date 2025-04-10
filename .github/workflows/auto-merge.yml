@@ -4,7 +4,6 @@ on:
   pull_request:
     types: [opened, reopened, synchronize]
 
-# Add this permissions block
 permissions:
   contents: write
   pull-requests: write
@@ -14,21 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     if: github.actor == 'dallae'  # Replace with your username
     steps:
-      - name: Auto-Approve PR
+      - name: Enable Auto-Merge
         uses: actions/github-script@v7
-        env:
-          PAT: ${{ secrets.PAT }}
         with:
           script: |
-            // Auto-approve
-            await github.rest.pulls.createReview({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.payload.pull_request.number,
-              event: 'APPROVE'
-            });
-
-            // Enable rebase merge
+            // Enable auto-merge directly without approving
             await github.rest.pulls.enableAutomerge({
               owner: context.repo.owner,
               repo: context.repo.repo,
