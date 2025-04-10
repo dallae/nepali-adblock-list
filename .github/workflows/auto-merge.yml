@@ -74,6 +74,12 @@ jobs:
           github-token: ${{ secrets.PAT }}
           script: |
             try {
+              const { data: pr } = await github.rest.pulls.get({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.payload.pull_request.number
+              });
+
               await github.graphql(
                 `mutation ($prId: ID!, $mergeType: PullRequestMergeMethod!) {
                   enablePullRequestAutoMerge(input: {
@@ -81,11 +87,9 @@ jobs:
                     mergeMethod: $mergeType
                   }) { clientMutationId }
                 }`,
-                {
-                  prId: "${{ github.event.pull_request.node_id }}",
-                  mergeType: "REBASE"  # Use "REBASE", "MERGE", or "SQUASH" based on your preference
-                }
+                { prId: pr.node_id, mergeType: "REBASE" }
               );
+
               console.log("✅ Auto-merge enabled successfully");
             } catch (error) {
               core.setFailed(`❌ Auto-merge failed: ${error.message}`);
