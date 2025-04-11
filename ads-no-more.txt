@@ -1011,6 +1011,11 @@ www.setokhabar.com##.inside_ads
 www.setokhabar.com##.widget_media_image
 ||www.setokhabar.com/*.gif$image
 
+! setokhari.com
+www.setokhari.com##.modalbox
+||www.setokhari.com/*.gif$image
+||www.setokhari.com/uploads/bigyaapan/*$image
+
 ! setopati.com
 www.setopati.com##.whatsapp
 www.setopati.com##.whatspp
@@ -1155,11 +1160,6 @@ widenepalnews.com##.add-wrap
 ! worldwidetvnepal.com
 worldwidetvnepal.com##.mb20.videos .heading_title_bg.heading_title > .color-red > .block-title [href]
 ||worldwidetvnepal.com/*.gif$image
-
-! www.setokhari.com
-www.setokhari.com##.modalbox
-||www.setokhari.com/*.gif$image
-||www.setokhari.com/uploads/bigyaapan/*$image
 
 ! yalambartimes.com
 yalambartimes.com##.widget
