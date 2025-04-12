@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Version: 202504102101
+! Version: 202504120506
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 10 Apr 2025 21:01 UTC
-! Expires: 14 Apr 2025 21:01 UTC
+! Last modified: 12 Apr 2025 05:06 UTC
+! Expires: 16 Apr 2025 05:06 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -87,9 +87,15 @@ www.arghakhanchi.com##p:nth-of-type(23)
 ||www.arghakhanchi.com/wp-content/uploads/2024/10/da5a79b6-d87c-47eb-b7dd-d64cec49e326.jpeg$image
 ||www.arghakhanchi.com/wp-content/uploads/2024/10/download.jpeg$image
 ||www.arghakhanchi.com/wp-content/uploads/2024/12/7598e203-b348-4cbb-8243-0bd40ac29483.jpeg$image
+||www.arghakhanchi.com/wp-content/uploads/2025/02/b74c7e35-e118-48c4-b8b1-f1b1eaf33270.jpeg
 ||www.arghakhanchi.com/wp-content/uploads/2025/03/Screenshot-2025-03-19-084642.png$image
 ||www.arghakhanchi.com/wp-content/uploads/2025/03/Screenshot-2025-03-19-084703-1.png$image
+||www.arghakhanchi.com/wp-content/uploads/2025/03/Screenshot-2025-03-19-084727-1.png
 ||www.arghakhanchi.com/wp-content/uploads/2025/03/Screenshot-2025-03-30-095921.png$image
+||www.arghakhanchi.com/wp-content/uploads/2025/04/Screenshot-2025-04-11-171954.png
+||www.arghakhanchi.com/wp-content/uploads/2025/04/Screenshot-2025-04-11-172043.png
+||www.arghakhanchi.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-06-at-15.00.22_2c4ed3ac.jpg
+||www.arghakhanchi.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-08-at-00.59.19_1a2cbf5b.jpg
 
 ! arisenepal.com
 arisenepal.com##.advertise
@@ -1295,5 +1301,4 @@ yuwadaily.com##.mb-20.text-center
 ! zen1news.com
 ||www.zen1news.com/*.gif$image
 ||www.zen1news.com/*1718518510-LjUF0.jpg$image
-
 
