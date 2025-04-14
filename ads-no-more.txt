@@ -366,11 +366,11 @@ www.filmykhabar.com##div[style*="width: 670px; height: 180px; margin-top: 16px;"
 ! generic filters
 ##*[class*="adalyticsblock"]
 ##*[class*="bigya"]
-##*[class*="reaction"]
+! ##*[class*="reaction"]
 ##*[class*="roadblock"]
-##*[class*="sharing"]
-##*[class*="social"]
-##*[class="share"]
+! ##*[class*="sharing"]
+! ##*[class*="social"]
+! ##*[class="share"]
 ##*[id*="bigya"]
 ##*[id*="roadblock"]
 ##.desktop-ad
