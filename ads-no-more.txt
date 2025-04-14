@@ -76,7 +76,7 @@ aajakobishesh.com##div.uk-width-auto
 ||aajakokhabar.com/uploads/*.gif$image
 
 ! aajakonews.com
-www.aajakonews.com/*.gif$image
+||www.aajakonews.com/*.gif$image
 
 ! aajakopost.com
 ||aajakopost.com/*.gif$image
