@@ -20,13 +20,21 @@ jobs:
           if [ -n "$INVALID_LINES" ]; then
             echo "❌ Invalid syntax found. Valid patterns:"
             echo "  - Header: [Adblock Plus 2.0]"
-            echo "  - Comments: ! ..."
+            echo "  - Comments: ! ... (must not start with 'www')"
             echo "  - Blocking rules: ||domain.com/path"
             echo "  - Element hiding: ##selector or domain.com##selector"
             echo "  - Scriptlets: ##+js(...)"
             echo "  - Exceptions: @@||domain.com"
             echo "Invalid lines:"
             echo "$INVALID_LINES"
+            exit 1
+          fi
+
+          # Check for comments starting with '! www'
+          WWW_COMMENTS=$(grep -E '^! www' ads-no-more.txt || true)
+          if [ -n "$WWW_COMMENTS" ]; then
+            echo "❌ Comments starting with '! www' are invalid:"
+            echo "$WWW_COMMENTS"
             exit 1
           fi
 
