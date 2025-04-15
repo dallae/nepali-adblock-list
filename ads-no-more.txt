@@ -127,6 +127,10 @@ aarthikbazarnews.com##*[class*="no-vigyapan"]
 aarthikbazarnews.com##.no-news-details-post-status
 ||aarthikbazarnews.com/*.gif$image
 
+! aarthikdainik.com
+www.aarthikdainik.com###wpd-bubble-count
+||www.aarthikdainik.com/*.gif$image
+
 ! aarthiknews.com
 ||aarthiknews.com/*.gif$image
 
@@ -1264,10 +1268,6 @@ widenepalnews.com##.add-wrap
 ! worldwidetvnepal.com
 worldwidetvnepal.com##.mb20.videos .heading_title_bg.heading_title > .color-red > .block-title [href]
 ||worldwidetvnepal.com/*.gif$image
-
-! www.aarthikdainik.com
-www.aarthikdainik.com###wpd-bubble-count
-||www.aarthikdainik.com/*.gif$image
 
 ! yalambartimes.com
 yalambartimes.com##.widget
