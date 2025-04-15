@@ -21,6 +21,7 @@ jobs:
           echo "Pull Request URL: ${{ github.event.pull_request.html_url }}"
       
       - name: Diagnose Status Checks
+        id: diagnostics
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.PAT }}
@@ -113,6 +114,7 @@ jobs:
             }
             
             // Check Required Status Checks
+            let requiredChecksStatus = true;
             try {
               const { data: branch } = await github.rest.repos.getBranch({
                 owner: context.repo.owner,
@@ -138,10 +140,17 @@ jobs:
                     
                     if (matchingStatus) {
                       console.log(`- ${requiredContext}: ${matchingStatus.state} (${matchingStatus.description || 'No description'})`);
+                      if (matchingStatus.state !== 'success') {
+                        requiredChecksStatus = false;
+                      }
                     } else if (matchingCheck) {
                       console.log(`- ${requiredContext}: ${matchingCheck.status} / ${matchingCheck.conclusion || 'pending'}`);
+                      if (matchingCheck.status !== 'completed' || matchingCheck.conclusion !== 'success') {
+                        requiredChecksStatus = false;
+                      }
                     } else {
                       console.log(`- ${requiredContext}: Not found (may be pending or not started)`);
+                      requiredChecksStatus = false;
                     }
                   }
                 }
@@ -173,10 +182,137 @@ jobs:
             const approvals = reviews.filter(review => review.state === 'APPROVED');
             console.log(`\nApproved Reviews: ${approvals.length}`);
             
+            // Set outputs for use in next steps
+            const canMerge = 
+              pr.mergeable === true && 
+              pr.mergeable_state !== 'blocked' && 
+              failingChecks.length === 0 &&
+              pendingChecks.length === 0 &&
+              requiredChecksStatus === true;
+            
+            core.setOutput('can_merge', canMerge);
+            core.setOutput('mergeable', pr.mergeable);
+            core.setOutput('mergeable_state', pr.mergeable_state);
+            
             return {
               combinedState: combinedStatus.state,
               pendingChecksCount: pendingChecks.length,
               failingChecksCount: failingChecks.length,
               mergeable: pr.mergeable,
-              mergeableState: pr.mergeable_state
+              mergeableState: pr.mergeable_state,
+              canMerge: canMerge
             };
+
+      # Wait for checks to complete if they're still running
+      - name: Wait for Required Checks
+        id: wait_for_checks
+        if: steps.diagnostics.outputs.can_merge != 'true'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PAT }}
+          script: |
+            // Define maximum wait time (in minutes)
+            const MAX_WAIT_MINUTES = 15;
+            const POLL_INTERVAL_SECONDS = 30;
+            const MAX_ATTEMPTS = (MAX_WAIT_MINUTES * 60) / POLL_INTERVAL_SECONDS;
+            
+            console.log(`Waiting for checks to complete (max ${MAX_WAIT_MINUTES} minutes)...`);
+            
+            for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt++) {
+              console.log(`\nCheck attempt ${attempt + 1} of ${MAX_ATTEMPTS}`);
+              
+              // Get the latest PR status
+              const { data: pr } = await github.rest.pulls.get({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.payload.pull_request.number
+              });
+              
+              // Get check runs
+              const { data: checks } = await github.rest.checks.listForRef({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: context.payload.pull_request.head.sha
+              });
+              
+              // Count pending checks
+              const pendingChecks = checks.check_runs.filter(check => 
+                check.status !== 'completed'
+              );
+              
+              // Count failing checks
+              const failingChecks = checks.check_runs.filter(check => 
+                check.status === 'completed' && check.conclusion !== 'success'
+              );
+              
+              console.log(`PR Mergeable: ${pr.mergeable}`);
+              console.log(`Mergeable State: ${pr.mergeable_state}`);
+              console.log(`Pending Checks: ${pendingChecks.length}`);
+              console.log(`Failing Checks: ${failingChecks.length}`);
+              
+              // Check if everything is ready
+              if (pr.mergeable === true && 
+                  pr.mergeable_state !== 'blocked' && 
+                  pendingChecks.length === 0 && 
+                  failingChecks.length === 0) {
+                console.log('\nAll checks passed! Ready to merge.');
+                core.setOutput('can_merge', true);
+                return { canMerge: true };
+              }
+              
+              // If we have failing checks, no need to wait further
+              if (failingChecks.length > 0) {
+                console.log('\nSome checks failed. Cannot proceed with merge.');
+                core.setOutput('can_merge', false);
+                return { canMerge: false };
+              }
+              
+              // Wait before next poll
+              console.log(`\nWaiting ${POLL_INTERVAL_SECONDS} seconds before next check...`);
+              await new Promise(resolve => setTimeout(resolve, POLL_INTERVAL_SECONDS * 1000));
+            }
+            
+            console.log(`\nReached maximum wait time of ${MAX_WAIT_MINUTES} minutes. Checks still not complete.`);
+            core.setOutput('can_merge', false);
+            return { canMerge: false };
+
+      # Perform the merge if all checks pass
+      - name: Auto-Merge PR
+        if: steps.diagnostics.outputs.can_merge == 'true' || steps.wait_for_checks.outputs.can_merge == 'true'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PAT }}
+          script: |
+            console.log('Attempting to merge PR...');
+            
+            try {
+              const { data: mergeResult } = await github.rest.pulls.merge({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.payload.pull_request.number,
+                merge_method: 'rebase'  // Using rebase method as specified
+              });
+              
+              console.log('PR merged successfully!');
+              console.log(`Message: ${mergeResult.message}`);
+              console.log(`SHA: ${mergeResult.sha}`);
+              
+              // Add a comment to the PR
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.pull_request.number,
+                body: '✅ This PR was automatically merged by the Auto-Merge workflow because it was created by the repository owner.'
+              });
+              
+            } catch (error) {
+              console.log('Failed to merge PR:', error.message);
+              
+              // Add a comment about the failure
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.pull_request.number,
+                body: `❌ Auto-merge failed: ${error.message}`
+              });
+            }
