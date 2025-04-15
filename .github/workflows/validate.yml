@@ -35,6 +35,7 @@ jobs:
           if [ -n "$WWW_COMMENTS" ]; then
             echo "❌ Comments starting with '! www' are invalid:"
             echo "$WWW_COMMENTS"
+            echo "💡 Fix: Remove or reformat comments starting with '! www'."
             exit 1
           fi
 
