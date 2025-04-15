@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Version: 202504151825
+! Version: 202504151927
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 15 Apr 2025 18:25 UTC
-! Expires: 22 Apr 2025 18:25 UTC
+! Last modified: 15 Apr 2025 19:27 UTC
+! Expires: 22 Apr 2025 19:27 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -96,6 +96,31 @@ aamsandesh.com##.elementor-element-4b4a8d9
 aamsandesh.com##.elementor-element-80c30d4
 aamsandesh.com##.elementor-element-e4a8ad3
 ||aamsandesh.com/*.gif$image
+
+! aarambhanews.com
+aarambhanews.com##.tdi_107
+aarambhanews.com##.tdi_108
+aarambhanews.com##.tdi_130
+aarambhanews.com##.tdi_170
+aarambhanews.com##.tdi_184
+aarambhanews.com##.tdi_70
+aarambhanews.com##.tdi_72
+aarambhanews.com##.tdi_80
+aarambhanews.com##.tdi_84
+aarambhanews.com##.tdi_86
+aarambhanews.com##.tdi_87
+aarambhanews.com##.tdi_88
+aarambhanews.com##.wpb_column.tdi_92
+||aarambhanews.com/*.gif$image
+
+! aarseetimes.com.np
+aarseetimes.com.np##.active.jeg_popup_post
+aarseetimes.com.np##.elementor-widget-image.elementor-widget
+aarseetimes.com.np##.jeg_share_top_container
+||aarseetimes.com.np/*.gif$image
+
+! aarthasambadh.com
+||aarthasambadh.com//uploads/*.gif$image
 
 ! aarthikbazarnews.com
 aarthikbazarnews.com##*[class*="no-vigyapan"]
@@ -1239,6 +1264,10 @@ widenepalnews.com##.add-wrap
 ! worldwidetvnepal.com
 worldwidetvnepal.com##.mb20.videos .heading_title_bg.heading_title > .color-red > .block-title [href]
 ||worldwidetvnepal.com/*.gif$image
+
+! www.aarthikdainik.com
+www.aarthikdainik.com###wpd-bubble-count
+||www.aarthikdainik.com/*.gif$image
 
 ! yalambartimes.com
 yalambartimes.com##.widget
