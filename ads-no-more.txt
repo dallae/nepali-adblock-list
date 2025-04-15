@@ -21,7 +21,7 @@ www.3ghumti.com##div[style*="width:100%;margin-bottom:10px;"]
 ||8848newsnepal.com/*.gif$image
 
 ! a2zsamachar.com
-a2zsamachar.com##+js(set-constant, document.body.classL!!ist.add, noopFunc)
+a2zsamachar.com##+js(set-constant, document.body.classList.add, noopFunc)
 a2zsamachar.com##.type-ads
 a2zsamachar.com##div[id^="-ads"]
 a2zsamachar.com##div[id^="elementor-popup-modal-"]
