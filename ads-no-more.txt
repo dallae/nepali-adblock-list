@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Version: 202504140741
+! Version: 202504150527
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 14 Apr 2025 07:41 UTC
-! Expires: 18 Apr 2025 07:41 UTC
+! Last modified: 15 Apr 2025 05:27 UTC
+! Expires: 19 Apr 2025 05:27 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -51,6 +51,33 @@ aahasanchar.com###media_image-19
 aahasanchar.com###media_image-29
 aahasanchar.com##.single.small
 ||aahasanchar.com/*.gif$image
+
+! aajakakura.com
+aajakakura.com##.content-widget-area
+aajakakura.com##.e-lazyloaded.e-parent.e-con.e-con-boxed.e-flex.elementor-element-8367f4e.elementor-element
+aajakakura.com##.elementor-widget-image
+aajakakura.com##.sgpb-popup-dialog-main-div-wrapper
+aajakakura.com##.sgpb-popup-overlay.sgpb-popup-overlay-20086.sgpb-theme-1-overlay
+aajakakura.com##.shareaholic-ui.shareaholic-share-buttons-wrapper
+aajakakura.com##.widget-area
+||aajakakura.com/wp-content/uploads/*.gif$image
+||aajakakura.com/wp-content/uploads/2025/02/1-3-640x640.jpg
+||aajakakura.com/wp-content/uploads/2025/04/aajaka-kura.jpg$image
+
+! aajakobishesh.com
+aajakobishesh.com##.uk-container.ads
+aajakobishesh.com##div.uk-container.ads
+aajakobishesh.com##div.uk-width-auto
+||aajakobishesh.com/users_upload/*.gif$image
+
+! aajakokhabar.com
+||aajakokhabar.com/uploads/*.gif$image
+
+! aajakonews.com
+!!www.aajakonews.com/*.gif$image
+
+! aajakopost.com
+||aajakopost.com/*.gif$image
 
 ! aarthikbazarnews.com
 aarthikbazarnews.com##*[class*="no-vigyapan"]
