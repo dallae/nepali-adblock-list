@@ -1,8 +1,10 @@
 [Adblock Plus 2.0]
+
 ! Version: 202504170545
 ! Title: 🇳🇵 AdBlock List for Nepal
 ! Last modified: 17 Apr 2025 05:45 UTC
 ! Expires: 24 Apr 2025 05:45 UTC
+
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -1417,4 +1419,6 @@ yuwadaily.com##.mb-20.text-center
 @@yuwasandesh.com/wp/wp-content/uploads/2024/02/yuwasandesh-logo.gif
 ||www.yuwasandesh.com/*.gif$image
 ||yuwasandesh.com/*.gif$image
+
+
 
