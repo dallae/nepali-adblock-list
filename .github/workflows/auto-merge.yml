@@ -57,10 +57,22 @@ jobs:
             // Count checks by status and conclusion
             const statusCounts = {};
             const conclusionCounts = {};
+            const currentWorkflowId = context.runId;
+            
+            // Filter out checks related to the current workflow
+            const filteredChecks = checks.check_runs.filter(check => {
+              // Exclude the current auto-merge workflow run
+              return !check.name.includes('Auto-Merge Owner\'s PRs') || 
+                     (check.id !== currentWorkflowId && check.status === 'completed');
+            });
+            
+            console.log(`\nFiltered check runs (excluding current workflow): ${filteredChecks.length}`);
+            
+            // Process the filtered checks
             const pendingChecks = [];
             const failingChecks = [];
             
-            for (const check of checks.check_runs) {
+            for (const check of filteredChecks) {
               // Track status counts
               statusCounts[check.status] = (statusCounts[check.status] || 0) + 1;
               
@@ -132,11 +144,17 @@ jobs:
                   console.log("\nStatus of Required Checks:");
                   
                   for (const requiredContext of branch.protection.required_status_checks.contexts) {
+                    // Skip if this is the auto-merge workflow
+                    if (requiredContext.includes('Auto-Merge Owner\'s PRs')) {
+                      console.log(`- ${requiredContext}: Skipping (this is the current workflow)`);
+                      continue;
+                    }
+                    
                     // Check in statuses
                     const matchingStatus = combinedStatus.statuses.find(s => s.context === requiredContext);
                     
                     // Check in check runs
-                    const matchingCheck = checks.check_runs.find(c => c.name === requiredContext);
+                    const matchingCheck = filteredChecks.find(c => c.name === requiredContext);
                     
                     if (matchingStatus) {
                       console.log(`- ${requiredContext}: ${matchingStatus.state} (${matchingStatus.description || 'No description'})`);
@@ -235,20 +253,25 @@ jobs:
                 ref: context.payload.pull_request.head.sha
               });
               
-              // Count pending checks
-              const pendingChecks = checks.check_runs.filter(check => 
+              // Filter out checks related to the current workflow
+              const filteredChecks = checks.check_runs.filter(check => 
+                !check.name.includes('Auto-Merge Owner\'s PRs')
+              );
+              
+              // Count pending checks (excluding this workflow)
+              const pendingChecks = filteredChecks.filter(check => 
                 check.status !== 'completed'
               );
               
-              // Count failing checks
-              const failingChecks = checks.check_runs.filter(check => 
+              // Count failing checks (excluding this workflow)
+              const failingChecks = filteredChecks.filter(check => 
                 check.status === 'completed' && check.conclusion !== 'success'
               );
               
               console.log(`PR Mergeable: ${pr.mergeable}`);
               console.log(`Mergeable State: ${pr.mergeable_state}`);
-              console.log(`Pending Checks: ${pendingChecks.length}`);
-              console.log(`Failing Checks: ${failingChecks.length}`);
+              console.log(`Pending Checks (excluding auto-merge): ${pendingChecks.length}`);
+              console.log(`Failing Checks (excluding auto-merge): ${failingChecks.length}`);
               
               // Check if everything is ready
               if (pr.mergeable === true && 
