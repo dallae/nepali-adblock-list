@@ -212,8 +212,8 @@ jobs:
           github-token: ${{ secrets.PAT }}
           script: |
             // Define maximum wait time (in minutes)
-            const MAX_WAIT_MINUTES = 15;
-            const POLL_INTERVAL_SECONDS = 30;
+            const MAX_WAIT_MINUTES = 5;
+            const POLL_INTERVAL_SECONDS = 10;
             const MAX_ATTEMPTS = (MAX_WAIT_MINUTES * 60) / POLL_INTERVAL_SECONDS;
             
             console.log(`Waiting for checks to complete (max ${MAX_WAIT_MINUTES} minutes)...`);
