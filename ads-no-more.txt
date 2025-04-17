@@ -1417,7 +1417,4 @@ yuwadaily.com##.mb-20.text-center
 ||www.yuwasandesh.com/*.gif$image
 ||yuwasandesh.com/*.gif$image
 
-! zen1news.com
-||www.zen1news.com/*.gif$image
-||www.zen1news.com/*1718518510-LjUF0.jpg$image
 
