@@ -1050,6 +1050,8 @@ www.ratopati.com##*[class*="placeholder"]
 www.ratopati.com##+js(set-constant, $.fn.addClass, trueFunc)
 www.ratopati.com##+js(set-constant, $.fn.removeClass, trueFunc)
 www.ratopati.com##.content-banner--single
+www.ratopati.com##.post__detail-fixed
+www.ratopati.com##.reaction-wrap
 ||npcdn.ratopati.com/media/promo/*$image
 ||www.ratopati.com/*.gif$image
 
