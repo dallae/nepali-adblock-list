@@ -82,7 +82,7 @@ jobs:
       # --- Use dedicated action to wait for the required check ---
       - name: Wait for Validate Check to Succeed
         id: wait_for_validate
-        uses: lewagon/wait-on-check-action@v1.3.1 # Use a specific tag
+        uses: lewagon/wait-on-check-action@v1.4.3 # Use a specific tag
         with:
           # Name of the check run to wait for (must match the required check context name exactly)
           check-name: 'validate'
