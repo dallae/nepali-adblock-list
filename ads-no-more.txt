@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Version: 202504200450
+! Version: 202504200747
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 20 Apr 2025 04:50 UTC
-! Expires: 27 Apr 2025 04:50 UTC
+! Last modified: 20 Apr 2025 07:47 UTC
+! Expires: 27 Apr 2025 07:47 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -178,8 +178,36 @@ aarushikhabar.com###brxe-azpikd
 aarushikhabar.com###brxe-bjlzmn > div
 aarushikhabar.com##.brxe-post-sharing
 
+! aawajpati.com/
+||www.aawajpati.com/*.gif$image
+
+! aayokhabar.com
+aayokhabar.com##.fb-page
+aayokhabar.com##.long-ad
+||aayokhabar.com/wp-content/uploads/*.gif$image
+
+! aayomail.com
+aayomail.com##.dingle-aocial-lhare-l-a-e
+aayomail.com##.single-social-share
+||aayomail.com/assets/imgs/*.gif$image
+||aayomail.com/assets/imgs/ads/*.png$image
+
 ! abcnepal.tv
 ||www.abcnepal.tv/*.gif$image
+
+! abcsanchar.com
+||www.abcsanchar.com/*.gif$image
+
+! abhimatpatra.com
+www.abhimatpatra.com##.add__fullwidth
+www.abhimatpatra.com##.flex-box.tribox-add.colspan3
+www.abhimatpatra.com##.jk-each-ad
+www.abhimatpatra.com##.jk_rec_sidebar
+www.abhimatpatra.com##.jkmainnews_dubai-wrap
+www.abhimatpatra.com##.simplesocialbuttons-align-left
+www.abhimatpatra.com##[src="//www.edevdarshan.com/wp-content/uploads/2022/01/ligicbit.png"]
+www.abhimatpatra.com##section.jk__business--sectn.section:nth-of-type(4)
+||www.abhimatpatra.com/*.gif$image
 
 ! abhiyandaily.com
 ||abhiyandaily.com/*.gif$image
