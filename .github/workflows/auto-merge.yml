@@ -245,6 +245,7 @@ jobs:
                   issue_number: prNumber, // Use the prNumber variable
                   body: `⚠️ PR merged, but failed to automatically delete branch \`${headBranchRef}\`. It may need to be deleted manually. Error: ${deleteError.message}`
                 });
+              }
             } catch (error) {
               console.error('Failed to merge PR:', error.message);
               await github.rest.issues.createComment({
