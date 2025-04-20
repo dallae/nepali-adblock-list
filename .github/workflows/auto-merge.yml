@@ -18,8 +18,8 @@ jobs:
     if: github.event.pull_request.user.login == 'dallae'
     steps:
       - name: Checkout code
-        # Consider updating to actions/checkout@v4 for latest features/fixes
-        uses: actions/checkout@v2
+        # Updated to the latest version
+        uses: actions/checkout@v4
 
       - name: Get Pull Request Details
         id: pr_details
@@ -29,11 +29,9 @@ jobs:
           echo "Pull Request URL: ${{ github.event.pull_request.html_url }}"
           echo "Commit SHA: ${{ github.event.pull_request.head.sha }}"
 
-      # Optional: Keep this step for initial diagnostics logging if desired
-      # It helps understand the state *before* the wait action begins.
+      # Diagnostics logging
       - name: Diagnose Initial Status Checks
         id: diagnostics
-        # Consider updating to actions/github-script@v7
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.PAT }} # Use PAT for consistency if needed for merge later
@@ -82,7 +80,8 @@ jobs:
       # --- Use dedicated action to wait for the required check ---
       - name: Wait for Validate Check to Succeed
         id: wait_for_validate
-        uses: lewagon/wait-on-check-action@v1.3.4 # Use a specific tag
+        # Consistent version with what's actually being used
+        uses: lewagon/wait-on-check-action@v1.3.1
         with:
           # Name of the check run to wait for (must match the required check context name exactly)
           check-name: 'validate'
@@ -94,12 +93,21 @@ jobs:
           allowed-conclusions: success
           # How often to poll the API (seconds)
           wait-interval: 15
+          verbose: true
+
+      # Added debug step to verify output value
+      - name: Debug Wait-On-Check Outputs
+        run: |
+          echo "wait_for_validate.conclusion: ${{ steps.wait_for_validate.outputs.conclusion }}"
+          echo "wait_for_validate.status: ${{ steps.wait_for_validate.outputs.status }}"
+          echo "All outputs: ${{ toJSON(steps.wait_for_validate.outputs) }}"
 
       # --- Perform the merge only if the wait action succeeded ---
       - name: Auto-Merge PR
-        # This step now runs ONLY if the 'wait_for_validate' step finished with a 'success' conclusion
-        if: steps.wait_for_validate.outputs.conclusion == 'success'
-        # Consider updating to actions/github-script@v7
+        # Updated condition to check both output formats that might be present
+        if: |
+          steps.wait_for_validate.outputs.conclusion == 'success' || 
+          steps.wait_for_validate.outcome == 'success'
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.PAT }}
