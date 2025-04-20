@@ -21,6 +21,8 @@ jobs:
     runs-on: ubuntu-latest
     # Only run on push events by dallae and not on pull_request events
     if: github.event_name == 'push' && github.actor == 'dallae'
+    outputs:
+      pr_number: ${{ steps.create-pr.outputs.result.pr_number }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -69,8 +71,6 @@ jobs:
                 throw error;
               }
             }
-        outputs:
-          pr_number: ${{ steps.create-pr.outputs.pr_number }}
 
   # Keep existing auto-merge job with modifications to handle both PR events and after auto-PR job
   auto-merge:
