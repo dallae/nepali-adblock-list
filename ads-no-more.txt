@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Version: 202504170709
+! Version: 202504200450
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 17 Apr 2025 07:09 UTC
-! Expires: 24 Apr 2025 07:09 UTC
+! Last modified: 20 Apr 2025 04:50 UTC
+! Expires: 27 Apr 2025 04:50 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -150,6 +150,33 @@ aarthiksamachar.com##.no-bg-box-model
 ! aarthiksanjal.com
 www.aarthiksanjal.com##.fb-xfbml-parse-ignore
 ||www.aarthiksanjal.com/wp-content/uploads/*.gif$image
+
+! aarthiksansar.com
+aarthiksansar.com##.add-2
+aarthiksansar.com##div.sidea
+aarthiksansar.com##li.addb
+||aarthiksansar.com/wp-content/uploads/*.gif$image
+||insurancekhabar.com/wp-content/uploads/*.gif$image
+||www.tarundainik.com/wp-content/uploads/*.gif$image
+
+! aarthikvoice.com
+aarthikvoice.com##.ad-box
+aarthikvoice.com##.block-7
+aarthikvoice.com##.block-8
+aarthikvoice.com##.easy-facebook-like-box_box
+aarthikvoice.com##.social-details
+aarthikvoice.com##.td-is-sticky
+aarthikvoice.com##.td_spot_img_all
+aarthikvoice.com##.tdi_5
+||aarthikvoice.com/wp-content/uploads/*.gif$image
+
+! aarthikwave.com
+||accuratekhabar.com/wp-content/uploads/*.gif$image
+
+! aarushikhabar.com
+aarushikhabar.com###brxe-azpikd
+aarushikhabar.com###brxe-bjlzmn > div
+aarushikhabar.com##.brxe-post-sharing
 
 ! abcnepal.tv
 ||www.abcnepal.tv/*.gif$image
@@ -784,8 +811,10 @@ missionlumbini.com##.uk-first-column.uk-text-center.list-inline-item
 ||nagarikkhabar.com/*.gif$image
 
 ! nagariknews.nagariknetwork.com
+nagariknews.nagariknetwork.com##.mx-0.row
 nagariknews.nagariknetwork.com##.view-in-app
 nagariknews.nagariknetwork.com##[id^="adverts"]
+nagariknews.nagariknetwork.com##div.share_counter
 ||images.nagariknewscdn.com/*.gif$image
 ||nagariknews.nagariknetwork.com/*.gif$image
 
@@ -1128,6 +1157,18 @@ sankalpakhabar.com##[class*="sk_banner"]
 www.sansarnews.com##.widget
 www.sansarnews.com##[class*="_ad"]
 ||sansarnews.com/*.gif$image
+
+! satyaasthakhabar.com
+satyaasthakhabar.com###media_image-13
+satyaasthakhabar.com###media_image-14
+satyaasthakhabar.com###media_image-3
+satyaasthakhabar.com###media_image-5
+satyaasthakhabar.com##.addtoany_content_bottom
+satyaasthakhabar.com##.sgpb-popup-dialog-main-div-wrapper
+satyaasthakhabar.com##.sgpb-popup-overlay
+satyaasthakhabar.com##.widget_media_gallery
+satyaasthakhabar.com##.wp-custom-header
+satyaasthakhabar.com##.wp-image-384
 
 ! sawalnepal.com
 www.sawalnepal.com##.in__between_ads
