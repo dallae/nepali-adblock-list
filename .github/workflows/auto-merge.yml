@@ -94,8 +94,6 @@ jobs:
           allowed-conclusions: success
           # How often to poll the API (seconds)
           wait-interval: 15
-          # Maximum time to wait before failing this step (e.g., 15 minutes)
-          running-timeout: 15m # Increased timeout
 
       # --- Perform the merge only if the wait action succeeded ---
       - name: Auto-Merge PR
