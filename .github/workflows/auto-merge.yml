@@ -48,11 +48,9 @@ jobs:
               console.log(`PR #${pr.number} created successfully`);
               return { pr_number: pr.number };
             } catch (error) {
-              // Check if error is because PR already exists
               if (error.message.includes('A pull request already exists')) {
                 console.log('A pull request for this branch already exists');
                 
-                // Get the existing PR
                 const { data: prs } = await github.rest.pulls.list({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
@@ -71,8 +69,10 @@ jobs:
                 throw error;
               }
             }
+        outputs:
+          pr_number: ${{ steps.create-pr.outputs.pr_number }}
 
-  # Keep existing auto-merge job with modification to handle both PR events and after auto-PR job
+  # Keep existing auto-merge job with modifications to handle both PR events and after auto-PR job
   auto-merge:
     runs-on: ubuntu-latest
     # Run on PR events by dallae or after auto-pr job completes
@@ -81,7 +81,6 @@ jobs:
       (github.event_name == 'push' && github.actor == 'dallae')
     # Add dependency on auto-pr job for push events
     needs: [auto-pr]
-    # Only run this job after auto-pr if it's a push event
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -92,12 +91,14 @@ jobs:
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
             echo "PR_NUMBER=${{ github.event.pull_request.number }}" >> $GITHUB_ENV
             echo "PR_HEAD_SHA=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
-          else
-            # For push events, get PR number from auto-pr job
+          elif [[ -n "${{ needs.auto-pr.outputs.pr_number }}" ]]; then
             echo "PR_NUMBER=${{ needs.auto-pr.outputs.pr_number }}" >> $GITHUB_ENV
             echo "PR_HEAD_SHA=${{ github.sha }}" >> $GITHUB_ENV
+          else
+            echo "No PR number available to merge."
+            exit 1
           fi
-          
+
           echo "Pull Request Number: $PR_NUMBER"
           echo "Commit SHA: $PR_HEAD_SHA"
 
@@ -152,10 +153,10 @@ jobs:
                 console.log(`- Strict: ${branch.protection.required_status_checks.strict}`);
                 console.log(`- Contexts: ${JSON.stringify(branch.protection.required_status_checks.contexts)}`);
               } else {
-                 console.log("\nNo required status checks found in branch protection.");
+                console.log("\nNo required status checks found in branch protection.");
               }
             } catch (error) {
-               console.log("\nError fetching branch protection rules:", error.message);
+              console.log("\nError fetching branch protection rules:", error.message);
             }
 
       # Wait for the required check
@@ -169,13 +170,6 @@ jobs:
           allowed-conclusions: success
           wait-interval: 15
           verbose: true
-
-      # Debug step to verify output value
-      - name: Debug Wait-On-Check Outputs
-        run: |
-          echo "wait_for_validate.conclusion: ${{ steps.wait_for_validate.outputs.conclusion }}"
-          echo "wait_for_validate.status: ${{ steps.wait_for_validate.outputs.status }}"
-          echo "All outputs: ${{ toJSON(steps.wait_for_validate.outputs) }}"
 
       # Perform the merge
       - name: Auto-Merge PR
@@ -196,27 +190,25 @@ jobs:
             console.log(`Attempting to merge PR #${prNumber} after required checks passed.`);
 
             try {
-              // Double-check mergeability right before merging
               const { data: pr } = await github.rest.pulls.get({
-                 owner: context.repo.owner,
-                 repo: context.repo.repo,
-                 pull_number: prNumber
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: prNumber
               });
 
               if (pr.mergeable !== true || pr.mergeable_state === 'blocked' || pr.mergeable_state === 'dirty') {
-                 const message = `❌ Auto-merge aborted. PR became unmergeable just before merge attempt. State: ${pr.mergeable_state}`;
-                 console.error(message);
-                 await github.rest.issues.createComment({
-                   owner: context.repo.owner,
-                   repo: context.repo.repo,
-                   issue_number: prNumber,
-                   body: message
-                 });
-                 core.setFailed(message);
-                 return;
+                const message = `❌ Auto-merge aborted. PR became unmergeable just before merge attempt. State: ${pr.mergeable_state}`;
+                console.error(message);
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: prNumber,
+                  body: message
+                });
+                core.setFailed(message);
+                return;
               }
 
-              console.log(`PR state is '${pr.mergeable_state}', proceeding with merge.`);
               const { data: mergeResult } = await github.rest.pulls.merge({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
@@ -228,18 +220,14 @@ jobs:
               console.log(`Message: ${mergeResult.message}`);
               console.log(`SHA: ${mergeResult.sha}`);
 
-              // Add a success comment to the PR
               await github.rest.issues.createComment({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: prNumber,
                 body: '✅ This PR was automatically merged by the Auto-Merge workflow because it was created by the repository owner and required checks passed.'
               });
-
             } catch (error) {
               console.error('Failed to merge PR:', error.message);
-
-              // Add a failure comment
               await github.rest.issues.createComment({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
