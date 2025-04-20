@@ -195,6 +195,7 @@ jobs:
                 repo: context.repo.repo,
                 pull_number: prNumber
               });
+              headBranchRef = pr.head.ref; // Store the head branch name
 
               if (pr.mergeable !== true || pr.mergeable_state === 'blocked' || pr.mergeable_state === 'dirty') {
                 const message = `❌ Auto-merge aborted. PR became unmergeable just before merge attempt. State: ${pr.mergeable_state}`;
@@ -226,6 +227,24 @@ jobs:
                 issue_number: prNumber,
                 body: '✅ This PR was automatically merged by the Auto-Merge workflow because it was created by the repository owner and required checks passed.'
               });
+
+              // -- Delete the branch ---
+              console.log(`Attempting to delete 🚮 branch: ${headBranchRef}`);
+              try {
+                await github.rest.git.deleteRef({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  ref: `heads/${headBranchRef}` // Construct the full ref path
+                });
+                console.log(`Successfully deleted branch: ${headBranchRef}`);
+              } catch (deleteError) {
+                console.warn(`Could not delete branch ${headBranchRef}: ${deleteError.message}`);
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: prNumber, // Use the prNumber variable
+                  body: `⚠️ PR merged, but failed to automatically delete branch \`${headBranchRef}\`. It may need to be deleted manually. Error: ${deleteError.message}`
+                });
             } catch (error) {
               console.error('Failed to merge PR:', error.message);
               await github.rest.issues.createComment({
