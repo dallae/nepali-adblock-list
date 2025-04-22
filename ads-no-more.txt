@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Version: 202504200747
+! Version: 202504222110
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 20 Apr 2025 07:47 UTC
-! Expires: 27 Apr 2025 07:47 UTC
+! Last modified: 22 Apr 2025 21:10 UTC
+! Expires: 29 Apr 2025 21:10 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -209,12 +209,42 @@ www.abhimatpatra.com##[src="//www.edevdarshan.com/wp-content/uploads/2022/01/lig
 www.abhimatpatra.com##section.jk__business--sectn.section:nth-of-type(4)
 ||www.abhimatpatra.com/*.gif$image
 
+! abhiyaankhabar.com
+abhiyaankhabar.com##.td-front-end-display-block
+abhiyaankhabar.com##.td-post-sharing-bottom
+abhiyaankhabar.com##.td-post-sharing-top
+||abhiyaankhabar.com/wp-content/uploads/*.gif$image
+
 ! abhiyandaily.com
 ||abhiyandaily.com/*.gif$image
+
+! abhiyanhamro.com
+www.abhiyanhamro.com##.long-ads
+www.abhiyanhamro.com##.stickey-side >.bod.img-responsive
+www.abhiyanhamro.com##[href="https://www.facebook.com/MeatDeliveryinPokhara"]
+www.abhiyanhamro.com##[href="https://www.facebook.com/classichulo"]
+www.abhiyanhamro.com##a:nth-of-type(3)
+
+! abhiyanweekly.com.np
+||abhiyanweekly.com.np/wp-content/uploads/*.gif$image
 
 ! abpcrimenews.com
 abpcrimenews.com##.samachar-side-ads
 ||abpcrimenews.com/*.gif$image
+
+! accuratekhabar.com
+||i0.wp.com/accuratekhabar.com/wp-content/uploads/*.gif$image
+||i0.wp.com/accuratekhabar.com/wp-content/uploads/2024/02/*.webp$image
+
+! activemedianepal.com
+activemedianepal.com###adModal
+activemedianepal.com##+js(remove-attr, style, body:style)
+activemedianepal.com##+js(remove-class, modal-open, body)
+activemedianepal.com##.banner-image
+activemedianepal.com##.show.fade.modal-backdrop
+activemedianepal.com##section.pb-40.pt-50:nth-of-type(1)
+||activemedianepal.com/images/advertisements/*.gif$image
+||activemedianepal.com/images/advertisements/*.jpg$image
 
 ! actpronepal.com
 actpronepal.com##.small-ad
