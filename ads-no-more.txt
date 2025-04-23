@@ -1008,6 +1008,9 @@ nayaakhabar.com##.cube-container
 ||nayaakhabar.com/*.gif$image
 
 ! nayadainiki.com
+www.nayadainiki.com###aside-main
+www.nayadainiki.com##body:remove-class(jacket-bigyaapan-open)
+||www.nayadainiki.com/*.gif$image
 
 ! nayannews.com
 nayannews.com##.td_spot_img_all
@@ -1729,14 +1732,5 @@ yuwadaily.com##.mb-20.text-center
 ||www.yuwasandesh.com/*.gif$image
 ||yuwasandesh.com/*.gif$image
 
-!nayadainiki.com##.modal-backdrop
 
-!nayadainiki.com##.news-tickers
-nayadainiki.com##body:remove-class(jacket-bigyaapan-open)
-
-!nayadainiki.com##body:style(overflow: auto !important;)
-www.nayadainiki.com###aside-main
-||www.nayadainiki.com/*.gif$image
-
-!||www.nayadainiki.com/themes/nayadainiki/js/news-ticker.min.js$script
 
