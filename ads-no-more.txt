@@ -706,7 +706,6 @@ www.janaboli.com##.widget
 
 ! janachasotimes.com
 janachasotimes.com##.jft_ads
-janachasotimes.com/*.gif$image
 ||janachasotimes.com/*.gif$image
 
 ! janapatra.com
@@ -1542,7 +1541,7 @@ www.tvannapurna.com##.sgpb-popup-overlay.sgpb-popup-overlay-118111.sgpb-theme-1-
 udghoshdaily.com##.main-social-media.position-fixed
 udghoshdaily.com##.mx-n2.align-items-center.d-inline-flex
 udghoshdaily.com##.ps-3
-udghoshdaily.com/*.gif$image
+||udghoshdaily.com/*.gif$image
 ||udghoshdaily.com/images/advertisement/*$image
 
 ! ujyaaloonline.com
