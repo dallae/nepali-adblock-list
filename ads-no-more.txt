@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Version: 202504240017
+! Version: 202504240807
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 24 Apr 2025 00:17 UTC
-! Expires: 01 May 2025 00:17 UTC
+! Last modified: 24 Apr 2025 08:07 UTC
+! Expires: 01 May 2025 08:07 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -572,6 +572,9 @@ ekagaj.com##div.sidebar > aside > .wrapper-box
 ekantipur.com###roadblock-ad
 ekantipur.com##.custom-data
 ekantipur.com##.liscence-quiz-set.quiz-wrapper
+ekantipur.com##.q-type-health.quiz-wrapper
+ekantipur.com##.qfx-banner-section
+ekantipur.com##.qfx-quiz-container
 ekantipur.com##.sponsor-mobile
 ekantipur.com##.static-sponsor
 ||assets-cdn.ekantipur.com/*.gif$image
@@ -934,6 +937,13 @@ www.kalakarmi.com##*.ads
 ||www.kalakarmi.com/*.gif$image
 ||www.kalakarmi.com/*Head*.jpg$image
 
+! kanakaikhabar.com
+kanakaikhabar.com##.elementor-widget-image
+kanakaikhabar.com##.elementor-widget-smartmag-codes
+kanakaikhabar.com##.post-share-bot
+kanakaikhabar.com##.widget_media_image
+||kanakaikhabar.com/*.gif$image
+
 ! kanakaionline.com
 kanakaionline.com##.pum-active.click_open.auto_open.popmake-overlay.pum-theme-default-theme.pum-theme-240680.pum-overlay.pum
 kanakaionline.com##body:style(overflow: auto !important;)
@@ -953,6 +963,7 @@ kanakaionline.com##html:style(overflow: auto !important;)
 ||www.kantikhabar.com/*.gif$image
 
 ! kantipath.com
+kantipath.com##.sws_superaction
 ||kantipath.com/*.gif$image
 
 ! kapurinews.com
@@ -979,12 +990,21 @@ kathmandukhabar.com##.wp-image-6133.image
 ||kathmandukhabar.com/*.gif$image
 
 ! kathmandupati.com
+www.kathmandupati.com##.footer-navigation-bar.uk-navbar-nav
 www.kathmandupati.com##.widget
 ||www.kathmandupati.com/*.gif$image
 
 ! kathmandupress.com
 ||kathmandupress.com/*.gif$image
 ||kathmandupress.com/uploads/bigyaapan/*$image
+
+! kathmandutoday.com
+www.kathmandutoday.com##.social-links
+www.kathmandutoday.com##div.left_block:nth-of-type(3)
+||kathmandutoday.com/*.gif$image
+||www.kathmandutoday.com/wp-content/uploads/*.gif$image
+||www.kathmandutoday.com/wp-content/uploads/*.webp$image
+||www.kathmandutoday.com/wp-content/uploads/2024/10/prabhu-scaled.jpg$image
 
 ! kbckhabar.com.au
 kbckhabar.com.au##.adsimage
@@ -995,6 +1015,7 @@ kbckhabar.com.au##.widget
 @@kendrabindu.com/*logo.gif$image
 kendrabindu.com##.comment
 kendrabindu.com##.custom-model-ah-video
+kendrabindu.com##.social-icon
 kendrabindu.com##.widget
 ||kendrabindu.com/*.gif$image
 ||kendrabindu.com/*.webp$image
@@ -1011,17 +1032,25 @@ khabarbit.com##.ads-wrapper
 ! khabarcenter.com
 khabarcenter.com##.uk-icon-button
 khabarcenter.com##.uk-text-center
+khabarcenter.com##section:nth-of-type(2)
 ||khabarcenter.com/*.gif$image
 
 ! khabardarinews.com
 khabardarinews.com###sg-popup-content-wrapper-24318
 khabardarinews.com##.e-child.e-con.e-con-boxed.e-flex.elementor-hidden-mobile.elementor-element-bb5241e.elementor-element > .e-con-inner
 khabardarinews.com##.elementor-grid.elementor-social-icons-wrapper
+khabardarinews.com##.elementor-widget-button
 khabardarinews.com##.elementor-widget-container > .load-static.entry-meta.post-24914.content-post.post-views
 khabardarinews.com##.elementor-widget-shortcode
 khabardarinews.com##.sgpb-popup-dialog-main-div-wrapper
 khabardarinews.com##.sgpb-popup-overlay.sgpb-popup-overlay-24318.sgpb-theme-1-overlay
 ||khabardarinews.com/*.gif$image
+
+! khabareducation.com
+khabareducation.com##.hm-social-menu
+khabareducation.com##.widget
+||khabareducation.com/wp-content/uploads/*.gif$image
+||khabareducation.com/wp-content/uploads/2024/10/EFN-Banner*.png$image
 
 ! khabarhub.com
 khabarhub.com##.widget
@@ -1041,6 +1070,10 @@ khabarmukam.com##.news-reaction
 ||khabarmukam.com/images/advertisement/*.gif$image
 ||khabarmukam.com/images/advertisement/*.jpg$image
 ||khabarmukam.com/images/advertisement/*.png$image
+
+! khabarmuluk.com
+||khabarmuluk.com/*.gif$image
+||khabarmuluk.com/wp-content/uploads/2020/11/add-halesi-scaled.jpg$image
 
 ! khaptadmalikanews.com
 www.khaptadmalikanews.com###homeads
@@ -1090,6 +1123,10 @@ krishiraibar.com##div.row:nth-of-type(7)
 ktmdainik.com##.list-inline
 ktmdainik.com##.uk-grid.uk-flex-middle
 ||ktmdainik.com/*.gif$image
+
+! kusenews.com
+kusenews.com##.widget-header
+||kusenews.com/*.gif$image
 
 ! laligurash.com
 laligurash.com###skip-advertisement
@@ -1230,6 +1267,12 @@ nepalbishesh.com##.social-media-icon-section
 www.nepalclicks.com##.sc-ads
 ||www.nepalclicks.com/*.gif$image
 
+! nepalijanta.com
+nepalijanta.com##.footer-socials
+nepalijanta.com##.header-row-ad.row
+nepalijanta.com##.titleSmall > .row
+||nepalijanta.com/*.gif$image
+
 ! nepalipaisa.com
 nepalipaisa.com##.col-xl-2
 nepalipaisa.com##.modal
@@ -1284,6 +1327,11 @@ nepalkhabar.com##*[class*="npad"]
 nepalkhabar.com##.next.uk-text-light
 nepalkhabar.com##.share-count
 ||nepalkhabar.com/*.gif$image
+
+! nepalmag.com.np
+nepalmag.com.np###selectionSharerPopover
+nepalmag.com.np###stickySocialStartPoint
+||nepalmag.com.np/*.gif$image
 
 ! nepalpress.com
 www.nepalpress.com###primary > .section-np-space > .uk-container
@@ -1443,6 +1491,13 @@ www.parichitkhabar.com##div[class*="modal-backdrop"]
 www.parichitkhabar.com##div[id="advertisementModal"]
 ||www.parichitkhabar.com/*.gif$image
 ||www.parichitkhabar.com/uploads/ads/*$image
+
+! pariwartankhabar.com
+www.pariwartankhabar.com##.fa-facebook.fa
+www.pariwartankhabar.com##.fa-google-plus.fa
+www.pariwartankhabar.com##.fa-twitter.fa
+www.pariwartankhabar.com##.fa-youtube-play.fa
+||www.pariwartankhabar.com/*.gif$image
 
 ! paschimeli.com
 paschimeli.com##.elementor-widget-image
