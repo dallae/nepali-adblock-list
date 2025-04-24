@@ -1,4 +1,5 @@
 # AdBlock List for Nepal 🇳🇵
+[![Validate Adblock List](https://github.com/dallae/nepali-adblock-list/actions/workflows/validate.yml/badge.svg)](https://github.com/dallae/nepali-adblock-list/actions/workflows/validate.yml)
 
 Welcome to the AdBlock List for Nepal repository! This repository contains a curated list of filters to block unwanted advertisements, trackers, and other nuisances on the web for Nepali websites. The aim is to enhance browsing experience by providing a cleaner, faster, and more private internet.
 
@@ -13,7 +14,7 @@ Welcome to the AdBlock List for Nepal repository! This repository contains a cur
 - [License](#license)
 - [Support](#support)
 
-[![Validate Adblock List](https://github.com/dallae/nepali-adblock-list/actions/workflows/validate.yml/badge.svg)](https://github.com/dallae/nepali-adblock-list/actions/workflows/validate.yml)
+
 
 ## Introduction
 
