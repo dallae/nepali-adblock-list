@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Version: 202504231658
+! Version: 202504240017
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 23 Apr 2025 16:58 UTC
-! Expires: 30 Apr 2025 16:58 UTC
+! Last modified: 24 Apr 2025 00:17 UTC
+! Expires: 01 May 2025 00:17 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -177,6 +177,17 @@ aarthikvoice.com##.tdi_5
 aarushikhabar.com###brxe-azpikd
 aarushikhabar.com###brxe-bjlzmn > div
 aarushikhabar.com##.brxe-post-sharing
+aarushikhabar.com##.brxe-social-icons
+||aarushikhabar.com/*.gif$image
+
+! aashanews.com
+aashanews.com##.addtoany_content_bottom
+aashanews.com##.pull-right.top_sociallink
+aashanews.com##.sgpb-popup-dialog-main-div-wrapper
+aashanews.com##.sgpb-popup-overlay.sgpb-popup-overlay-108249.sgpb-theme-1-overlay
+aashanews.com##.textwidget
+||aashanews.com/wp-content/uploads/*.gif$image
+||aashanews.com/wp-content/uploads/2024/12/Sarwa-Shulabh-Awaz-Karja-New-3-by-3ft.jpg$image
 
 ! aawajpati.com/
 ||www.aawajpati.com/*.gif$image
@@ -254,6 +265,18 @@ actpronepal.com##.small-ad
 
 ! advancekhabar.com
 ||advancekhabar.com/*.gif$image
+
+! agnisamachar.com
+agnisamachar.com###bs-likebox-2
+agnisamachar.com###sktaxdqu-27438-1322491236
+agnisamachar.com###sktaxdqu-28403-43285473
+agnisamachar.com###sktaxdqu-4
+agnisamachar.com##.sgpb-popup-dialog-main-div-wrapper
+agnisamachar.com##.sgpb-popup-overlay.sgpb-popup-overlay-73605.sgpb-theme-1-overlay
+agnisamachar.com##.sktaxdqu-post-bottom
+||agnisamachar.com/wp-content/uploads/2023/07/Lotus.jpg$image
+||agnisamachar.com/wp-content/uploads/2024/08/Agni-Offset-Press-scaled-1.jpg$image
+||agnisamachar.com/wp-content/uploads/2024/09/kailari-gaupalika-suchana.jpg$image
 
 ! ajakoartha.com
 ||ajakoartha.cdnsolution.net/*.gif$image
@@ -361,6 +384,16 @@ bankepost.com##.size-large.wp-block-image
 ! barnanmedia.com
 ||barnanmedia.com/*.gif$image
 
+! bhanjyangnews.com
+bhanjyangnews.com##.facebook-widget
+bhanjyangnews.com##.show-check-also
+bhanjyangnews.com##.stream-item-below-post-content
+bhanjyangnews.com##.stream-item.stream-item-mag.mag-box
+bhanjyangnews.com##[href="#"] > .size-full.attachment-full.wp-image-4825.image
+bhanjyangnews.com##li.social-icons-item
+||bhanjyangnews.com/wp-content/uploads/2020/09/ad3*.png$image
+||bhanjyangnews.com/wp-content/uploads/2025/03/Gandak-Province-Adv-1.jpg$image
+
 ! bikastimes.com
 bikastimes.com##section.widget
 ||bikastimes.com/*.gif$image
@@ -389,6 +422,15 @@ biznessnews.com##.ads
 www.bizshala.com##.ad-banner-img
 ||www.bizshala.com/*.gif$image
 
+! bolanyathali.com
+bolanyathali.com###dpsp-content-bottom
+bolanyathali.com###dpsp-content-top
+bolanyathali.com##.d-flex.col-md-12
+bolanyathali.com##.size-full
+bolanyathali.com##.size-full.wp-block-image
+bolanyathali.com##div:nth-of-type(5)
+||bolanyathali.com/wp-content/uploads/*.gif$image
+
 ! bpbichar.com
 ||bpbichar.com/*.gif$image
 
@@ -410,6 +452,11 @@ celebritynepal.com##[id*="media_image"]
 
 ! chotkari.com
 ||chotkari.com/*.gif$image
+
+! cinepati.com
+cinepati.com##.wrapper.zero-padding.col-xs-12 > div.col-xs-12
+cinepati.com##div.row:nth-of-type(3)
+||cinepati.com/upload/*.gif$image
 
 ! cinnepal.com
 www.cinnepal.com##.bsac-float-center
@@ -443,17 +490,29 @@ dalitonline.com##div.ads
 
 ! dcnepal.com
 www.dcnepal.com##.ad-container
+www.dcnepal.com##.facebook-comment
+www.dcnepal.com##div.column-3:nth-of-type(4)
 ||creative.hamropatro.com/*.gif$image
 ||www.dcnepal.com/*.gif$image
 
 ! dekhapadhi.com
 ||www.dekhapadhi.com/*.gif$image
 
+! derbykhabar.com
+||derbykhabar.com^
+
 ! deshsanchar.com
 deshsanchar.com##.code-block
 deshsanchar.com##.cube-container
+deshsanchar.com##.footer__social-media-list
 deshsanchar.com##.widget
 ||assets.deshsanchar.com/*/*.gif$image
+
+! dhadingupdate.com
+dhadingupdate.com###text-6 > .textwidget > .fb-page > .fb-xfbml-parse-ignore
+dhadingupdate.com###widget_sp_image-49 > .attachment-full
+||dhadingupdate.com/wp-content/uploads/*.gif$image
+||dhadingupdate.com/wp-content/uploads/2025/03/ad-space.gif$image
 
 ! dharananews.com
 dharananews.com##.ads-wrapper
@@ -467,6 +526,25 @@ www.eadarsha.com##.addtoany_content_top
 www.eadarsha.com##div.widget-sidebar.widget:nth-of-type(1)
 ||eadarsha.com/*.gif$image
 ||i0.wp.com/www.eadarsha.com/*.gif$image
+
+! ebikalpadainik.com
+ebikalpadainik.com##.clearfix.nav-tabs
+ebikalpadainik.com##.sgpb-popup-dialog-main-div-wrapper
+ebikalpadainik.com##.sgpb-popup-overlay.sgpb-popup-overlay-42352.sgpb-theme-1-overlay
+||ebikalpadainik.com/wp-content/uploads/*.gif$image
+||ebikalpadainik.com/wp-content/uploads/2024/09/ghar-sansar-1.png$image
+||ebikalpadainik.com/wp-content/uploads/2024/10/dipak-pant.jpg$image
+||ebikalpadainik.com/wp-content/uploads/2024/10/preeti.jpg$image
+||ebikalpadainik.com/wp-content/uploads/2024/11/himal-dental.png$image
+||ebikalpadainik.com/wp-content/uploads/2025/01/pasl-bikrima.png$image
+||ebikalpadainik.com/wp-content/uploads/2025/03/dipak.jpg$image
+||ebikalpadainik.com/wp-content/uploads/2025/03/mantra-hospital.jpg$image
+||ebikalpadainik.com/wp-content/uploads/2025/03/ratnam.png$image
+||ebikalpadainik.com/wp-content/uploads/2025/04/aanand.png$image
+||ebikalpadainik.com/wp-content/uploads/2025/04/badhai.png$image
+||ebikalpadainik.com/wp-content/uploads/2025/04/balrog.jpg$image
+||ebikalpadainik.com/wp-content/uploads/2025/04/dddd.png$image
+||ebikalpadainik.com/wp-content/uploads/2025/04/prayss.jpg$image
 
 ! economistnepal.com
 economistnepal.com##.ads
@@ -504,6 +582,13 @@ ekantipur.com##.static-sponsor
 emountaintv.com##.partners-container
 ||emountaintv.com/*.gif$image
 
+! enewsbureau.com
+enewsbureau.com##.d-sm-block.d-none.socio-bar
+enewsbureau.com##.emo-wrap
+enewsbureau.com##.new-socio
+enewsbureau.com##.reprtr-socio
+enewsbureau.com##div.add-wrap
+
 ! english.himalayatimes.com.np
 english.himalayatimes.com.np##.right_bottom.modal-list-wrap
 english.himalayatimes.com.np##.show-has-labels
@@ -513,11 +598,29 @@ english.himalayatimes.com.np##[class*="ad-"]
 ! english.onlinekhabar.com
 ||english.onlinekhabar.com/*.gif$image
 
+! entertainmentkhabar.com
+www.entertainmentkhabar.com###gallery-3
+www.entertainmentkhabar.com###top-header > .clearfix.emo-container
+www.entertainmentkhabar.com##.sidebar-ads
+www.entertainmentkhabar.com##.site-header-ads
+www.entertainmentkhabar.com##.widget-area
+
 ! epratibimba.com
 epratibimba.com##.add
 epratibimba.com##.horizental-ad-image
 epratibimba.com##.single-post-advertisement
 ||epratibimba.com/*.gif$image
+
+! eraibar.com
+eraibar.com##.share_title_box
+eraibar.com##.size-large.wp-block-image
+eraibar.com##.tajaupdate.block-wrapper > div.container
+||eraibar.com/wp-content/uploads/*.gif$image
+
+! eranimahal.com
+eranimahal.com##.elementor-popup-modal.dialog-type-lightbox.dialog-type-buttons.dialog-lightbox-widget.dialog-widget
+eranimahal.com##.elementor-widget-share-buttons
+eranimahal.com##.elementor-widget-shortcode
 
 ! erukum.com
 ||erukum.com/*.gif$image
@@ -525,6 +628,10 @@ epratibimba.com##.single-post-advertisement
 ! euttardayitwa.com
 euttardayitwa.com##.widget
 ||euttardayitwa.com/*.gif$image
+
+! everestdainik.com
+everestdainik.com##.social__menu
+||everestdainik.com/*.gif$image
 
 ! everestfujinews.com
 everestfujinews.com##.advertisement
@@ -545,6 +652,14 @@ expresspana.com##.ads
 expresspana.com##.uk-grid.uk-grid-small.uk-grid-divider
 ||expresspana.com/*.gif
 
+! fairnepal.com
+fairnepal.com###media_image-50
+fairnepal.com##.addtoany_content_top
+fairnepal.com##.clearfix.social-links
+fairnepal.com##.size-full.attachment-full.wp-image-27408.image
+fairnepal.com##.size-large.attachment-large
+||fairnepal.com/wp-content/uploads/*.gif$image
+
 ! farakdhar.com
 ||farakdhar.com/*.gif$image
 
@@ -564,6 +679,18 @@ www.filmykhabar.com##div[style*="margin-top: 16px; height: 80px; padding: 4px;"]
 www.filmykhabar.com##div[style*="margin: 10px 0px 10px 0px"]
 www.filmykhabar.com##div[style*="width: 670px; height: 180px; margin-top: 16px;"]
 ||www.filmykhabar.com/*.gif$image
+
+! gandakichhadke.com
+www.gandakichhadke.com##.advertisement
+www.gandakichhadke.com##.goji-reactions-box
+www.gandakichhadke.com##.inside_ads
+www.gandakichhadke.com##.widget
+||www.gandakichhadke.com/*.gif$image
+
+! gaurishankarpost.com
+gaurishankarpost.com##.penci-social-share-footer
+gaurishankarpost.com##.penci-widget__social_counter
+gaurishankarpost.com##.td-all-devices
 
 ! generic filters
 ##*[class*="adalyticsblock"]
@@ -586,6 +713,23 @@ ghatanarabichar.com##div.wrap:nth-of-type(4)
 goalnepal.com##*[class*="adbox"]
 ||goalnepal.com/*.gif$image
 
+! godawarinews.com
+www.godawarinews.com##.modalbox
+www.godawarinews.com##.top-left-menu
+||www.godawarinews.com/*.gif$image
+
+! googlepokhara.com
+||googlepokhara.com^
+
+! gorkhapatraonline.com
+gorkhapatraonline.com##.top-social-icons
+
+! halkarosamachar.com
+www.halkarosamachar.com##.h_100.sidebar_ads
+www.halkarosamachar.com##.home.auto-container.col-md-12
+www.halkarosamachar.com##div.no-bod:nth-of-type(1)
+||www.halkarosamachar.com/*.gif$image
+
 ! hamaarbirgunj.com
 hamaarbirgunj.com##.uk-margin-medium-top
 hamaarbirgunj.com##.uk-margin-small-top:nth-of-type(4)
@@ -605,10 +749,21 @@ hamrobazaar.com##.topBanner
 ||hamrobazaar.blr1.cdn.digitaloceanspaces.com/feature_ads/*.gif$image
 ||hamrobazaar.com/*.gif$image
 
+! hamrobiratnagar.com
+hamrobiratnagar.com##.py-2.row
+hamrobiratnagar.com##.sn-ad
+||hamrobiratnagar.com/content/upload/*.gif$image
+
 ! hamroeconomy.com
 hamroeconomy.com##.widget
 ||hamroeconomy.com/*.gif$image
 ||i0.wp.com/hamroeconomy.com/*.gif$image
+
+! hamrokantipur.com
+hamrokantipur.com##.footer-social.unstyled
+hamrokantipur.com##.size-full.attachment-full.wp-image-66552.image
+hamrokantipur.com##.size-full.attachment-full.wp-image-72545.image
+||hamrokantipur.com/*.gif$image
 
 ! hamrokhelkud.com
 ||www.hamrokhelkud.com/*.gif$image
@@ -622,6 +777,10 @@ hamrokhotang.com##.td-is-sticky.td-pb-span4.tdc-column.vc_column_container.wpb_c
 ||www.hamropatro.com/*.gif$image
 ||www.hamropatro.com/images/rotating-ads/*$image
 
+! hamrosandesh.com
+hamrosandesh.com##.rashifal
+||hamrosandesh.com/wp-content/uploads/*.gif$image
+
 ! healthaawaj.com
 www.healthaawaj.com##.rd-ads
 www.healthaawaj.com##.widget
@@ -632,6 +791,9 @@ hellokhabar.com###tdi_76
 hellokhabar.com##.td-ss-main-sidebar
 ||hellokhabar.com/*.gif$image
 
+! hetaudaonline.com.np
+||hetaudaonline.com.np/wp-content/uploads/*.gif$image
+
 ! himalayadiary.com
 himalayadiary.com##.better-social-counter
 ||himalayadiary.com/*.gif$image
@@ -640,6 +802,10 @@ himalayadiary.com##.better-social-counter
 himalayandainik.com##.custom-bg
 himalayandainik.com##.hsn--ads--img
 ||himalayandainik.com/*.gif$image
+
+! himalayonlinemedia.com
+himalayonlinemedia.com##.footer-social-links
+||himalayonlinemedia.com/*.gif$image
 
 ! himaliawaj.com
 www.himaliawaj.com###kounpgxf-22324-777201958
@@ -651,8 +817,11 @@ www.himaliawaj.com##.simple-image-popup-plugin
 
 ! himalini.com
 www.himalini.com###text-40 > .textwidget > p
+www.himalini.com##.sd-content
+www.himalini.com##.social-navigation
 ||www.himalini.com/*/*.gif$image
 ||www.himalini.com/*/9483168f-d79c-41cc-a854-d73ee86eceb6.jpeg$image
+||www.himalini.com/wp-content/uploads/2024/11/Devtal-Gaupalika.png$image
 
 ! himalkhabar.com
 ||www.himalkhabar.com/*.gif$image
@@ -708,6 +877,10 @@ www.janaboli.com##.widget
 janachasotimes.com##.jft_ads
 ||janachasotimes.com/*.gif$image
 
+! janapati.net
+www.janapati.net##.col-xs-12.col-sm-3.col-md-3
+||www.janapati.net/wp-content/uploads/*.gif$image
+
 ! janapatra.com
 ||www.janapatra.com/*.gif$image
 
@@ -730,6 +903,7 @@ japansamachar.com##div.w-full.md\:mb-0.mb-2
 
 ! jayhosh.com
 www.jayhosh.com##.alignnone
+www.jayhosh.com##.social-icon-wrapper
 www.jayhosh.com##.widget_media_image
 www.jayhosh.com##[id*="banner"]
 ||www.jayhosh.com/*.gif$image
@@ -748,6 +922,12 @@ jeetpurkhabar.com##.widget_media_image.widget_block
 kagajpatra.com##.proad
 ||kagajpatra.com/*.gif$image
 ||kagajpatra.com/*.mp4$media
+
+! kailarionline.com
+kailarionline.com##.mt-4.row
+kailarionline.com##div.container > .mb-4
+||kailarionline.com/wp-content/uploads/*.gif$image
+||kailarionline.com/wp-content/uploads/2025/03/kailari-poster-add*.jpg$image
 
 ! kalakarmi.com
 www.kalakarmi.com##*.ads
@@ -934,6 +1114,10 @@ lokpati.com##div.my-5.justify-center.flex.max-w-full:nth-of-type(1)
 ||cms.lokpati.com/media/advertisement/*$image
 ||lokpati.com/*.gif$image
 
+! lumbinisanchar.com
+www.lumbinisanchar.com##.widget
+||www.lumbinisanchar.com/*.gif$image
+
 ! madheshvani.com
 www.madheshvani.com##.myad_home
 ||madheshvani.com/*.gif$image
@@ -1009,6 +1193,7 @@ nayaakhabar.com##.cube-container
 
 ! nayadainiki.com
 www.nayadainiki.com###aside-main
+www.nayadainiki.com##.top-left-menu
 www.nayadainiki.com##body:remove-class(jacket-bigyaapan-open)
 ||www.nayadainiki.com/*.gif$image
 
@@ -1025,6 +1210,14 @@ nayannews.com##.tdi_87
 ! nayapananews.com
 nayapananews.com##.follow-us
 ||nayapananews.com/*.gif$image
+
+! nayapusta.com
+nayapusta.com###brcluifm-4 > .no-bg-box-model.brcluifm-clearfix.brcluifm-column-1.brcluifm-align-center.brcluifm
+nayapusta.com##.brcluifm-caption-below.brcluifm-caption
+nayapusta.com##.brcluifm-post-inline
+nayapusta.com##.clearfix.nav-tabs
+||nayapusta.com/wp-content/uploads/*.gif$image
+||nayapusta.com/wp-content/uploads/2024/09/Nepal-bank_shubha-gyan.jpg$image
 
 ! nepalbishesh.com
 nepalbishesh.com##.advertisement-section
@@ -1130,6 +1323,7 @@ neplays.com##.sticky--right
 ||www.newbusinessage.com/img/sponsor/*$image
 
 ! newsabhiyan.com
+newsabhiyan.com##.TopSocialList
 newsabhiyan.com##.share-items
 newsabhiyan.com##div.THAds
 ||newsabhiyan.com/*.gif$image
@@ -1338,6 +1532,10 @@ reportersnepal.com##div.row:nth-of-type(14)
 ||reportersnepal.com/*.gif$image
 ||reportersnepal.com/*.webp$image
 
+! republicadainik.com
+www.republicadainik.com##.pull-center.nomargin
+||www.republicadainik.com/*.gif$image
+
 ! sabastaentertainment.com
 sabastaentertainment.com##.widget
 ||sabastaentertainment.com/*.gif$image
@@ -1443,6 +1641,17 @@ shilapatra.com##.modalbox
 ||shilapatra.com/*.gif$image
 ||shilapatra.com/uploads/bigyaapan/*$image
 
+! sidhakhabar.com
+sidhakhabar.com##.artha-right > .bigyapan-box.mt-0
+sidhakhabar.com##.bigyaapan-box
+sidhakhabar.com##.desktop-bigyaapan-only
+sidhakhabar.com##.middle-side > .bigyapan-box.mt-3
+sidhakhabar.com##.mobile-bigyaapan-only
+sidhakhabar.com##.split-box
+sidhakhabar.com##body:remove-class(jacket-bigyaapan-open)
+www.sidhakhabar.com##.top-left-menu
+||sidhakhabar.com/uploads/bigyaapan/
+
 ! sidhakura.com
 sidhakura.com##.contentsticky-ad-right
 ||sidhakura.com/*.gif$image
@@ -1489,6 +1698,8 @@ www.sutranews.com##div.uk-grid-stack.uk-grid.uk-text-center.uk-grid-medium.uk-fl
 
 ! techpana.com
 techpana.com##*[class*="adalyticsblock"]
+www.techpana.com##.news-header-top-content
+www.techpana.com##.newsTech-ads img
 ||techpana.com/*.gif$image
 
 ! telegraphnepal.com
@@ -1731,6 +1942,4 @@ yuwadaily.com##.mb-20.text-center
 @@yuwasandesh.com/wp/wp-content/uploads/2024/02/yuwasandesh-logo.gif
 ||www.yuwasandesh.com/*.gif$image
 ||yuwasandesh.com/*.gif$image
-
-
 
