@@ -1167,7 +1167,15 @@ www.madheshvani.com##.myad_home
 www.makalukhabar.com##.gam-each-ad
 www.makalukhabar.com##.is-full-widescreen-ad
 www.makalukhabar.com##.section-ad-space
+www.makalukhabar.com##.social-links
 ||www.makalukhabar.com/*.gif$image
+||www.makalukhabar.com/wp-content/cache/autoptimize/js/autoptimize_6a58a4b96bb85766d447834c8fe73cfd.js
+||www.makalukhabar.com/wp-content/cache/autoptimize/js/autoptimize_a24ecb2d5d91310abb571a85c98c5c25.js
+
+! makalunews.com
+makalunews.com##.scrollToTop
+makalunews.com##.widget_media_image
+makalunews.com##.share-links
 
 ! malikatoday.com
 malikatoday.com##*[class*="ads"]
