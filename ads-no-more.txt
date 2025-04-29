@@ -318,26 +318,14 @@ www.arghakhanchi.com##p:nth-of-type(23)
 ||scontent.fpkr1-1.fna.fbcdn.net/v/t39.30808-6/*$image
 ||www.arghakhanchi.com/*.gif$image
 ||www.arghakhanchi.com/wp-content/uploads/2022/11/278074443_706624880538669_6403904235405538296_n*.jpg$image
-||www.arghakhanchi.com/wp-content/uploads/2023/10/Screenshot-2023-10-11-134629.png$image
-||www.arghakhanchi.com/wp-content/uploads/2024/03/Screenshot-2024-03-15-174928.png$image
-||www.arghakhanchi.com/wp-content/uploads/2024/03/Screenshot-2024-03-15-175004-1.png$image
 ||www.arghakhanchi.com/wp-content/uploads/2024/04/1d1ae8b5-9220-4f70-b673-ffa38c1e8a67.jpeg$image
 ||www.arghakhanchi.com/wp-content/uploads/2024/09/457193619_1037690661696954_6599664553040738952_n-644x644.jpg$image
 ||www.arghakhanchi.com/wp-content/uploads/2024/10/60f664d5-5486-4853-8958-123c0ccd9adc.jpeg$image
-||www.arghakhanchi.com/wp-content/uploads/2024/10/Screenshot-2024-10-05-115639.png
-||www.arghakhanchi.com/wp-content/uploads/2024/10/Screenshot-2024-10-05-115639.png$image
 ||www.arghakhanchi.com/wp-content/uploads/2024/10/da5a79b6-d87c-47eb-b7dd-d64cec49e326.jpeg$image
 ||www.arghakhanchi.com/wp-content/uploads/2024/10/download.jpeg$image
 ||www.arghakhanchi.com/wp-content/uploads/2024/12/7598e203-b348-4cbb-8243-0bd40ac29483.jpeg$image
 ||www.arghakhanchi.com/wp-content/uploads/2025/02/b74c7e35-e118-48c4-b8b1-f1b1eaf33270.jpeg
-||www.arghakhanchi.com/wp-content/uploads/2025/03/Screenshot-2025-03-19-084642.png$image
-||www.arghakhanchi.com/wp-content/uploads/2025/03/Screenshot-2025-03-19-084703-1.png$image
-||www.arghakhanchi.com/wp-content/uploads/2025/03/Screenshot-2025-03-19-084727-1.png
-||www.arghakhanchi.com/wp-content/uploads/2025/03/Screenshot-2025-03-30-095921.png$image
-||www.arghakhanchi.com/wp-content/uploads/2025/04/Screenshot-2025-04-11-171954.png
-||www.arghakhanchi.com/wp-content/uploads/2025/04/Screenshot-2025-04-11-172043.png
-||www.arghakhanchi.com/wp-content/uploads/2025/04/Screenshot-2025-04-21-190715-1.png$image
-||www.arghakhanchi.com/wp-content/uploads/2025/04/Screenshot-2025-04-21-190759.png$image
+||www.arghakhanchi.com/wp-content/uploads/*/Screenshot-*.png$image
 ||www.arghakhanchi.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-06-at-15.00.22_2c4ed3ac.jpg
 ||www.arghakhanchi.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-08-at-00.59.19_1a2cbf5b.jpg
 
