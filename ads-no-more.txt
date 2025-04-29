@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Version: 202504282209
+! Version: 202504292250
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 28 Apr 2025 22:09 UTC
-! Expires: 05 May 2025 22:09 UTC
+! Last modified: 29 Apr 2025 22:50 UTC
+! Expires: 06 May 2025 22:50 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -666,6 +666,10 @@ eranimahal.com##.elementor-widget-shortcode
 ! euttardayitwa.com
 euttardayitwa.com##.widget
 ||euttardayitwa.com/*.gif$image
+
+! everest-times.com
+www.everest-times.com##.social-media-area
+||www.everest-times.com/wp-content/uploads/*.gif$image
 
 ! everestdainik.com
 everestdainik.com##.social__menu
@@ -1715,6 +1719,19 @@ ourbiratnagar.net##.gofollow
 ourbiratnagar.net##.user_poll_block
 ||ourbiratnagar.net/*.gif$image
 
+! pahilosamachar.com
+pahilosamachar.com###tdi_67
+pahilosamachar.com##.td-social-list
+pahilosamachar.com##.td_module_flex:nth-of-type(2)
+||pahilosamachar.com/wp-content/uploads/*.gif$image
+
+! pahura.com
+pahura.com##.footer-social-links
+pahura.com##.justify-content-between.d-flex > .d-flex
+pahura.com##.size-large
+pahura.com##.swp_social_panel
+||pahura.com/wp-content/uploads/*.gif$image
+
 ! palikaclick.com
 www.palikaclick.com##.col-sm-8 > .social
 www.palikaclick.com##.comments
@@ -1723,7 +1740,14 @@ www.palikaclick.com##.goji-reactions-post-93.goji-reactions
 
 ! palikanews.com
 www.palikanews.com##.ads
+www.palikanews.com##.social-media
 ||www.palikanews.com/*.gif$image
+
+! panchakoshitimes.com
+panchakoshitimes.com###block-18
+panchakoshitimes.com##.size-large
+panchakoshitimes.com##.widget_sp_image
+||panchakoshitimes.com/wp-content/uploads/*.gif$image
 
 ! pardafas.com
 www.pardafas.com##[class*="ad"]
@@ -1770,8 +1794,24 @@ paschimnepal.com##div.row:nth-of-type(13)
 ||paschimnepal.com/*.gif$image
 ||paschimnepal.com/wp-content/uploads/*.gif$image
 
+! paschimtoday.com
+paschimtoday.com##.socio
+||paschimtoday.com/uploads/advertise$image
+
 ! peoplesreview.com.np
 ||www.peoplesreview.com.np/*.gif$image
+
+! pokharacity.com
+pokharacity.com###block-4
+pokharacity.com##.elementor-widget-html
+pokharacity.com##.elementor-widget-image
+pokharacity.com##.mashsb-box
+pokharacity.com##.penci-post-share-box
+pokharacity.com##.penci-rlt-popup
+pokharacity.com##.penci-social-colored.footer-socials-section
+pokharacity.com##.penci_social_widget.widget
+||pokharacity.com/wp-content/uploads/*.gif$image
+||pokharacity.com/wp-content/uploads/2022/06/pokharacityadd*.jpg$image
 
 ! postkhabar.com
 ||postkhabar.com/*.gif$image
@@ -1783,6 +1823,16 @@ postmandu.com##.td-post-sharing-visible
 ! powersanchar.com
 powersanchar.com##.gap-2.justify-end
 ||powersanchar.com/*.gif$image
+
+! prabhatpheri.com.np
+prabhatpheri.com.np###homeads
+prabhatpheri.com.np##.advertisement
+prabhatpheri.com.np##.social
+||prabhatpheri.com.np/*.gif$image
+
+! prabhavnews.com
+prabhavnews.com##.uk-alert
+||prabhavnews.com/users_upload/*.gif$image
 
 ! pradeshportal.com
 pradeshportal.com##.widget
@@ -1816,7 +1866,13 @@ rajaneeti.com##.py-2.bg-foot
 ||rajaneeti.com/*.gif$image
 
 ! rajdhanidaily.com
+rajdhanidaily.com###pum-78632
+rajdhanidaily.com##.elementor-widget-text-editor.elementor-widget
 ||rajdhanidaily.com/*.gif$image
+||rajdhanidaily.com/wp-content/uploads/2021/10/6th-week-winner*.jpg$image
+||rajdhanidaily.com/wp-content/uploads/2025/03/*ad*.jpg$image
+||rajdhanidaily.com/wp-content/uploads/2025/03/img-7.jpg$image
+||rajdhanidaily.com/wp-content/uploads/pum/pum-site-scripts.js
 
 ! ramailochha.com
 ramailochha.com##.wp-image-51631
@@ -2040,11 +2096,32 @@ www.sutranews.com##div.uk-grid-stack.uk-grid.uk-text-center.uk-grid-medium.uk-fl
 ! taksarnews.com
 ||taksarnews.com/*.gif$image
 
+! techlekh.com
+techlekh.com###customShare
+techlekh.com###social-links
+techlekh.com##.code-block
+techlekh.com##.code-block-2
+techlekh.com##.code-block-3
+||techlekh.com/wp-content/uploads/*.gif$image
+
+! technologykhabar.com
+technologykhabar.com##.header_social_icons
+||technologykhabar.com/wp-content/uploads/*.gif$image
+
 ! techpana.com
+techpana.com###roadBlock
 techpana.com##*[class*="adalyticsblock"]
+techpana.com##+js(set-constant, document.body.classList.remove, 'modal-open')
 www.techpana.com##.news-header-top-content
 www.techpana.com##.newsTech-ads img
 ||techpana.com/*.gif$image
+
+! techsathi.com
+techsathi.com##.post-share
+techsathi.com##.post-share-float
+techsathi.com##.spc-social-bg
+techsathi.com##.spc-social-block
+||techsathi.com/*.gif$image
 
 ! telegraphnepal.com
 www.telegraphnepal.com##.leftbar
