@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Version: 202504292250
+! Version: 202504300015
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 29 Apr 2025 22:50 UTC
-! Expires: 06 May 2025 22:50 UTC
+! Last modified: 30 Apr 2025 00:15 UTC
+! Expires: 07 May 2025 00:15 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -71,6 +71,7 @@ aajakobishesh.com##div.uk-width-auto
 ||aajakobishesh.com/users_upload/*.gif$image
 
 ! aajakokhabar.com
+aajakokhabar.com##.inside-content-ads
 ||aajakokhabar.com/uploads/*.gif$image
 
 ! aajakonews.com
@@ -80,15 +81,21 @@ aajakobishesh.com##div.uk-width-auto
 ||aajakopost.com/*.gif$image
 
 ! aajakopress.com
+aajakopress.com##.simplesocialbuttons-inline-in
 ||aajakopress.com/*.gif$image
 
 ! aajtakdainik.com
+aajtakdainik.com##.td-block-title
+aajtakdainik.com##.td-post-sharing
+aajtakdainik.com##.td-social-list
+aajtakdainik.com##.tdi_38
 ||aajtakdainik.com/*.gif$image
 
 ! aakha.com
 ||aakha.com/*gif$image
 
 ! aamadarshannews.com
+aamadarshannews.com##.social-fix.social-media
 ||aamadarshannews.com/*.gif$image
 
 ! aamsandesh.com
@@ -264,6 +271,9 @@ actpronepal.com##.small-ad
 ||actpronepal.com/*.webp$image
 
 ! advancekhabar.com
+advancekhabar.com##.penci-social-counter
+advancekhabar.com##.penci-social-share-footer
+advancekhabar.com##.topbar__social-media
 ||advancekhabar.com/*.gif$image
 
 ! agnisamachar.com
@@ -317,6 +327,7 @@ www.arghakhanchi.com##p:nth-of-type(23)
 ||kendrabindu.com/*UCAN.jpg$image
 ||scontent.fpkr1-1.fna.fbcdn.net/v/t39.30808-6/*$image
 ||www.arghakhanchi.com/*.gif$image
+||www.arghakhanchi.com/wp-content/uploads/*/Screenshot-*.png$image
 ||www.arghakhanchi.com/wp-content/uploads/2022/11/278074443_706624880538669_6403904235405538296_n*.jpg$image
 ||www.arghakhanchi.com/wp-content/uploads/2024/04/1d1ae8b5-9220-4f70-b673-ffa38c1e8a67.jpeg$image
 ||www.arghakhanchi.com/wp-content/uploads/2024/09/457193619_1037690661696954_6599664553040738952_n-644x644.jpg$image
@@ -325,7 +336,6 @@ www.arghakhanchi.com##p:nth-of-type(23)
 ||www.arghakhanchi.com/wp-content/uploads/2024/10/download.jpeg$image
 ||www.arghakhanchi.com/wp-content/uploads/2024/12/7598e203-b348-4cbb-8243-0bd40ac29483.jpeg$image
 ||www.arghakhanchi.com/wp-content/uploads/2025/02/b74c7e35-e118-48c4-b8b1-f1b1eaf33270.jpeg
-||www.arghakhanchi.com/wp-content/uploads/*/Screenshot-*.png$image
 ||www.arghakhanchi.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-06-at-15.00.22_2c4ed3ac.jpg
 ||www.arghakhanchi.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-08-at-00.59.19_1a2cbf5b.jpg
 
@@ -790,6 +800,12 @@ hamrobiratnagar.com##.py-2.row
 hamrobiratnagar.com##.sn-ad
 ||hamrobiratnagar.com/content/upload/*.gif$image
 
+! hamrodes.com
+hamrodes.com##.pb-0.gray__box
+hamrodes.com##.wpra-rendered
+||hamrodes.com/*.gif$image
+||hamrodes.com/wp-content/uploads/*.gif$image
+
 ! hamroeconomy.com
 hamroeconomy.com##.widget
 ||hamroeconomy.com/*.gif$image
@@ -930,6 +946,10 @@ www.janapati.net##.col-xs-12.col-sm-3.col-md-3
 ! janasamsad.com
 janasamsad.com##[class*="_ads"]
 ||janasamsad.com/*.gif$image
+
+! janasawal.com
+www.janasawal.com##.widget
+||www.janasawal.com/*.gif$image
 
 ! janatatimes.com
 janatatimes.com##.adsimage
@@ -1416,6 +1436,12 @@ nepalbishesh.com##.follow-liked
 nepalbishesh.com##.social-media-icon-section
 ||nepalbishesh.com/*.gif$image
 
+! nepalbritain.com
+nepalbritain.com##.float-xl-none.top-right-content
+nepalbritain.com##.single-wrapper-details-sidebar-ads
+||nepalbritain.com/wp-content/uploads/*.gif$image
+||nepalbritain.com/wp-content/uploads/logo-3-1.png$image
+
 ! nepalclicks.com
 www.nepalclicks.com##.sc-ads
 ||www.nepalclicks.com/*.gif$image
@@ -1432,6 +1458,10 @@ nepalesediaspora.com##.ads
 ! nepalesetimes.com
 ||nepalesetimes.com/wp-content/uploads/*.gif$image
 ||nepalesetimes.com/wp-content/uploads/2024/08/add-3.png$image
+
+! nepalface.com
+nepalface.com##.text-center
+||nepalface.com/*.gif$image
 
 ! nepalijanta.com
 nepalijanta.com##.footer-socials
@@ -2018,6 +2048,11 @@ www.setopati.com##.whatsapp
 www.setopati.com##.whatspp
 ||setopati.com/*.gif$image
 
+! setopatra.com
+www.setopatra.com##.col-md-6.top-left-menu
+www.setopatra.com##body:remove-class(jacket-bigyaapan-open)
+||www.setopatra.com/*.gif$image
+
 ! shilapatra.com
 shilapatra.com##.modalbox
 ||shilapatra.com/*.gif$image
@@ -2084,6 +2119,12 @@ www.sutranews.com##div.uk-grid-stack.uk-grid.uk-text-center.uk-grid-medium.uk-fl
 ! taksarnews.com
 ||taksarnews.com/*.gif$image
 
+! techkagaj.com
+techkagaj.com##.custom-reaction-box-container
+techkagaj.com##.define-space
+techkagaj.com##.widget
+||techkagaj.com/*.gif$image
+
 ! techlekh.com
 techlekh.com###customShare
 techlekh.com###social-links
@@ -2143,6 +2184,10 @@ www.thenepaltop.com##.widget
 ! thuloparda.com
 www.thuloparda.com##.widget
 ||www.thuloparda.com/*.gif$image
+
+! tibrakhabar.com
+tibrakhabar.com##.hidden-xs.col-sm-6
+||tibrakhabar.com/*.gif$image
 
 ! tilottamacitynews.com
 tilottamacitynews.com##.ads
