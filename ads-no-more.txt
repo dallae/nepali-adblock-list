@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Version: 202504301911
+! Version: 202504302128
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 30 Apr 2025 19:11 UTC
-! Expires: 07 May 2025 19:11 UTC
+! Last modified: 30 Apr 2025 21:28 UTC
+! Expires: 07 May 2025 21:28 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -368,7 +368,7 @@ artharojgar.com##div.hot-news-ads
 ||onlinearthik.com/*.gif$image
 
 ! avenues.tv
-avenues.tv/*.gif$image
+||avenues.tv/*.gif$image
 
 ! baahrakhari.com
 baahrakhari.com##.modalbox
@@ -470,6 +470,10 @@ celebritynepal.com##.vce-ad-container
 celebritynepal.com##[id*="media_image"]
 ||celebritynepal.com/*.gif$image
 
+! chitwanpost.com.np
+www.chitwanpost.com.np##.tdm-social-item
+||www.chitwanpost.com.np/*.gif$image
+
 ! chotkari.com
 ||chotkari.com/*.gif$image
 
@@ -489,6 +493,10 @@ www.cinnepal.com##.widget_better-ads
 
 ! corporatenepal.com
 ||corporatenepal.com/*.gif$image
+
+! cricnepal.com
+www.cricnepal.com##.d-flex.list-unstyled
+||www.cricnepal.com/*.gif$image
 
 ! currentnepalnews.com
 ||currentnepalnews.com/*.gif$image
@@ -758,6 +766,10 @@ globalnagarik.com##.uk-visible\@s.uk-flex-right.uk-flex-middle.uk-flex.uk-width-
 globalnagarik.com##.widget
 ||globalnagarik.com/*.gif$image
 
+! globenepal.com
+globenepal.com##.widget
+||globenepal.com/*.gif$image
+
 ! goalnepal.com
 goalnepal.com##*[class*="adbox"]
 ||goalnepal.com/*.gif$image
@@ -895,12 +907,25 @@ himalpost.com##.widget
 ||himalpost.com/*.gif$image
 
 ! himalpress.com
+himalpress.com##.gam-ad-position-wrap
 ||himalpress.com/*.gif$image
+||himalpress.com/wp-content/plugins/gwt-roadblock-manager/css/grbm-frontend.css
+||himalpress.com/wp-content/plugins/gwt-roadblock-manager/js/grbm-frontend.js
 
 ! hulaksanchar.com
 hulaksanchar.com##.adds_menu
 hulaksanchar.com##.small-add
 ||hulaksanchar.com/*.gif$image
+
+! ichchhakamananews.com
+ichchhakamananews.com##.ads
+ichchhakamananews.com##div:nth-of-type(10)
+ichchhakamananews.com##div:nth-of-type(9)
+||ichchhakamananews.com/users_upload/*.gif$image
+||ichchhakamananews.com/users_upload/489308240_3099336780206977_8799007489015618288_n.jpg$image
+||ichchhakamananews.com/users_upload/ADBL%20board.png$image
+||ichchhakamananews.com/users_upload/cetral%20box.jpg$image
+||ichchhakamananews.com/users_upload/ratna%20nagar%20copy.jpg$image
 
 ! iconkhabar.com
 iconkhabar.com##.gofollow
@@ -949,6 +974,11 @@ www.janapati.net##.col-xs-12.col-sm-3.col-md-3
 ! janasamsad.com
 janasamsad.com##[class*="_ads"]
 ||janasamsad.com/*.gif$image
+
+! janasanchar.com
+www.janasanchar.com##.ads
+www.janasanchar.com##.widget
+||www.janasanchar.com/*.gif$image
 
 ! janasawal.com
 www.janasawal.com##.widget
@@ -999,6 +1029,12 @@ kailarionline.com##div.container > .mb-4
 www.kalakarmi.com##*.ads
 ||www.kalakarmi.com/*.gif$image
 ||www.kalakarmi.com/*Head*.jpg$image
+
+! kamanakhabar.com
+www.kamanakhabar.com###header-right
+www.kamanakhabar.com##.dashicons
+www.kamanakhabar.com##.size-full.attachment-full
+||www.kamanakhabar.com/*.gif$image
 
 ! kanakaikhabar.com
 kanakaikhabar.com##.elementor-widget-image
@@ -1208,6 +1244,15 @@ www.laphakhabar.com##.jk-each-ad
 ! lokaantar.com
 ||lokaantar.com/*.gif$image
 
+! lokatantraonline.com
+www.lokatantraonline.com###messagem
+www.lokatantraonline.com###pad
+www.lokatantraonline.com##.adds_side
+www.lokatantraonline.com##.addscc
+www.lokatantraonline.com##.size-full.wp-block-image
+www.lokatantraonline.com##.size-large.wp-block-image
+||www.lokatantraonline.com/*.gif$image
+
 ! lokkhabar.com
 www.lokkhabar.com##.ad
 www.lokkhabar.com##.dashicons-arrow-up-alt2
@@ -1297,6 +1342,14 @@ mechikali.com##.social_icon
 ! mediadabali.com
 mediadabali.com##.uk-text-right
 ||mediadabali.com/*.gif$image
+
+! merojilla.com
+www.merojilla.com###btnContainer
+www.merojilla.com###menu_dekhaune
+www.merojilla.com##.advertisement
+www.merojilla.com##.footer-four
+www.merojilla.com##.sk-author-social
+||www.merojilla.com/*.gif$image
 
 ! merokhel.com
 merokhel.com##.widget_media_image
@@ -1701,6 +1754,10 @@ www.onlinekhabar.com##.okam-ad-position-wrap
 www.onlinekhabar.com##.okam-device-desktop.flip-score-card-bottom.carousel
 www.onlinekhabar.com##.tribox-add
 
+! onlinemajdoor.com
+onlinemajdoor.com##.header-social-links
+||onlinemajdoor.com/*.gif$image
+
 ! onlinenepal.com
 onlinenepal.com##.ads
 onlinenepal.com##.uk-first-column.uk-width-auto\@m
@@ -1840,6 +1897,13 @@ pokharacity.com##.penci_social_widget.widget
 ||pokharacity.com/wp-content/uploads/*.gif$image
 ||pokharacity.com/wp-content/uploads/2022/06/pokharacityadd*.jpg$image
 
+! pokharanews.com
+www.pokharanews.com###btnContainer
+www.pokharanews.com##.advertisement
+www.pokharanews.com##.goji_alert.alert
+www.pokharanews.com##.wd-incnt-ads
+||live.adpokhara.com/*.gif$image
+
 ! postkhabar.com
 ||postkhabar.com/*.gif$image
 
@@ -1948,6 +2012,11 @@ reportersnepal.com##div.row:nth-of-type(14)
 ! republicadainik.com
 www.republicadainik.com##.pull-center.nomargin
 ||www.republicadainik.com/*.gif$image
+
+! sabaikosamachar.com
+sabaikosamachar.com##.kp-between-content-grid--vigyapan
+sabaikosamachar.com##.size-full.wp-block-image
+||sabaikosamachar.com/wp-content/uploads/*.gif$image
 
 ! sabastaentertainment.com
 sabastaentertainment.com##.widget
