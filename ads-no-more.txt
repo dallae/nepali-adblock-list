@@ -368,7 +368,7 @@ artharojgar.com##div.hot-news-ads
 ||onlinearthik.com/*.gif$image
 
 ! avenues.tv
-avenues.tv/*.gif$image
+||avenues.tv/*.gif$image
 
 ! baahrakhari.com
 baahrakhari.com##.modalbox
