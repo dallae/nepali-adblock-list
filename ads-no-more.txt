@@ -1825,13 +1825,11 @@ nepalmamila.com##.post_share_count
 nepalmamila.com##.single-post-advertisement
 ||nepalmamila.com/*.gif$image
 
-! nepalmanch
-nepalmanch.com/*.gif$image
-
 ! nepalmanch.com
 nepalmanch.com##+js(set-constant, document.body.classList.remove, 'modal-open')
 nepalmanch.com##.show.modal
 nepalmanch.com##.show.modal-backdrop
+||nepalmanch.com/*.gif$image
 
 ! nepalmother.com
 nepalmother.com###black-studio-tinymce-13 > .textwidget > p
