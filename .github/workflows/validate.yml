@@ -40,7 +40,7 @@ jobs:
           fi
 
           # Check for duplicates (case-insensitive, ignore comments and scriptlets)
-          DUPLICATES=$(grep -vE '^[!\[#]' ads-no-more.txt | sort -f | uniq -id)
+          DUPLICATES=$(grep -vE '^[!\[#]' ads-no-more.txt | sort | uniq -d)
           if [ -n "$DUPLICATES" ]; then
             echo "❌ Case-insensitive duplicates found:"
             echo "$DUPLICATES"
