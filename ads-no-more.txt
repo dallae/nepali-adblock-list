@@ -2368,9 +2368,6 @@ www.samadhannews.com##.y
 www.samadhannews.com##[class*="_lk"]
 ||www.samadhannews.com/wp-content/uploads/*.gif$image
 
-! samajikpatra
-||samajikpatra.com/*.gif$image
-
 ! samajikpatra.com
 samajikpatra.com##.uk-icon
 ||samajikpatra.com/*.gif$image
