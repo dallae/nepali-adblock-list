@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Version: 202505022337
+! Version: 202506102031
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 02 May 2025 23:37 UTC
-! Expires: 09 May 2025 23:37 UTC
+! Last modified: 10 Jun 2025 20:31 UTC
+! Expires: 17 Jun 2025 20:31 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -249,6 +249,10 @@ www.abhiyanhamro.com##[href="https://www.facebook.com/classichulo"]
 www.abhiyanhamro.com##a:nth-of-type(3)
 
 ! abhiyanweekly.com.np
+abhiyanweekly.com.np##.addtoany_content
+abhiyanweekly.com.np##.pads-image-adds
+abhiyanweekly.com.np##.widget_media_image
+||abhiyanweekly.com.np/*.gif$image
 ||abhiyanweekly.com.np/wp-content/uploads/*.gif$image
 
 ! abpcrimenews.com
@@ -256,6 +260,7 @@ abpcrimenews.com##.samachar-side-ads
 ||abpcrimenews.com/*.gif$image
 
 ! accuratekhabar.com
+||accuratekhabar.com/*.gif$image
 ||i0.wp.com/accuratekhabar.com/wp-content/uploads/*.gif$image
 ||i0.wp.com/accuratekhabar.com/wp-content/uploads/2024/02/*.webp$image
 
@@ -265,12 +270,15 @@ activemedianepal.com##+js(remove-attr, style, body:style)
 activemedianepal.com##+js(remove-class, modal-open, body)
 activemedianepal.com##.banner-image
 activemedianepal.com##.show.fade.modal-backdrop
+activemedianepal.com##div.col-md-4:nth-of-type(3)
 activemedianepal.com##section.pb-40.pt-50:nth-of-type(1)
+||activemedianepal.com/*.gif$image
 ||activemedianepal.com/images/advertisements/*.gif$image
 ||activemedianepal.com/images/advertisements/*.jpg$image
 
 ! actpronepal.com
 actpronepal.com##.small-ad
+actpronepal.com##.widget
 ||actpronepal.com/*.gif$image
 ||actpronepal.com/*.webp$image
 
@@ -279,6 +287,13 @@ advancekhabar.com##.penci-social-counter
 advancekhabar.com##.penci-social-share-footer
 advancekhabar.com##.topbar__social-media
 ||advancekhabar.com/*.gif$image
+
+! agnijwala.com
+@@agnijwala.com/wp-content/uploads/2024/08/logo-1.gif$image
+agnijwala.com###ouibounce-modal
+agnijwala.com##.advertise-top
+agnijwala.com##.modal
+||agnijwala.com/*.gif$image
 
 ! agnisamachar.com
 agnisamachar.com###bs-likebox-2
@@ -291,6 +306,17 @@ agnisamachar.com##.sktaxdqu-post-bottom
 ||agnisamachar.com/wp-content/uploads/2023/07/Lotus.jpg$image
 ||agnisamachar.com/wp-content/uploads/2024/08/Agni-Offset-Press-scaled-1.jpg$image
 ||agnisamachar.com/wp-content/uploads/2024/09/kailari-gaupalika-suchana.jpg$image
+
+! agranikhabar.com
+agranikhabar.com##.fb-share-button
+agranikhabar.com##.navbar-top-right-menu
+agranikhabar.com##div.col-lg-12.col-sm-12:nth-of-type(7)
+||agranikhabar.com/*.gif$image
+
+! aguwaonline.com
+aguwaonline.com##.advertisement
+aguwaonline.com##.follow
+||aguwaonline.com/*.gif$image
 
 ! ajakoartha.com
 ||ajakoartha.cdnsolution.net/*.gif$image
@@ -519,6 +545,10 @@ celebritynepal.com##.vce-ad-container
 celebritynepal.com##[id*="media_image"]
 ||celebritynepal.com/*.gif$image
 
+! chautarikhabar.com
+www.chautarikhabar.com##.widget
+||chautarikhabar.com/*.gif$image
+
 ! chitwanpost.com.np
 www.chitwanpost.com.np##.tdm-social-item
 ||www.chitwanpost.com.np/*.gif$image
@@ -741,6 +771,8 @@ epratibimba.com##.single-post-advertisement
 eraibar.com##.share_title_box
 eraibar.com##.size-large.wp-block-image
 eraibar.com##.tajaupdate.block-wrapper > div.container
+eraibar.com##.wp-image-27840
+eraibar.com##.wp-image-37158
 ||eraibar.com/wp-content/uploads/*.gif$image
 
 ! eranimahal.com
@@ -934,6 +966,12 @@ hamrokantipur.com##.size-full.attachment-full.wp-image-72545.image
 @@hamrokhotang.com/wp-content/uploads/2020/04/hamrokhotang.gif$image
 hamrokhotang.com##.td-is-sticky.td-pb-span4.tdc-column.vc_column_container.wpb_column.tdi_59.vc_column
 ||hamrokhotang.com/*.gif$image
+
+! hamromat.com
+hamromat.com##.sgpb-popup-dialog-main-div-wrapper
+hamromat.com##.sgpb-popup-overlay.sgpb-popup-overlay-95567.sgpb-theme-1-overlay
+hamromat.com##.widget
+||hamromat.com/*.gif$image
 
 ! hamropatro.com
 ||www.hamropatro.com/*.gif$image
@@ -1145,6 +1183,10 @@ jeetpurkhabar.com##.widget_media_image.widget_block
 kagajpatra.com##.proad
 ||kagajpatra.com/*.gif$image
 ||kagajpatra.com/*.mp4$media
+
+! kageshworikhabar.com
+kageshworikhabar.com##.td-scroll-up-visible.td-hide-scroll-up-on-mob.td-scroll-up
+||kageshworikhabar.com/*.gif$image
 
 ! kailarionline.com
 kailarionline.com##.mt-4.row
@@ -1409,6 +1451,12 @@ lekhajokhanews.com##.ads
 lekhajokhanews.com##.py-1 > .uk-container
 lekhajokhanews.com##.size-full.attachment-full
 ||lekhajokhanews.com/*.gif$image
+
+! lekhnathkhabar.com
+lekhnathkhabar.com##.jeg_share_button
+lekhnathkhabar.com##.socials_widget
+lekhnathkhabar.com##div.vc_grid-item-mini
+||lekhnathkhabar.com/*.gif$image
 
 ! lokaantar.com
 ||lokaantar.com/*.gif$image
@@ -2178,6 +2226,12 @@ prabhatpheri.com.np##.social
 prabhavnews.com##.uk-alert
 ||prabhavnews.com/users_upload/*.gif$image
 
+! pradeshdainik.com
+pradeshdainik.com##.nav-ul-li > ul > li
+pradeshdainik.com##.sd-sharing
+pradeshdainik.com##.widget
+||pradeshdainik.com/*.gif$image
+
 ! pradeshportal.com
 pradeshportal.com##.widget
 ||pradeshportal.com/*.gif$image
@@ -2739,6 +2793,12 @@ www.ukaalo.com##div.col-3.col-xs-3.col-sm-3.col-md-3.col-lg-3.col-xl-3.col-xxl-3
 
 ! ukeraa.com
 ||www.ukerra.com/*.gif$image
+
+! upaharkhabar.com
+upaharkhabar.com###esn_ad-14
+upaharkhabar.com###esn_ad-20
+upaharkhabar.com##.widget_esn_ad
+||upaharkhabar.com/*.gif$image
 
 ! uskhabar.com
 uskhabar.com##.widget_media_image
