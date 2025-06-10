@@ -22,7 +22,7 @@ jobs:
     # Only run on push events by dallae and not on pull_request events
     if: github.event_name == 'push' && github.actor == 'dallae'
     outputs:
-      pr_number: ${{ fromJSON(steps.create-pr.outputs.result).pr_number }}
+      pr_number: ${{ fromJSON(steps.create-pr.outputs.result || '{}').pr_number }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -48,7 +48,7 @@ jobs:
               });
               
               console.log(`PR #${pr.number} created successfully`);
-              return { pr_number: pr.number };
+              return { result: JSON.stringify({ pr_number: pr.number }) };
             } catch (error) {
               if (error.message.includes('A pull request already exists')) {
                 console.log('A pull request for this branch already exists');
