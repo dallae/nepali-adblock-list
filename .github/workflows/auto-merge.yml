@@ -5,7 +5,7 @@ on:
     types: [opened, reopened, synchronize]
   push:
     branches-ignore:
-      - main
+      - main  # Ignore pushes to main to prevent infinite loops
 
 permissions:
   contents: write
@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.actor == 'dallae'
     outputs:
-      pr_number: ${{ fromJSON(steps.create-pr.outputs.result || '{}').pr_number }}
+      pr_number: ${{ steps.create-pr.outputs.pr_number }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -30,44 +30,47 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const branch = context.ref.replace('refs/heads/', '');
-            console.log(`Creating PR from branch: ${branch}`);
-            
-            try {
-              const { data: pr } = await github.rest.pulls.create({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                title: `Auto PR: Merge ${branch} into main`,
-                head: branch,
-                base: 'main',
-                body: 'This PR was automatically created by the Auto-PR workflow.',
-                maintainer_can_modify: true
-              });
-              return { result: JSON.stringify({ pr_number: pr.number }) };
-            } catch (error) {
-              if (error.message.includes('A pull request already exists')) {
-                const { data: prs } = await github.rest.pulls.list({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  head: `${context.repo.owner}:${branch}`,
-                  base: 'main',
-                  state: 'open'
-                });
-                if (prs.length > 0) {
-                  return { result: JSON.stringify({ pr_number: prs[0].number }) };
-                } else {
-                  throw new Error('Could not find existing PR');
-                }
-              } else {
-                throw error;
-              }
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            console.log(`Checking for existing PR from branch: ${branch} to main`);
+
+            // Look for existing open PRs from this branch
+            const { data: prs } = await github.rest.pulls.list({
+              owner,
+              repo,
+              state: 'open',
+              head: `${owner}:${branch}`,
+              base: 'main'
+            });
+
+            if (prs.length > 0) {
+              const existingPR = prs[0];
+              console.log(`✅ Found existing PR #${existingPR.number}`);
+              return { pr_number: existingPR.number };
             }
+
+            // No existing PR found, create one
+            console.log(`No existing PR found. Creating new PR from ${branch} to main`);
+            const { data: newPR } = await github.rest.pulls.create({
+              owner,
+              repo,
+              title: `Auto PR: Merge ${branch} into main`,
+              head: branch,
+              base: 'main',
+              body: 'This PR was automatically created by the Auto-PR workflow.',
+              maintainer_can_modify: true
+            });
+
+            console.log(`✅ Created new PR #${newPR.number}`);
+            return { pr_number: newPR.number };
 
   auto-merge:
     runs-on: ubuntu-latest
-    if: |
-      (github.event_name == 'pull_request' && github.event.pull_request.user.login == 'dallae') || 
-      (github.event_name == 'push' && github.actor == 'dallae')
     needs: [auto-pr]
+    if: |
+      (github.event_name == 'pull_request' && github.event.pull_request.user.login == 'dallae') ||
+      (github.event_name == 'push' && github.actor == 'dallae')
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -85,21 +88,30 @@ jobs:
             echo "No PR number available to merge."
             exit 1
           fi
+          echo "Pull Request Number: $PR_NUMBER"
+          echo "Commit SHA: $PR_HEAD_SHA"
 
       - name: Diagnose Initial Status Checks
+        id: diagnostics
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const prNumber = process.env.PR_NUMBER;
+            const prNumber = process.env.PR_NUMBER || context.payload.pull_request?.number;
+            if (!prNumber) {
+              console.log("No PR number available yet");
+              return;
+            }
+
             const { data: pr } = await github.rest.pulls.get({
               owner: context.repo.owner,
               repo: context.repo.repo,
               pull_number: prNumber
             });
 
-            console.log(`PR Mergeable: ${pr.mergeable}`);
-            console.log(`Mergeable State: ${pr.mergeable_state}`);
+            console.log("\nPR Mergeable Status (Initial Check):");
+            console.log(`- Mergeable: ${pr.mergeable}`);
+            console.log(`- Mergeable State: ${pr.mergeable_state}`);
 
             const refToCheck = process.env.PR_HEAD_SHA || pr.head.sha;
             const { data: checks } = await github.rest.checks.listForRef({
@@ -108,9 +120,14 @@ jobs:
               ref: refToCheck
             });
 
-            console.log(`Total check runs: ${checks.total_count}`);
-            for (const check of checks.check_runs) {
-              console.log(`- ${check.name}: ${check.status} (${check.conclusion || 'N/A'})`);
+            console.log(`\nTotal check runs found: ${checks.total_count}`);
+            if (checks.check_runs.length > 0) {
+              console.log("Initial Check Run Statuses:");
+              for (const check of checks.check_runs) {
+                console.log(`- ${check.name}: ${check.status} (${check.conclusion || 'N/A'})`);
+              }
+            } else {
+              console.log("No check runs found yet for this ref.");
             }
 
             try {
@@ -119,18 +136,19 @@ jobs:
                 repo: context.repo.repo,
                 branch: pr.base.ref
               });
-              if (branch.protection?.required_status_checks) {
-                console.log("Required Status Checks:");
+              if (branch.protection && branch.protection.required_status_checks) {
+                console.log("\nRequired Status Checks Found:");
                 console.log(`- Strict: ${branch.protection.required_status_checks.strict}`);
                 console.log(`- Contexts: ${JSON.stringify(branch.protection.required_status_checks.contexts)}`);
               } else {
-                console.log("No required status checks set.");
+                console.log("\nNo required status checks found in branch protection.");
               }
             } catch (error) {
-              console.log("Error fetching branch protection:", error.message);
+              console.log("\nError fetching branch protection rules:", error.message);
             }
 
       - name: Wait for Validate Check to Succeed
+        id: wait_for_validate
         uses: lewagon/wait-on-check-action@v1.3.1
         with:
           check-name: 'validate'
@@ -148,56 +166,81 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
+            // Rename core to avoid redeclaration conflicts
+            const actionsCore = require('@actions/core');
             const prNumber = process.env.PR_NUMBER;
-            const { data: pr } = await github.rest.pulls.get({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: prNumber
-            });
-
-            const headBranchRef = pr.head.ref;
-
-            if (pr.mergeable !== true || ['blocked', 'dirty'].includes(pr.mergeable_state)) {
-              const msg = `❌ Auto-merge aborted: PR not mergeable. State: ${pr.mergeable_state}`;
-              console.log(msg);
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: prNumber,
-                body: msg
-              });
-              core.setFailed(msg);
+            if (!prNumber) {
+              console.error("No PR number available to merge");
+              actionsCore.setFailed("No PR number available to merge");
               return;
             }
 
-            const { data: mergeResult } = await github.rest.pulls.merge({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: prNumber,
-              merge_method: 'rebase'
-            });
-
-            console.log(`✅ PR #${prNumber} merged. SHA: ${mergeResult.sha}`);
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: prNumber,
-              body: '✅ Auto-merged after required checks passed.'
-            });
+            console.log(`Attempting to merge PR #${prNumber} after required checks passed.`);
 
             try {
-              await github.rest.git.deleteRef({
+              const { data: pr } = await github.rest.pulls.get({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                ref: `heads/${headBranchRef}`
+                pull_number: prNumber
               });
-              console.log(`🚮 Deleted branch: ${headBranchRef}`);
-            } catch (err) {
-              console.warn(`⚠️ Failed to delete branch: ${err.message}`);
+              const headBranchRef = pr.head.ref;
+
+              if (pr.mergeable !== true || pr.mergeable_state === 'blocked' || pr.mergeable_state === 'dirty') {
+                const message = `❌ Auto-merge aborted. PR became unmergeable just before merge attempt. State: ${pr.mergeable_state}`;
+                console.error(message);
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: prNumber,
+                  body: message
+                });
+                actionsCore.setFailed(message);
+                return;
+              }
+
+              const { data: mergeResult } = await github.rest.pulls.merge({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: prNumber,
+                merge_method: 'rebase'
+              });
+
+              console.log('PR merged successfully!');
+              console.log(`Message: ${mergeResult.message}`);
+              console.log(`SHA: ${mergeResult.sha}`);
+
               await github.rest.issues.createComment({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: prNumber,
-                body: `⚠️ PR merged, but failed to delete branch \`${headBranchRef}\`. Please delete manually.`
+                body: '✅ This PR was automatically merged by the Auto-Merge workflow because it was created by the repository owner and required checks passed.'
               });
+
+              // Delete branch
+              console.log(`Attempting to delete 🚮 branch: ${headBranchRef}`);
+              try {
+                await github.rest.git.deleteRef({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  ref: `heads/${headBranchRef}`
+                });
+                console.log(`Successfully deleted branch: ${headBranchRef}`);
+              } catch (deleteError) {
+                console.warn(`Could not delete branch ${headBranchRef}: ${deleteError.message}`);
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: prNumber,
+                  body: `⚠️ PR merged, but failed to automatically delete branch \`${headBranchRef}\`. It may need to be deleted manually. Error: ${deleteError.message}`
+                });
+              }
+            } catch (error) {
+              console.error('Failed to merge PR:', error.message);
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber,
+                body: `❌ Auto-merge failed: ${error.message}`
+              });
+              actionsCore.setFailed(error.message);
             }
