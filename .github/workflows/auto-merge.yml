@@ -70,7 +70,7 @@ jobs:
     needs: [auto-pr]
     if: |
       (github.event_name == 'pull_request' && github.event.pull_request.user.login == 'dallae') ||
-      (github.event_name == 'push' && github.actor == 'dallae')
+      (github.event_name == 'push' && github.actor == 'dallae' && needs.auto-pr.outputs.pr_number)
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
