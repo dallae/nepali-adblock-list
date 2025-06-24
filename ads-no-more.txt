@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Version: 202506102031
+! Version: 202506240459
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 10 Jun 2025 20:31 UTC
-! Expires: 17 Jun 2025 20:31 UTC
+! Last modified: 24 Jun 2025 04:59 UTC
+! Expires: 01 Jul 2025 04:59 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -318,11 +318,66 @@ aguwaonline.com##.advertisement
 aguwaonline.com##.follow
 ||aguwaonline.com/*.gif$image
 
+! ainakhabar.com
+ainakhabar.com##.adsimage
+ainakhabar.com##.widget
+||ainakhabar.com/wp-content/uploads/*.gif$image
+||i0.wp.com/ainakhabar.com/wp-content/uploads/*.gif$image
+
+! airawatiupdate.com
+airawatiupdate.com##.banner__ads
+airawatiupdate.com##.posts__banner__ads
+airawatiupdate.com##.sidebar__ads
+||airawatiupdate.com/*.gif$image
+
 ! ajakoartha.com
+www.ajakoartha.com##.a-social-link
+www.ajakoartha.com##.adv-item
+www.ajakoartha.com##.dnn-ad-placeholder
 ||ajakoartha.cdnsolution.net/*.gif$image
+||www.ajakoartha.com/*.gif$image
+
+! akhabardainik.com
+akhabardainik.com###skip-advertisement
+akhabardainik.com##.ads
+akhabardainik.com##.disabled.page-item
+akhabardainik.com##.share-count
+akhabardainik.com##.uk-first-column.uk-visible\@l.uk-width-1-5.uk-width-1-3\@m
+||akhabardainik.com/users_upload/*.gif$image
 
 ! akhabarhub.com
 ||akhabarhub.com/*.gif$image
+
+! akhabarnepal.com
+www.akhabarnepal.com###content_section > .row > .col-md-3
+www.akhabarnepal.com##.footer-social
+www.akhabarnepal.com##div.mb20.videos > div
+||www.aksharpost.com/*.gif$image
+
+! aksanchar.com
+aksanchar.com###ouibounce-modal
+aksanchar.com##.widget
+||aksanchar.com/wp-content/uploads/*.gif$image
+
+! aksharpost.com
+aksharpost.com##.ads
+||aksharpost.com/*.gif$image
+
+! alagpath.com
+alagpath.com##.ct-comments-container
+alagpath.com##.is-layout-flow.entry-content > div.n2_clear
+alagpath.com##.style-classic.after_content.shared-counts-wrap
+||alagpath.com/*.gif$image
+
+! alliancekhabar.com
+www.alliancekhabar.com##.advertisesidebar
+||www.alliancekhabar.com/*.gif$image
+
+! amazingnepalmedia.com
+amazingnepalmedia.com##.banner__ads
+amazingnepalmedia.com##.p-0.col-md-5.col-lg-5
+amazingnepalmedia.com##.top__advertisement
+||amazingnepalmedia.com/wp-content/uploads/*.gif$image
 
 ! anmolkhabar.com
 www.anmolkhabar.com##.ad
@@ -678,6 +733,10 @@ ebikalpadainik.com##.sgpb-popup-overlay.sgpb-popup-overlay-42352.sgpb-theme-1-ov
 economistnepal.com##.ads
 economistnepal.com##.img-reponsive
 ||economistnepal.com/*.gif$image
+
+! edusanjal.com
+||media.edusanjal.com/*.gif$image
+||media.edusanjal.com/*.webp$image
 
 ! ehimalayatimes.com
 ehimalayatimes.com##.hide-has-labels
