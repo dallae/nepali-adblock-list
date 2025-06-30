@@ -555,6 +555,7 @@ www.bizkhabar.com##.widget
 ! bizmandu.com
 bizmandu.com###__roadblock__
 bizmandu.com##*[class*="-ad"]
+bizmandu.com##.mobile-site.banner
 bizmandu.com##.share-button
 bizmandu.com##.sticky-bottom
 ||bizmandu.com/*.gif$image
