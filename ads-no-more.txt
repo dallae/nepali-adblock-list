@@ -676,6 +676,8 @@ www.deshkonews.com##.widget
 ||www.deshkonews.com/*.gif$image
 
 ! deshsanchar.com
+deshsanchar.com##[href="https://deshsanchar.com/2024/07/17/938111/"]
+deshsanchar.com##.advertise-wrap
 deshsanchar.com##.code-block
 deshsanchar.com##.cube-container
 deshsanchar.com##.footer__social-media-list
