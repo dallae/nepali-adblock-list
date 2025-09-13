@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Version: 202506240459
+! Version: 202509121221
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 24 Jun 2025 04:59 UTC
-! Expires: 01 Jul 2025 04:59 UTC
+! Last modified: 12 Sep 2025 12:21 UTC
+! Expires: 19 Sep 2025 12:21 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -558,6 +558,7 @@ bizmandu.com##*[class*="-ad"]
 bizmandu.com##.mobile-site.banner
 bizmandu.com##.share-button
 bizmandu.com##.sticky-bottom
+||bizmandu.com/wp-content/uploads/2025/06/Bizmandu_960X120-copy.jpg$image
 ||bizmandu.com/*.gif$image
 
 ! biznessnews.com
@@ -678,6 +679,7 @@ www.deshkonews.com##.widget
 deshsanchar.com##.code-block
 deshsanchar.com##.cube-container
 deshsanchar.com##.footer__social-media-list
+deshsanchar.com##.sp-advertise-section
 deshsanchar.com##.widget
 ||assets.deshsanchar.com/*/*.gif$image
 
@@ -2844,6 +2846,7 @@ ujyaaloonline.com##.instagram-media
 ||ujyalokhabar.com/*.gif$image
 
 ! ukaalo.com
+www.ukaalo.com##[src="/media/donateblock/image/subscribe-banner-shorts.png"]
 www.ukaalo.com###ContentPlaceHolder1_socialMediaIconbottom
 www.ukaalo.com###ContentPlaceHolder1_socialsharer
 www.ukaalo.com##div.col-3.col-xs-3.col-sm-3.col-md-3.col-lg-3.col-xl-3.col-xxl-3:nth-of-type(3)
