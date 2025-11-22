@@ -1968,6 +1968,7 @@ www.nepalpress.com###primary > .section-np-space > .uk-container
 www.nepalpress.com##*[class*="npad"]
 www.nepalpress.com##.live-broadcast
 www.nepalpress.com##.roadblock
+www.nepalpress.com##+js(set-constant, document.body.classList, { add: noopFunc })
 ||www.nepalpress.com/*.gif$image
 
 ! nepalpurbadhar.com
