@@ -1966,10 +1966,12 @@ nepalplus.com##[href="https://vastika.com"]
 
 ! nepalpress.com
 www.nepalpress.com###primary > .section-np-space > .uk-container
+nepalpress.com##.bannerSticky
 www.nepalpress.com##*[class*="npad"]
 www.nepalpress.com##.live-broadcast
 www.nepalpress.com##.roadblock
-nepalpress.com/wp-content/plugins/gwt-roadblock-manager/js/grbm-frontend.js
+nepalpress.com##.single-inbetweenstories-2
+||nepalpress.com/wp-content/plugins/gwt-roadblock-manager/js/grbm-frontend.js
 ||www.nepalpress.com/*.gif$image
 
 ! nepalpurbadhar.com
