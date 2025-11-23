@@ -924,6 +924,10 @@ www.filmykhabar.com##div[style*="margin: 10px 0px 10px 0px"]
 www.filmykhabar.com##div[style*="width: 670px; height: 180px; margin-top: 16px;"]
 ||www.filmykhabar.com/*.gif$image
 
+! gadgetbytenepal.com
+||www.gadgetbytenepal.com/images/ads/*.jpeg$image
+||www.gadgetbytenepal.com/images/ads/*.gif$image
+
 ! gandakichhadke.com
 www.gandakichhadke.com##.advertisement
 www.gandakichhadke.com##.goji-reactions-box
