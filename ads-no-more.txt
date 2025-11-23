@@ -455,6 +455,22 @@ arthakendra.com##[class="rounded-[5px] w-full h-full"]
 www.arthapath.com##.widget
 ||www.arthapath.com/*.gif$image
 
+! arthasansar.com
+arthasansar.com##+js(abort-on-property-read, autoCloseTime)
+arthasansar.com##+js(abort-on-property-write, autoCloseTime)
+arthasansar.com##+js(remove-class, modal-open, body)
+arthasansar.com##+js(set-constant, document.body.classList.remove, 'modal-load')
+arthasansar.com###roadBlock
+arthasansar.com##.ad
+arthasansar.com##.content-advertisement
+arthasansar.com##.content-mid-advertisement
+arthasansar.com##.modal-backdrop
+arthasansar.com##.modal.fade
+arthasansar.com##.top__ad
+arthasansar.com##div[id="roadBlock"]
+arthasansar.com##script[type="b3c5d7657eeb548be11614ac-text/javascript"]:has-text(roadBlock)
+||arthasansar.com/*.gif$image
+
 ! artharojgar.com
 artharojgar.com##.flex-container
 artharojgar.com##.reaction_title
