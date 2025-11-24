@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Version: 202509121221
+! Version: 202511230700
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 12 Sep 2025 12:21 UTC
-! Expires: 19 Sep 2025 12:21 UTC
+! Last modified: 23 Nov 2025 07:00 UTC
+! Expires: 30 Nov 2025 07:00 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -505,6 +505,12 @@ baghpailanews.com##.adv-box-wrap
 baghpailanews.com##.advertise
 ||baghpailanews.com/*.gif$image
 
+! bajarkochirfar.com
+bajarkochirfar.com##.lh-ads
+bajarkochirfar.com###popup
+bajarkochirfar.com##.lh-ads-text
+||bajarkochirfar.com/wp-content/uploads/*.gif$image
+
 ! bankepost.com
 bankepost.com##.size-large.wp-block-image
 ||bankepost.com/*.gif$image
@@ -524,6 +530,10 @@ www.beemapost.com##.ad
 ! bethanchokkhabar.com
 www.bethanchokkhabar.com##*[class*="__ad"]
 ||bethanchokkhabar.com/*.gif$image
+
+! bfisnews.com
+bfisnews.com##.banner-add
+||bfisnews.com/*.gif$image
 
 ! bhanjyangnews.com
 bhanjyangnews.com##.facebook-widget
@@ -581,6 +591,10 @@ bizmandu.com##.sticky-bottom
 ! biznessnews.com
 biznessnews.com##.ads
 ||biznessnews.com/*.gif$image
+
+! biznessviews.com
+biznessviews.com##.widget
+||biznessviews.com/wp-content/*.gif$image
 
 ! bizpati.com
 bizpati.com##.btn.recent-news
@@ -715,6 +729,11 @@ dhangadhikhabar.com##.foot-social
 ! dharananews.com
 dharananews.com##.ads-wrapper
 ||dharananews.com/*.gif$image
+
+! digitalarthanews.com
+www.digitalarthanews.com###avenews_social_menu-1
+www.digitalarthanews.com###avenews_social_menu-4
+||www.digitalarthanews.com/wp-content/uploads/*.gif$image
 
 ! digitalkhabar.com
 www.digitalkhabar.com###avenews_social_menu-1
@@ -861,6 +880,9 @@ eranimahal.com##.elementor-popup-modal.dialog-type-lightbox.dialog-type-buttons.
 eranimahal.com##.elementor-widget-share-buttons
 eranimahal.com##.elementor-widget-shortcode
 
+! equitynepal.com
+equitynepal.com##.widget_esn_ad
+
 ! erukum.com
 ||erukum.com/*.gif$image
 
@@ -923,6 +945,12 @@ www.filmykhabar.com##div[style*="margin-top: 16px; height: 80px; padding: 4px;"]
 www.filmykhabar.com##div[style*="margin: 10px 0px 10px 0px"]
 www.filmykhabar.com##div[style*="width: 670px; height: 180px; margin-top: 16px;"]
 ||www.filmykhabar.com/*.gif$image
+
+! financialnotices.com
+www.financialnotices.com##.ads
+www.financialnotices.com##.contactads
+||www.financialnotices.com/pagegallery/*ad*.png$image
+||www.financialnotices.com/*.gif$image
 
 ! gadgetbytenepal.com
 ||www.gadgetbytenepal.com/images/ads/*.jpeg$image
@@ -1014,6 +1042,11 @@ hamrakura.com##*.d-block
 hamrakura.com##.loaded.float_news--title
 ||hamrakura.com/*.gif$image
 ||hamrakura.com/uploads/advertisement/*/$image
+
+! hamroartha.com
+hamroartha.com##.advertisement
+hamroartha.com##.mb-3.uk-grid-small.uk-child-width-1-2\@s.uk-child-width-1-3\@m.uk-grid
+||hamroartha.com/users_upload/*.gif$image
 
 ! hamrobazaar.com
 hamrobazaar.com##.inBetweenAds
@@ -1518,6 +1551,10 @@ ktmdainik.com##.list-inline
 ktmdainik.com##.uk-grid.uk-flex-middle
 ||ktmdainik.com/*.gif$image
 
+! ktmkhabar.com
+ktmkhabar.com##.ads
+||ktmkhabar.com/wp-content/*.gif$image
+
 ! kusenews.com
 kusenews.com##.widget-header
 ||kusenews.com/*.gif$image
@@ -1804,9 +1841,11 @@ nayapananews.com##.follow-us
 
 ! nayapatrikadaily.com
 nayapatrikadaily.com##.emo-wrap
+nayapatrikadaily.com##.details-advdesktop
 nayapatrikadaily.com##.social-media
 nayapatrikadaily.com##[src="https://nayapatrikadaily.com/assets/img/facebook-emoji-reactions.gif"]
 ||nayapatrikadaily.com/*.gif$image
+
 
 ! nayapusta.com
 nayapusta.com###brcluifm-4 > .no-bg-box-model.brcluifm-clearfix.brcluifm-column-1.brcluifm-align-center.brcluifm
@@ -2184,6 +2223,9 @@ www.osnepal.com##.ftrsocialicon
 www.osnepal.com##.size-medium
 ||www.osnepal.com/wp-content/uploads/*.gif$image
 
+! otvnepal.com
+||otvnepal.com/wp-content/uploads/*.gif$image
+
 ! ourbiratnagar.net
 ourbiratnagar.net##+js(set-constant, document.body.classList.remove, 'modal-open')
 ourbiratnagar.net##.av_block
@@ -2412,6 +2454,10 @@ reportersnepal.com##div.row:nth-of-type(14)
 ! republicadainik.com
 www.republicadainik.com##.pull-center.nomargin
 ||www.republicadainik.com/*.gif$image
+
+! resunganews.com
+resunganews.com##.rightadverimg
+resunganews.com##.top-right-adver
 
 ! sabaikosamachar.com
 sabaikosamachar.com##.kp-between-content-grid--vigyapan
@@ -2935,6 +2981,9 @@ www.whitekhabar.com##.np_ads_palce
 ! widenepalnews.com
 widenepalnews.com##.add-wrap
 ||widenepalnews.com/*.gif$image
+
+! wnepal.com
+||wnepal.com/wp-content/uploads/*.gif$image
 
 ! worldwidetvnepal.com
 worldwidetvnepal.com##.mb20.videos .heading_title_bg.heading_title > .color-red > .block-title [href]
