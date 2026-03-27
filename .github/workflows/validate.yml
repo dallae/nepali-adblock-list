@@ -56,7 +56,6 @@ jobs:
 
           # ----- 4. Duplicate detection (fixed) -----
           echo "✓ Checking for duplicates..."
-          # Create a temporary file to store normalized rule -> line numbers
           tmp_map="${{ runner.temp }}/duplicate_map.txt"
           > "$tmp_map"
 
@@ -90,8 +89,10 @@ jobs:
             }
           }' > "${{ runner.temp }}/duplicates.txt"
 
+          # Print duplicates to console if any
           if [[ -s "${{ runner.temp }}/duplicates.txt" ]]; then
-            echo "❌ Case-insensitive duplicate rules found (see above)"
+            echo "❌ Case-insensitive duplicate rules found:"
+            cat "${{ runner.temp }}/duplicates.txt"
             exit 1
           fi
 
