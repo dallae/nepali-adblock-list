@@ -9,60 +9,114 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    concurrency:
+      group: validate-${{ github.ref }}
+      cancel-in-progress: true
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Validate Adblock Syntax
+      - name: Validate Adblock Syntax & Rules
+        id: validation
         run: |
-          # Allow: [Adblock header], standard rules (!, ||, ##), scriptlets (##+js), and element hiding
-          INVALID_LINES=$(grep -vE '^(\[Adblock.*\]|!|@@|\|\||##\+js\(|##|#|\s*$)|^[^#!]+?##' ads-no-more.txt || true)
-          if [ -n "$INVALID_LINES" ]; then
-            echo "❌ Invalid syntax found. Valid patterns:"
-            echo "  - Header: [Adblock Plus 2.0]"
-            echo "  - Comments: ! ... (must not start with 'www')"
-            echo "  - Blocking rules: ||domain.com/path"
-            echo "  - Element hiding: ##selector or domain.com##selector"
-            echo "  - Scriptlets: ##+js(...)"
-            echo "  - Exceptions: @@||domain.com"
-            echo "Invalid lines:"
-            echo "$INVALID_LINES"
+          FILE="ads-no-more.txt"
+          
+          if [[ ! -s "$FILE" ]]; then
+            echo "❌ File $FILE is missing or empty"
             exit 1
           fi
 
-          # Check for comments starting with '! www'
-          WWW_COMMENTS=$(grep -E '^! www' ads-no-more.txt || true)
-          if [ -n "$WWW_COMMENTS" ]; then
-            echo "❌ Comments starting with '! www' are invalid:"
-            echo "$WWW_COMMENTS"
-            echo "💡 Fix: Remove or reformat comments starting with '! www'."
+          echo "🔍 Running validation checks..."
+
+          # ----- 1. File encoding check (BOM) -----
+          echo "✓ Checking file encoding..."
+          if head -c 3 "$FILE" | od -An -tx1 | grep -q 'ef bb bf'; then
+            echo "❌ UTF-8 BOM detected. Please save without BOM."
             exit 1
           fi
 
-          # Check for duplicates (case-insensitive, ignore comments and scriptlets)
-          DUPLICATES=$(grep -vE '^[!\[#]' ads-no-more.txt | sort | uniq -d)
-          if [ -n "$DUPLICATES" ]; then
-            echo "❌ Case-insensitive duplicates found:"
-            echo "$DUPLICATES"
+          # ----- 2. Syntax validation -----
+          # ⚠️ WARNING: This regex must be updated when Adblock Plus syntax evolves.
+          # Consider migrating to @adblockplus/abp-filter-parser for long-term maintainability.
+          echo "✓ Checking syntax..."
+          INVALID=$(grep -nvE '^(\[Adblock[^\]]*\]|!|@@|\|\|([^$]+\$)?[^$]*\$?|^[^!#]*##[^#]*$|^[^!#]*##\+js\(.*\)$|^[[:space:]]*$)' "$FILE" || true)
+          if [[ -n "$INVALID" ]]; then
+            echo "❌ Invalid syntax detected on lines:"
+            echo "$INVALID" | head -20
+            echo "::warning::Syntax validation failed. Review lines above."
             exit 1
           fi
 
-          # Remaining checks (line endings, whitespace, newline)
-          if grep -q $'\r' ads-no-more.txt; then
-            echo "❌ Found CRLF line endings - use LF format"
+          # ----- 3. Comment format check (expanded) -----
+          echo "✓ Checking comment format..."
+          BAD_COMMENTS=$(grep -nE '^!\s*(www\.|https?://)' "$FILE" || true)
+          if [[ -n "$BAD_COMMENTS" ]]; then
+            echo "❌ Comments should not start with '! www' or '! http' - use proper rule syntax:"
+            echo "$BAD_COMMENTS" | head -10
             exit 1
           fi
 
-          TRAILING_WS=$(grep -n '\s$' ads-no-more.txt || true)
-          if [ -n "$TRAILING_WS" ]; then
-            echo "❌ Trailing whitespace found:"
-            echo "$TRAILING_WS"
+          # ----- 4. Duplicate detection with line numbers -----
+          echo "✓ Checking for duplicates..."
+          grep -nvE '^(!|\[|[[:space:]]*$)' "$FILE" | \
+            sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | \
+            sort -t: -k2 -f | \
+            uniq -d -f1 -i | \
+            while read -r dup; do
+              lines=$(grep -n -F "$dup" "$FILE" | cut -d: -f1 | tr '\n' ',' | sed 's/,$//')
+              echo "  Line(s) $lines: $dup"
+            done | tee "${{ runner.temp }}/duplicates.txt"
+            
+          if [[ -s "${{ runner.temp }}/duplicates.txt" ]]; then
+            echo "❌ Case-insensitive duplicate rules found (see above)"
             exit 1
           fi
 
-          if [ -n "$(tail -c 1 ads-no-more.txt)" ]; then
-            echo "❌ File must end with a newline"
+          # ----- 5. CRLF line endings -----
+          echo "✓ Checking line endings..."
+          if grep -q $'\r' "$FILE"; then
+            echo "❌ CRLF line endings detected - convert to LF"
+            echo "💡 Run: sed -i 's/\r$//' $FILE"
             exit 1
           fi
 
-          echo "✅ All checks passed!"
+          # ----- 6. Trailing whitespace -----
+          echo "✓ Checking trailing whitespace..."
+          TRAILING=$(grep -n '[[:space:]]$' "$FILE" || true)
+          if [[ -n "$TRAILING" ]]; then
+            echo "❌ Trailing whitespace found on lines:"
+            echo "$TRAILING" | head -20
+            exit 1
+          fi
+
+          # ----- 7. Final newline -----
+          echo "✓ Checking final newline..."
+          if [[ -s "$FILE" ]]; then
+            LAST_CHAR=$(tail -c 1 "$FILE" | od -An -tx1 | tr -d ' \n')
+            if [[ "$LAST_CHAR" != "0a" ]]; then
+              echo "❌ File must end with at least one newline character"
+              exit 1
+            fi
+          fi
+
+          # ----- 8. Optional: Check for excessively long lines (warning only) -----
+          echo "✓ Checking line length (warning only)..."
+          LONG_LINES=$(awk 'length > 8192 { print NR": "length" chars" }' "$FILE")
+          if [[ -n "$LONG_LINES" ]]; then
+            echo "⚠️ Warning: Lines exceeding 8KB may cause parser issues:"
+            echo "$LONG_LINES" | head -5
+          fi
+
+          # ----- 9. Summary -----
+          RULE_COUNT=$(grep -cvE '^(!|\[|[[:space:]]*$)' "$FILE" 2>/dev/null) || RULE_COUNT=0
+          echo "✅ Validation passed! Found $RULE_COUNT active rules."
+          echo "rule_count=$RULE_COUNT" >> $GITHUB_OUTPUT
+
+      - name: Upload validation log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-details
+          path: ${{ runner.temp }}/duplicates.txt
+          retention-days: 3
+          if-no-files-found: ignore
