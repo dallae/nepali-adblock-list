@@ -28,23 +28,16 @@ jobs:
 
           echo "🔍 Running validation checks..."
 
-          # 1. File encoding check (BOM)
+          # ----- 1. File encoding check (BOM) -----
           echo "✓ Checking file encoding..."
           if head -c 3 "$FILE" | od -An -tx1 | grep -q 'ef bb bf'; then
             echo "❌ UTF-8 BOM detected. Please save without BOM."
             exit 1
           fi
 
-          # 2. Syntax validation
-          #   - Headers: [Adblock ...]
-          #   - Comments: !
-          #   - Exceptions: @@
-          #   - Network rules: ||domain... (optionally with $ options)
-          #   - Element hiding: domain##selector (allows # in selector, but rejects ###)
-          #   - Scriptlets: domain##+js(...)
-          #   - Empty lines
+          # ----- 2. Syntax validation -----
           echo "✓ Checking syntax..."
-          INVALID=$(grep -nvE '^(\[Adblock.*\]|!|@@|\|\|.*(\$.*)?|^[^!#]*##[^#]?.*|^[^!#]*##\+js\(.*\)|^[[:space:]]*$)' "$FILE" || true)
+          INVALID=$(grep -nvE '^(\[Adblock.*\]|!|@@|\|\|.*(\$.*)?|.*##.*|.*##\+js\(.*\)|^[[:space:]]*$)' "$FILE" || true)
           if [[ -n "$INVALID" ]]; then
             echo "❌ Invalid syntax detected on lines:"
             echo "$INVALID" | head -20
@@ -52,7 +45,7 @@ jobs:
             exit 1
           fi
 
-          # 3. Comment format check
+          # ----- 3. Comment format check -----
           echo "✓ Checking comment format..."
           BAD_COMMENTS=$(grep -nE '^!\s*(www\.|https?://)' "$FILE" || true)
           if [[ -n "$BAD_COMMENTS" ]]; then
@@ -61,23 +54,48 @@ jobs:
             exit 1
           fi
 
-          # 4. Duplicate detection with line numbers
+          # ----- 4. Duplicate detection (fixed) -----
           echo "✓ Checking for duplicates..."
-          grep -nvE '^(!|\[|[[:space:]]*$)' "$FILE" | \
-            sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | \
-            sort -t: -k2 -f | \
-            uniq -d -f1 -i | \
-            while read -r dup; do
-              lines=$(grep -n -F "$dup" "$FILE" | cut -d: -f1 | tr '\n' ',' | sed 's/,$//')
-              echo "  Line(s) $lines: $dup"
-            done | tee "${{ runner.temp }}/duplicates.txt"
-            
+          # Create a temporary file to store normalized rule -> line numbers
+          tmp_map="${{ runner.temp }}/duplicate_map.txt"
+          > "$tmp_map"
+
+          # Extract lines that are not comments, headers, or empty
+          grep -nE '^[^!\[[:space:]]' "$FILE" | while IFS=: read -r num rule; do
+            # Trim leading/trailing whitespace from the rule
+            rule_trimmed=$(echo "$rule" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+            # Normalise case (lowercase) for case-insensitive detection
+            rule_key=$(echo "$rule_trimmed" | tr '[:upper:]' '[:lower:]')
+            echo "$rule_key:$num" >> "$tmp_map"
+          done
+
+          # Group by normalized rule and output duplicates with all line numbers
+          sort "$tmp_map" | awk -F: '
+          {
+            if ($1 != prev) {
+              if (count > 1) {
+                printf "  Line(s) %s: %s\n", lines, prev
+              }
+              prev = $1
+              count = 1
+              lines = $2
+            } else {
+              count++
+              lines = lines "," $2
+            }
+          }
+          END {
+            if (count > 1) {
+              printf "  Line(s) %s: %s\n", lines, prev
+            }
+          }' > "${{ runner.temp }}/duplicates.txt"
+
           if [[ -s "${{ runner.temp }}/duplicates.txt" ]]; then
             echo "❌ Case-insensitive duplicate rules found (see above)"
             exit 1
           fi
 
-          # 5. CRLF line endings
+          # ----- 5. CRLF line endings -----
           echo "✓ Checking line endings..."
           if grep -q $'\r' "$FILE"; then
             echo "❌ CRLF line endings detected - convert to LF"
@@ -85,7 +103,7 @@ jobs:
             exit 1
           fi
 
-          # 6. Trailing whitespace
+          # ----- 6. Trailing whitespace -----
           echo "✓ Checking trailing whitespace..."
           TRAILING=$(grep -n '[[:space:]]$' "$FILE" || true)
           if [[ -n "$TRAILING" ]]; then
@@ -94,7 +112,7 @@ jobs:
             exit 1
           fi
 
-          # 7. Final newline
+          # ----- 7. Final newline -----
           echo "✓ Checking final newline..."
           if [[ -s "$FILE" ]]; then
             LAST_CHAR=$(tail -c 1 "$FILE" | od -An -tx1 | tr -d ' \n')
@@ -104,7 +122,7 @@ jobs:
             fi
           fi
 
-          # 8. Optional: Check for excessively long lines (warning only)
+          # ----- 8. Optional: Check for excessively long lines (warning only) -----
           echo "✓ Checking line length (warning only)..."
           LONG_LINES=$(awk 'length > 8192 { print NR": "length" chars" }' "$FILE")
           if [[ -n "$LONG_LINES" ]]; then
@@ -112,7 +130,7 @@ jobs:
             echo "$LONG_LINES" | head -5
           fi
 
-          # 9. Summary
+          # ----- 9. Summary -----
           RULE_COUNT=$(grep -cvE '^(!|\[|[[:space:]]*$)' "$FILE" 2>/dev/null) || RULE_COUNT=0
           echo "✅ Validation passed! Found $RULE_COUNT active rules."
           echo "rule_count=$RULE_COUNT" >> $GITHUB_OUTPUT
