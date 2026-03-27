@@ -28,18 +28,23 @@ jobs:
 
           echo "🔍 Running validation checks..."
 
-          # ----- 1. File encoding check (BOM) -----
+          # 1. File encoding check (BOM)
           echo "✓ Checking file encoding..."
           if head -c 3 "$FILE" | od -An -tx1 | grep -q 'ef bb bf'; then
             echo "❌ UTF-8 BOM detected. Please save without BOM."
             exit 1
           fi
 
-          # ----- 2. Syntax validation -----
-          # ⚠️ WARNING: This regex must be updated when Adblock Plus syntax evolves.
-          # Consider migrating to @adblockplus/abp-filter-parser for long-term maintainability.
+          # 2. Syntax validation
+          #   - Headers: [Adblock ...]
+          #   - Comments: !
+          #   - Exceptions: @@
+          #   - Network rules: ||domain... (optionally with $ options)
+          #   - Element hiding: domain##selector (allows # in selector, but rejects ###)
+          #   - Scriptlets: domain##+js(...)
+          #   - Empty lines
           echo "✓ Checking syntax..."
-          INVALID=$(grep -nvE '^(\[Adblock[^\]]*\]|!|@@|\|\|([^$]+\$)?[^$]*\$?|^[^!#]*##[^#]*$|^[^!#]*##\+js\(.*\)$|^[[:space:]]*$)' "$FILE" || true)
+          INVALID=$(grep -nvE '^(\[Adblock.*\]|!|@@|\|\|.*(\$.*)?|^[^!#]*##[^#]?.*|^[^!#]*##\+js\(.*\)|^[[:space:]]*$)' "$FILE" || true)
           if [[ -n "$INVALID" ]]; then
             echo "❌ Invalid syntax detected on lines:"
             echo "$INVALID" | head -20
@@ -47,7 +52,7 @@ jobs:
             exit 1
           fi
 
-          # ----- 3. Comment format check (expanded) -----
+          # 3. Comment format check
           echo "✓ Checking comment format..."
           BAD_COMMENTS=$(grep -nE '^!\s*(www\.|https?://)' "$FILE" || true)
           if [[ -n "$BAD_COMMENTS" ]]; then
@@ -56,7 +61,7 @@ jobs:
             exit 1
           fi
 
-          # ----- 4. Duplicate detection with line numbers -----
+          # 4. Duplicate detection with line numbers
           echo "✓ Checking for duplicates..."
           grep -nvE '^(!|\[|[[:space:]]*$)' "$FILE" | \
             sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | \
@@ -72,7 +77,7 @@ jobs:
             exit 1
           fi
 
-          # ----- 5. CRLF line endings -----
+          # 5. CRLF line endings
           echo "✓ Checking line endings..."
           if grep -q $'\r' "$FILE"; then
             echo "❌ CRLF line endings detected - convert to LF"
@@ -80,7 +85,7 @@ jobs:
             exit 1
           fi
 
-          # ----- 6. Trailing whitespace -----
+          # 6. Trailing whitespace
           echo "✓ Checking trailing whitespace..."
           TRAILING=$(grep -n '[[:space:]]$' "$FILE" || true)
           if [[ -n "$TRAILING" ]]; then
@@ -89,7 +94,7 @@ jobs:
             exit 1
           fi
 
-          # ----- 7. Final newline -----
+          # 7. Final newline
           echo "✓ Checking final newline..."
           if [[ -s "$FILE" ]]; then
             LAST_CHAR=$(tail -c 1 "$FILE" | od -An -tx1 | tr -d ' \n')
@@ -99,7 +104,7 @@ jobs:
             fi
           fi
 
-          # ----- 8. Optional: Check for excessively long lines (warning only) -----
+          # 8. Optional: Check for excessively long lines (warning only)
           echo "✓ Checking line length (warning only)..."
           LONG_LINES=$(awk 'length > 8192 { print NR": "length" chars" }' "$FILE")
           if [[ -n "$LONG_LINES" ]]; then
@@ -107,7 +112,7 @@ jobs:
             echo "$LONG_LINES" | head -5
           fi
 
-          # ----- 9. Summary -----
+          # 9. Summary
           RULE_COUNT=$(grep -cvE '^(!|\[|[[:space:]]*$)' "$FILE" 2>/dev/null) || RULE_COUNT=0
           echo "✅ Validation passed! Found $RULE_COUNT active rules."
           echo "rule_count=$RULE_COUNT" >> $GITHUB_OUTPUT
