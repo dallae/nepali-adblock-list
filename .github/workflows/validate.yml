@@ -54,45 +54,39 @@ jobs:
             exit 1
           fi
 
-          # ----- 4. Duplicate detection (fixed) -----
+          # ----- 4. Duplicate detection (revised) -----
           echo "✓ Checking for duplicates..."
-          tmp_map="${{ runner.temp }}/duplicate_map.txt"
-          > "$tmp_map"
-
-          # Extract lines that are not comments, headers, or empty
-          grep -nE '^[^!\[[:space:]]' "$FILE" | while IFS=: read -r num rule; do
-            # Trim leading/trailing whitespace from the rule
+          
+          # Create a temporary file for normalized rules (trimmed, lowercased)
+          normalized_file="${{ runner.temp }}/normalized_rules.txt"
+          > "$normalized_file"
+          
+          # Extract non‑comment, non‑header, non‑empty lines
+          grep -E '^[^!\[[:space:]]' "$FILE" | while IFS= read -r rule; do
+            # Trim leading/trailing whitespace and convert to lowercase
             rule_trimmed=$(echo "$rule" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
-            # Normalise case (lowercase) for case-insensitive detection
-            rule_key=$(echo "$rule_trimmed" | tr '[:upper:]' '[:lower:]')
-            echo "$rule_key:$num" >> "$tmp_map"
+            rule_lower=$(echo "$rule_trimmed" | tr '[:upper:]' '[:lower:]')
+            echo "$rule_lower" >> "$normalized_file"
           done
-
-          # Group by normalized rule and output duplicates with all line numbers
-          sort "$tmp_map" | awk -F: '
-          {
-            if ($1 != prev) {
-              if (count > 1) {
-                printf "  Line(s) %s: %s\n", lines, prev
-              }
-              prev = $1
-              count = 1
-              lines = $2
-            } else {
-              count++
-              lines = lines "," $2
-            }
-          }
-          END {
-            if (count > 1) {
-              printf "  Line(s) %s: %s\n", lines, prev
-            }
-          }' > "${{ runner.temp }}/duplicates.txt"
-
-          # Print duplicates to console if any
-          if [[ -s "${{ runner.temp }}/duplicates.txt" ]]; then
+          
+          # Find duplicate rules (those appearing more than once)
+          duplicate_rules=$(sort "$normalized_file" | uniq -c | awk '$1 > 1 {print substr($0, index($0,$2))}')
+          
+          if [[ -n "$duplicate_rules" ]]; then
             echo "❌ Case-insensitive duplicate rules found:"
-            cat "${{ runner.temp }}/duplicates.txt"
+            # For each duplicate rule, find all line numbers in the original file
+            echo "$duplicate_rules" | while IFS= read -r dup_rule; do
+              # Escape the rule for grep (though it's already normalized, we need the original case for matching)
+              # We'll search for the original rule by using the lowercased version, but we must match exactly.
+              # Use `grep -n -i -F` to find line numbers of the exact original rule (case‑insensitive).
+              # However, the original file may have different case, so -i is needed.
+              # To avoid false positives, we also need to ensure we match the whole rule (not substring).
+              # Since we have the full rule as it appears in the file, we can just use -F.
+              # But we need to get the original rule text from the file; we can search for the lowercased version.
+              # Simpler: use `grep -n -i -F -x "$dup_rule"` to match whole lines exactly.
+              lines=$(grep -n -i -F -x "$dup_rule" "$FILE" | cut -d: -f1 | tr '\n' ',' | sed 's/,$//')
+              echo "  Line(s) $lines: $dup_rule"
+            done
             exit 1
           fi
 
