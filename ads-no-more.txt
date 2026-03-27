@@ -1126,7 +1126,6 @@ www.hetaudakhabar.com##.size-full.attachment-full
 ||hetaudaonline.com.np/wp-content/uploads/*.gif$image
 
 ! hetaudatoday.com
-www.hetaudatoday.com##.Ad
 www.hetaudatoday.com##.ad
 www.hetaudatoday.com##.content-banner
 www.hetaudatoday.com##.facebook
