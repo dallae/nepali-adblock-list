@@ -93,7 +93,6 @@ jobs:
           ref: ${{ steps.pr-resolve.outputs.pr_head_sha }}
           allowed-conclusions: success,skipped
           wait-interval: 15
-          timeout: 600
 
       - name: Check mergeability
         id: merge-check
@@ -187,7 +186,8 @@ jobs:
               const isOperational = error.status === 405 ||
                                    error.status === 409 ||
                                    error.message?.includes('auto-merge') ||
-                                   error.message?.includes('not enabled');
+                                   error.message?.includes('not enabled') ||
+                                   error.message?.includes('is not a function');
               
               if (isOperational) {
                 core.info(`Using fallback: ${error.message}`);
