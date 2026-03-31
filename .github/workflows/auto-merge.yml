@@ -11,28 +11,21 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  checks: read   # needed to read check runs via wait-on-check-action
+  checks: read
 
 jobs:
   auto-merge:
     runs-on: ubuntu-latest
-    timeout-minutes: 15   # prevent indefinite hangs
-    # Filter triggers:
-    # - PR events from the repository owner
-    # - workflow_run events where validation succeeded
+    timeout-minutes: 15
     if: |
       (github.event_name == 'pull_request' && 
        github.event.pull_request.user.login == github.repository_owner) ||
       (github.event_name == 'workflow_run' && 
        github.event.workflow_run.conclusion == 'success')
     concurrency:
-      # Use PR number for PR events, otherwise use commit SHA for workflow_run.
       group: auto-merge-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.event.workflow_run.head_sha }}
       cancel-in-progress: false
     steps:
-      # ─────────────────────────────────────────────────────────────────
-      # Step 1: Determine the PR number from the event context
-      # ─────────────────────────────────────────────────────────────────
       - name: Resolve PR number
         id: pr-resolve
         uses: actions/github-script@v7
@@ -77,7 +70,6 @@ jobs:
             
             core.setOutput('pr_number', prNumber);
             
-            // Fetch PR details once and reuse
             const { data: pr } = await github.rest.pulls.get({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -87,31 +79,22 @@ jobs:
             core.setOutput('pr_branch', pr.head.ref);
             core.setOutput('pr_merged', pr.merged);
             
-            // Early exit if PR is already merged
             if (pr.merged) {
               core.info(`PR #${prNumber} is already merged – nothing to do`);
               core.setOutput('skip_merge', 'true');
             }
 
-      # ─────────────────────────────────────────────────────────────────
-      # Step 2: Wait for validation check to succeed (unless already merged)
-      # ─────────────────────────────────────────────────────────────────
       - name: Wait for validation check
         if: steps.pr-resolve.outputs.pr_number && steps.pr-resolve.outputs.skip_merge != 'true'
         uses: lewagon/wait-on-check-action@v1.3.1
         with:
-          # ⚠️ COUPLING: This must exactly match the workflow name in validate.yml.
-          # Using workflow name is more stable than step name.
-          check-name: 'validate'
+          check-name: 'validate'  # must match the job name in validate.yml
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           ref: ${{ steps.pr-resolve.outputs.pr_head_sha }}
           allowed-conclusions: success,skipped
           wait-interval: 15
           timeout: 600
 
-      # ─────────────────────────────────────────────────────────────────
-      # Step 3: Verify PR is mergeable (with longer retry and backoff)
-      # ─────────────────────────────────────────────────────────────────
       - name: Check mergeability
         id: merge-check
         if: steps.pr-resolve.outputs.pr_number && steps.pr-resolve.outputs.skip_merge != 'true'
@@ -121,8 +104,8 @@ jobs:
             const prNumber = parseInt('${{ steps.pr-resolve.outputs.pr_number }}');
             
             let pr, attempts = 0;
-            const maxAttempts = 12;       // 12 attempts with exponential backoff → ~95 seconds max total wait
-            let delay = 2000;              // start with 2 seconds
+            const maxAttempts = 12;
+            let delay = 2000;
             
             while (attempts < maxAttempts) {
               const { data } = await github.rest.pulls.get({
@@ -140,7 +123,7 @@ jobs:
               attempts++;
               core.info(`Waiting for mergeable state (attempt ${attempts}/${maxAttempts})...`);
               await new Promise(resolve => setTimeout(resolve, delay));
-              delay = Math.min(delay * 1.5, 10000); // exponential backoff, max 10s
+              delay = Math.min(delay * 1.5, 10000);
             }
             
             if (pr.mergeable !== true) {
@@ -151,9 +134,6 @@ jobs:
             core.info(`✅ PR #${prNumber} is ready to merge`);
             core.setOutput('ready', 'true');
 
-      # ─────────────────────────────────────────────────────────────────
-      # Step 4: Enable GitHub's native auto-merge (preferred)
-      # ─────────────────────────────────────────────────────────────────
       - name: Enable native auto-merge
         id: enable
         if: steps.merge-check.outputs.ready == 'true'
@@ -162,7 +142,7 @@ jobs:
           script: |
             const prNumber = parseInt('${{ steps.pr-resolve.outputs.pr_number }}');
             
-            // First re-check if PR is still open and not merged
+            // Re-check PR status
             const { data: pr } = await github.rest.pulls.get({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -173,7 +153,6 @@ jobs:
               return;
             }
             
-            // Helper: API call with retry for rate limits
             async function apiCallWithRetry(fn, maxRetries = 3) {
               for (let i = 0; i < maxRetries; i++) {
                 try {
@@ -193,8 +172,9 @@ jobs:
             }
             
             try {
+              // Use the correct method: createAutoMerge
               await apiCallWithRetry(() => 
-                github.rest.pulls.enableAutoMerge({
+                github.rest.pulls.createAutoMerge({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   pull_number: prNumber,
@@ -204,9 +184,8 @@ jobs:
               core.info(`✅ Enabled native auto-merge for PR #${prNumber}`);
               return;
             } catch (error) {
-              // Only fallback for expected operational errors
-              const isOperational = error.status === 405 ||           // Method not allowed
-                                   error.status === 409 ||            // Conflict (already merged)
+              const isOperational = error.status === 405 ||
+                                   error.status === 409 ||
                                    error.message?.includes('auto-merge') ||
                                    error.message?.includes('not enabled');
               
@@ -214,14 +193,10 @@ jobs:
                 core.info(`Using fallback: ${error.message}`);
                 core.setOutput('use_fallback', 'true');
               } else {
-                // Unexpected error (bug, auth issue, etc.) - fail explicitly
                 core.setFailed(`Unexpected error enabling auto-merge: ${error.message} (status: ${error.status})`);
               }
             }
 
-      # ─────────────────────────────────────────────────────────────────
-      # Step 5: Fallback manual merge (if native auto-merge fails)
-      # ─────────────────────────────────────────────────────────────────
       - name: Fallback manual merge
         if: steps.merge-check.outputs.ready == 'true' && steps.enable.outputs.use_fallback == 'true'
         uses: actions/github-script@v7
@@ -229,7 +204,6 @@ jobs:
           script: |
             const prNumber = parseInt('${{ steps.pr-resolve.outputs.pr_number }}');
             
-            // Helper: API call with retry for rate limits
             async function apiCallWithRetry(fn, maxRetries = 3) {
               for (let i = 0; i < maxRetries; i++) {
                 try {
@@ -249,7 +223,6 @@ jobs:
             }
             
             try {
-              // Re-fetch PR to ensure it's still mergeable
               const { data: pr } = await apiCallWithRetry(() =>
                 github.rest.pulls.get({
                   owner: context.repo.owner,
@@ -288,9 +261,6 @@ jobs:
               }
             }
 
-      # ─────────────────────────────────────────────────────────────────
-      # Step 6: Notification (console + optional webhook)
-      # ─────────────────────────────────────────────────────────────────
       - name: Notify on merge completion
         if: success() && steps.pr-resolve.outputs.pr_number && steps.pr-resolve.outputs.skip_merge != 'true'
         uses: actions/github-script@v7
@@ -299,7 +269,6 @@ jobs:
             const prNumber = '${{ steps.pr-resolve.outputs.pr_number }}';
             core.info(`🎉 PR #${prNumber} successfully processed`);
             
-            // Optional: send to webhook if secret is configured
             const webhookUrl = process.env.NOTIFY_WEBHOOK;
             if (webhookUrl) {
               try {
