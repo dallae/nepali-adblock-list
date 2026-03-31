@@ -102,7 +102,7 @@ jobs:
         with:
           # ⚠️ COUPLING: This must exactly match the workflow name in validate.yml.
           # Using workflow name is more stable than step name.
-          check-name: 'Validate Adblock List'
+          check-name: 'validate'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           ref: ${{ steps.pr-resolve.outputs.pr_head_sha }}
           allowed-conclusions: success,skipped
