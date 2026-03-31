@@ -797,6 +797,11 @@ ekagaj.com##div.sidebar > aside > .wrapper-box
 ||ekagaj.com/*.gif$image
 
 ! ekantipur.com
+ekantipur.com##.header-top-spo
+ekantipur.com##.modal#pagegate
+ekantipur.com##.modal-backdrop
+ekantipur.com##.spo-section
+ekantipur.com##body:style(overflow: auto !important;)
 ekantipur.com###roadblock-ad
 ekantipur.com##.custom-data
 ekantipur.com##.liscence-quiz-set.quiz-wrapper
