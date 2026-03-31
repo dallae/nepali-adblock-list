@@ -2185,6 +2185,8 @@ www.onlinekhabar.com##.ok-post-emoji
 www.onlinekhabar.com##.okam-ad-position-wrap
 www.onlinekhabar.com##.okam-device-desktop.flip-score-card-bottom.carousel
 www.onlinekhabar.com##.tribox-add
+||www.onlinekhabar.com/wp-content/uploads/*.gif$image
+||election.onlinekhabar.com/wp-content/uploads/*.gif$image
 
 ! onlinemajdoor.com
 onlinemajdoor.com##.header-social-links
