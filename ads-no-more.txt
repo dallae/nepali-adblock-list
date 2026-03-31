@@ -2433,6 +2433,7 @@ www.ratopati.com##.content-banner--single
 www.ratopati.com##.post__detail-fixed
 www.ratopati.com##.reaction-wrap
 ||npcdn.ratopati.com/media/promo/*$image
+||npcdn.ratopati.com/*.gif$image
 ||www.ratopati.com/*.gif$image
 
 ! ratosamachar.com
