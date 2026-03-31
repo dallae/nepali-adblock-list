@@ -27,12 +27,7 @@ jobs:
        github.event.workflow_run.conclusion == 'success')
     concurrency:
       # Use PR number for PR events, otherwise use commit SHA for workflow_run.
-      # GitHub Actions expressions need explicit condition because `||` can behave unexpectedly.
-      group: auto-merge-${{ 
-        github.event_name == 'pull_request' 
-          && github.event.pull_request.number 
-          || github.event.workflow_run.head_sha 
-      }}
+      group: auto-merge-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.event.workflow_run.head_sha }}
       cancel-in-progress: false
     steps:
       # ─────────────────────────────────────────────────────────────────
