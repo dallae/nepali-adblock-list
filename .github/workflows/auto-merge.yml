@@ -139,7 +139,7 @@ jobs:
         run: |
           gh pr merge ${{ steps.pr-resolve.outputs.pr_number }} \
             --auto \
-            --squash \
+            --rebase \
             --repo "${{ github.repository }}"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
