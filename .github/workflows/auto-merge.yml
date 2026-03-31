@@ -172,9 +172,9 @@ jobs:
             }
             
             try {
-              // Use the correct method: createAutoMerge
+              // Use the correct method: enableAutoMerge
               await apiCallWithRetry(() => 
-                github.rest.pulls.createAutoMerge({
+                github.rest.pulls.enableAutoMerge({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   pull_number: prNumber,
