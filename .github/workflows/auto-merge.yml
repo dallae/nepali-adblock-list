@@ -88,11 +88,12 @@ jobs:
         if: steps.pr-resolve.outputs.pr_number && steps.pr-resolve.outputs.skip_merge != 'true'
         uses: lewagon/wait-on-check-action@v1.3.1
         with:
-          check-name: 'validate'  # must match the job name in validate.yml
+          check-name: 'validate'   # must match the job name in validate.yml
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           ref: ${{ steps.pr-resolve.outputs.pr_head_sha }}
           allowed-conclusions: success,skipped
           wait-interval: 15
+          timeout: 600
 
       - name: Check mergeability
         id: merge-check
@@ -133,133 +134,15 @@ jobs:
             core.info(`✅ PR #${prNumber} is ready to merge`);
             core.setOutput('ready', 'true');
 
-      - name: Enable native auto-merge
-        id: enable
+      - name: Enable auto-merge via GitHub CLI
         if: steps.merge-check.outputs.ready == 'true'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const prNumber = parseInt('${{ steps.pr-resolve.outputs.pr_number }}');
-            
-            // Re-check PR status
-            const { data: pr } = await github.rest.pulls.get({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: prNumber
-            });
-            if (pr.merged) {
-              core.info(`PR #${prNumber} was merged before auto-merge could be enabled – skipping`);
-              return;
-            }
-            
-            async function apiCallWithRetry(fn, maxRetries = 3) {
-              for (let i = 0; i < maxRetries; i++) {
-                try {
-                  return await fn();
-                } catch (error) {
-                  if (error.status === 403 && error.message?.includes('rate limit')) {
-                    const resetTime = error.response?.headers?.['x-ratelimit-reset'];
-                    const waitMs = resetTime ? (resetTime * 1000 - Date.now()) : 5000;
-                    core.info(`Rate limited, waiting ${waitMs}ms before retry (attempt ${i+1}/${maxRetries})...`);
-                    await new Promise(resolve => setTimeout(resolve, waitMs));
-                    continue;
-                  }
-                  throw error;
-                }
-              }
-              throw new Error('Max retries exceeded for API call');
-            }
-            
-            try {
-              // Use the correct method: enableAutomerge
-              await apiCallWithRetry(() => 
-                github.rest.pulls.enableAutomerge({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  pull_number: prNumber,
-                  merge_method: 'squash'
-                })
-              );
-              core.info(`✅ Enabled native auto-merge for PR #${prNumber}`);
-              return;
-            } catch (error) {
-              const isOperational = error.status === 405 ||
-                                   error.status === 409 ||
-                                   error.message?.includes('auto-merge') ||
-                                   error.message?.includes('not enabled') ||
-                                   error.message?.includes('is not a function');
-              
-              if (isOperational) {
-                core.info(`Using fallback: ${error.message}`);
-                core.setOutput('use_fallback', 'true');
-              } else {
-                core.setFailed(`Unexpected error enabling auto-merge: ${error.message} (status: ${error.status})`);
-              }
-            }
-
-      - name: Fallback manual merge
-        if: steps.merge-check.outputs.ready == 'true' && steps.enable.outputs.use_fallback == 'true'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const prNumber = parseInt('${{ steps.pr-resolve.outputs.pr_number }}');
-            
-            async function apiCallWithRetry(fn, maxRetries = 3) {
-              for (let i = 0; i < maxRetries; i++) {
-                try {
-                  return await fn();
-                } catch (error) {
-                  if (error.status === 403 && error.message?.includes('rate limit')) {
-                    const resetTime = error.response?.headers?.['x-ratelimit-reset'];
-                    const waitMs = resetTime ? (resetTime * 1000 - Date.now()) : 5000;
-                    core.info(`Rate limited, waiting ${waitMs}ms before retry (attempt ${i+1}/${maxRetries})...`);
-                    await new Promise(resolve => setTimeout(resolve, waitMs));
-                    continue;
-                  }
-                  throw error;
-                }
-              }
-              throw new Error('Max retries exceeded for API call');
-            }
-            
-            try {
-              const { data: pr } = await apiCallWithRetry(() =>
-                github.rest.pulls.get({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  pull_number: prNumber
-                })
-              );
-              
-              if (pr.merged) {
-                core.info(`PR #${prNumber} already merged – skipping fallback`);
-                return;
-              }
-              
-              if (pr.mergeable !== true) {
-                core.setFailed(`PR #${prNumber} is no longer mergeable (state=${pr.mergeable_state})`);
-                return;
-              }
-              
-              await apiCallWithRetry(() =>
-                github.rest.pulls.merge({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  pull_number: prNumber,
-                  merge_method: 'squash',
-                  commit_title: `🔄 Auto-merge: ${pr.title}`,
-                  commit_message: `Automatically merged after validation passed\n\nCommit: ${pr.head.sha}`
-                })
-              );
-              
-              core.info(`✅ Successfully merged PR #${prNumber} via fallback`);
-            } catch (error) {
-              if (error.message?.includes('already merged') || error.status === 405) {
-                core.info('PR was merged concurrently – no action needed');
-              } else {
-                core.setFailed(`Fallback merge failed: ${error.message}`);
-              }
-            }
+        run: |
+          gh pr merge ${{ steps.pr-resolve.outputs.pr_number }} \
+            --auto \
+            --squash \
+            --repo "${{ github.repository }}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Notify on merge completion
         if: success() && steps.pr-resolve.outputs.pr_number && steps.pr-resolve.outputs.skip_merge != 'true'
@@ -276,7 +159,7 @@ jobs:
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify({
-                    text: `✅ PR #${prNumber} auto-merged successfully`,
+                    text: `✅ PR #${prNumber} auto-merge enabled`,
                     icon_emoji: ':robot_face:',
                     username: 'Auto-Merge Bot'
                   })
