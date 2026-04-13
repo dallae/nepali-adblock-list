@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
 ! Version: 202511230700
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 23 Nov 2025 07:00 UTC
-! Expires: 30 Nov 2025 07:00 UTC
+! Last modified: 13 Apr 2026 18:00 UTC
+! Expires: 20 Apr 2026 18:00 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -1375,12 +1375,15 @@ kapurinews.com##.sponsorship-ad
 ||kapurinews.com/uploads/advertise/*.jpg$image
 
 ! karobardaily.com
+karobardaily.com#@#*[class*="roadblock"]
 www.karobardaily.com##.align-items-center.d-flex.col-sm-5
 www.karobardaily.com##.img-social-link
 www.karobardaily.com##.karobar-social-link
 www.karobardaily.com##.widget
 www.karobardaily.com##aside:nth-of-type(1)
 www.karobardaily.com##div.mb-2:nth-of-type(4)
+www.karobardaily.com##.home-after-breaking-2
+www.karobardaily.com##.sidebar__ads
 ||www.karobardaily.com/*.gif$image
 
 ! kathmandukhabar.com
