@@ -645,7 +645,7 @@ butwaltoday.com##.show.fade.modal-backdrop
 butwaltoday.com##+js(set, $.fn.modal, noopFunc)
 butwaltoday.com##.custom-reaction-box-container
 butwaltoday.com##.widget
-butwaltoday.com/*.gif$image
+||butwaltoday.com/*.gif$image
 
 ! celebritynepal.com
 celebritynepal.com##.vce-ad-container
