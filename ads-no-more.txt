@@ -638,6 +638,15 @@ www.brtnepal.com##div.incon_sec:nth-of-type(3)
 ||www.brtnepal.com/*.gif$image
 ||www.brtnepal.com/wp-content/uploads/*.gif$image
 
+! butwaltoday.com
+butwaltoday.com##.advertisement
+butwaltoday.com##.show.modal-load
+butwaltoday.com##.show.fade.modal-backdrop
+butwaltoday.com##+js(set, $.fn.modal, noopFunc)
+butwaltoday.com##.custom-reaction-box-container
+butwaltoday.com##.widget
+butwaltoday.com/*.gif$image
+
 ! celebritynepal.com
 celebritynepal.com##.vce-ad-container
 celebritynepal.com##[id*="media_image"]
