@@ -37,7 +37,7 @@ jobs:
 
           # ----- 2. Syntax validation -----
           echo "✓ Checking syntax..."
-          INVALID=$(grep -nvE '^(\[Adblock.*\]|!|@@|\|\|.*(\$.*)?|.*##.*|.*##\+js\(.*\)|^[[:space:]]*$)' "$FILE" || true)
+          INVALID=$(grep -nvE '^(\[Adblock.*\]|!|@@|\|\|.*(\$.*)?|.*#(@?#)?#.*|.*##\+js\(.*\)|^[[:space:]]*$)' "$FILE" || true)
           if [[ -n "$INVALID" ]]; then
             echo "❌ Invalid syntax detected on lines:"
             echo "$INVALID" | head -20
