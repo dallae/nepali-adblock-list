@@ -605,6 +605,16 @@ www.bizshala.com##.social-icons-home
 www.bizshala.com##.social-share-style-1
 ||www.bizshala.com/*.gif$image
 
+! blastkhabar.com
+blastkhabar.com##.sponsorAd
+blastkhabar.com##.preHeadAd
+blastkhabar.com##.adRightSideBar
+blastkhabar.com##.bk-header-ad
+blastkhabar.com##[id="bk-popup-overlay"]
+blastkhabar.com##[class*="sponsorship-ad"]
+blastkhabar.com##+js(remove-class, post-ad, .post-content)
+||www.blastkhabar.com/*.gif$image
+
 ! bolanyathali.com
 bolanyathali.com###dpsp-content-bottom
 bolanyathali.com###dpsp-content-top
