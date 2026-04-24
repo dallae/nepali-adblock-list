@@ -2837,6 +2837,8 @@ techpana.com##.news-header-ads-wrapper
 techpana.com##.sticky-bottom-ad
 techpana.com##.newsTech-ads-dark
 techpana.com##.news__details-titles.active:style(position: sticky !important; top: 0 !important; transition: none !important;)
+||cdn.nextai.asia/dist/techpana.widget*.js$script,domain=techpana.com
+||nextai.asia^$script,3p,domain=techpana.com
 ||techpana.com/*.gif$image
 
 ! techsathi.com
