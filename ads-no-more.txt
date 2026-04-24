@@ -2827,10 +2827,16 @@ technologykhabar.com##.header_social_icons
 
 ! techpana.com
 techpana.com###roadBlock
-techpana.com##*[class*="adalyticsblock"]
-techpana.com##+js(set-constant, document.body.classList.remove, 'modal-open')
-www.techpana.com##.news-header-top-content
-www.techpana.com##.newsTech-ads img
+techpana.com##body.modal-open:style(overflow: auto !important; position: static !important; padding-right: 0px !important; margin-right: 0px !important; touch-action: pan-y !important;)
+techpana.com##+js(set, IntersectionObserver, noopFunc)
+techpana.com##.news_detail-para img:style(height: auto !important; width: 100% !important; contain: layout style !important; display: block !important;)
+techpana.com##.adalyticsblock
+techpana.com##.newsTech-ads
+techpana.com##.auto__layout-ads
+techpana.com##.news-header-ads-wrapper
+techpana.com##.sticky-bottom-ad
+techpana.com##.newsTech-ads-dark
+techpana.com##.news__details-titles.active:style(position: sticky !important; top: 0 !important; transition: none !important;)
 ||techpana.com/*.gif$image
 
 ! techsathi.com
