@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Version: 202511230700
+! Version: 202604290722
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 13 Apr 2026 18:00 UTC
-! Expires: 20 Apr 2026 18:00 UTC
+! Last modified: 29 Apr 2026 07:22 UTC
+! Expires: 29 May 2026 07:22 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -1866,10 +1866,12 @@ nayapananews.com##.follow-us
 ||nayapananews.com/*.gif$image
 
 ! nayapatrikadaily.com
-nayapatrikadaily.com##.emo-wrap
+nayapatrikadaily.com##.banner-ad
 nayapatrikadaily.com##.details-advdesktop
+nayapatrikadaily.com##.emo-wrap
 nayapatrikadaily.com##.social-media
 nayapatrikadaily.com##[src="https://nayapatrikadaily.com/assets/img/facebook-emoji-reactions.gif"]
+||nayapatrika.fsn1.your-objectstorage.com/advertise/
 ||nayapatrikadaily.com/*.gif$image
 
 
