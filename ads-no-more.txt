@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Version: 202604290722
+! Version: 202604302227
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 29 Apr 2026 07:22 UTC
-! Expires: 29 May 2026 07:22 UTC
+! Last modified: 30 Apr 2026 22:227 UTC
+! Expires: 30 May 2026 22:27 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
@@ -2966,7 +2966,23 @@ www.ukaalo.com##div.col-3.col-xs-3.col-sm-3.col-md-3.col-lg-3.col-xl-3.col-xxl-3
 ||www.ukaalo.com/Admin/Advertisement/*$image
 
 ! ukeraa.com
-www.ukeraa.com###roadBlock
+ukeraa.com##.bigyapan
+ukeraa.com##.bigyapaan
+ukeraa.com##.single__bigyapaan
+ukeraa.com##.adalyticsblock
+ukeraa.com##.modal-container
+ukeraa.com##.skip__btn
+ukeraa.com##.modal-close
+ukeraa.com##.mobile__navbar
+ukeraa.com##.mobile__navbar-close
+ukeraa.com##.mobile__navbar-menu
+ukeraa.com##.mobile__overlay
+ukeraa.com##.mobile__popup
+ukeraa.com##.mobile__interstitial
+ukeraa.com##.mobile-subscribe
+ukeraa.com##.mobile-newsletter
+ukeraa.com##.mobile__ad
+||ukeraa.com^$script,domain=ukeraa.com
 ||www.ukerra.com/*.gif$image
 
 ! upaharkhabar.com
