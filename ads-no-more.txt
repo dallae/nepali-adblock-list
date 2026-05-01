@@ -6,6 +6,12 @@
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
+www.18nepal.com##.sgpb-popup-builder-content-html.sgpb-popup-builder-content-24933
+www.18nepal.com##.sg-popup-content.sgpb-theme-4-content.sgpb-content-24933.sgpb-content
+www.18nepal.com##.sgpb-popup-overlay.sgpb-popup-overlay-24933.sgpb-theme-4-overlay
+www.18nepal.com##.sgpb-popup-dialog-main-div-wrapper
+www.18nepal.com##.simplesocialbuttons
+||www.18nepal.com/wp-content/uploads/2025/05/web-ads-final.jpg$image
 ||www.18nepal.com/*.gif$image
 
 ! 24newsfire.com
