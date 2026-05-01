@@ -9,6 +9,7 @@
 ||www.18nepal.com/*.gif$image
 
 ! 24newsfire.com
+24newsfire.com##.ptms_marquee
 24newsfire.com##.wp-image-8281
 ||24newsfire.com/*.gif$image
 
