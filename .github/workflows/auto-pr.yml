@@ -60,6 +60,35 @@ jobs:
           SHORT_SHA=${GITHUB_SHA:0:7}
           echo "branch=auto-update-${SHORT_SHA}" >> $GITHUB_OUTPUT
 
+      ###############################################################################
+      # 🆕  STEP: Update version & timestamps inside ads-no-more.txt
+      ###############################################################################
+      - name: Update version & timestamps in ads-no-more.txt
+        run: |
+          # Current UTC timestamp as version (YYYYMMDDHHMM)
+          VERSION_UTC=$(date -u +"%Y%m%d%H%M")
+
+          # Human‑readable "Last modified" – e.g. "30 Apr 2026 22:27 UTC"
+          LASTMOD_UTC=$(date -u +"%d %b %Y %H:%M UTC")
+
+          # Expiry date 30 days later
+          EXPIRES_UTC=$(date -u -d "+30 days" +"%d %b %Y %H:%M UTC")
+
+          echo "Version:      ${VERSION_UTC}"
+          echo "Last modified: ${LASTMOD_UTC}"
+          echo "Expires:       ${EXPIRES_UTC}"
+
+          # In‑place replacement of the relevant header lines
+          sed -i "s/^! Version: .*/! Version: ${VERSION_UTC}/" ads-no-more.txt
+          sed -i "s/^! Last modified: .*/! Last modified: ${LASTMOD_UTC}/" ads-no-more.txt
+          sed -i "s/^! Expires: .*/! Expires: ${EXPIRES_UTC}/" ads-no-more.txt
+
+          # Show the top of the file for confirmation
+          head -n 10 ads-no-more.txt
+
+      ###############################################################################
+      # PR creation step
+      ###############################################################################
       - name: Create or update Pull Request
         id: create-pr
         uses: peter-evans/create-pull-request@v6
