@@ -2962,8 +2962,10 @@ www.ukaalo.com###ContentPlaceHolder1_socialMediaIconbottom
 www.ukaalo.com###ContentPlaceHolder1_socialsharer
 www.ukaalo.com##div.col-3.col-xs-3.col-sm-3.col-md-3.col-lg-3.col-xl-3.col-xxl-3:nth-of-type(3)
 ||www.googletagmanager.com/gtag/js?id=G-YS9CDL8BW1$script,domain=www.ukaalo.com
-||www.ukaalo.com/*.gif$image
+||www.ukaalo.com/media/donateblock$image
 ||www.ukaalo.com/Admin/Advertisement/*$image
+||www.ukaalo.com/*.gif$image
+
 
 ! ukeraa.com
 ukeraa.com##.bigyapan
