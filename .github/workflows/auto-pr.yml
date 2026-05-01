@@ -3,16 +3,22 @@ name: Auto-Create PR
 on:
   push:
     branches: [main]
+  workflow_run:
+    workflows: ["Validate Adblock List"]   # must match the *name* in validate.yml
+    types:
+      - completed
 
 permissions:
-  contents: write       # needed to create branch and push
-  pull-requests: write  # needed to create PR
+  contents: write
+  pull-requests: write
 
 jobs:
   auto-pr:
     runs-on: ubuntu-latest
-    # Only run when the repository owner pushes to main (safe, as only owner can write)
-    if: github.actor == github.repository_owner
+    # Only proceed when validation passed (if triggered by workflow_run)
+    if: |
+      github.event_name == 'push' ||
+      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
     concurrency:
       group: auto-pr-${{ github.ref }}
       cancel-in-progress: true
@@ -20,7 +26,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1             # only need the latest commit
+          fetch-depth: 1
           token: ${{ secrets.GITHUB_TOKEN }}
 
       # Check for an existing open auto‑update PR to avoid creating duplicates
@@ -56,12 +62,11 @@ jobs:
         id: new-branch
         if: steps.existing.outputs.branch == ''
         run: |
-          # Use the short commit SHA – it is globally unique per commit
           SHORT_SHA=${GITHUB_SHA:0:7}
           echo "branch=auto-update-${SHORT_SHA}" >> $GITHUB_OUTPUT
 
       ###############################################################################
-      # 🆕  STEP: Update version & timestamps inside ads-no-more.txt
+      # STEP: Update version & timestamps inside ads-no-more.txt
       ###############################################################################
       - name: Update version & timestamps in ads-no-more.txt
         run: |
@@ -94,7 +99,6 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          # Use existing branch if available, otherwise use the newly generated one
           branch: ${{ steps.existing.outputs.branch || steps.new-branch.outputs.branch }}
           base: main
           title: "🔄 Auto-update: ${{ github.sha }}"
@@ -116,7 +120,7 @@ jobs:
             adblock-list
           delete-branch: true
           commit-message: "chore: auto-update adblock list [skip ci]"
-        continue-on-error: true   # allow manual error handling
+        continue-on-error: true
 
       - name: Report PR creation result
         if: steps.create-pr.outcome == 'failure'
