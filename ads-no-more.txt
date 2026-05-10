@@ -1,8 +1,8 @@
 [Adblock Plus 2.0]
-! Version: 202605012129
+! Version: 202605102200
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 01 May 2026 21:29 UTC
-! Expires: 31 May 2026 21:29 UTC
+! Last modified: 10 May 2026 22:00 UTC
+! Expires: 09 Jun 2026 22:00 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
 ! 18nepal.com
