@@ -1,7 +1,7 @@
 [Adblock Plus 2.0]
-! Version: 202605102200
+! Version: 202606072011
 ! Title: 🇳🇵 AdBlock List for Nepal
-! Last modified: 10 May 2026 22:00 UTC
+! Last modified: 06 July 2026 20:11 UTC
 ! Expires: 09 Jun 2026 22:00 UTC
 ! Don't hesitate to report any unblocked adverts or problems
 
@@ -653,6 +653,11 @@ butwaltoday.com##+js(set, $.fn.modal, noopFunc)
 butwaltoday.com##.custom-reaction-box-container
 butwaltoday.com##.widget
 ||butwaltoday.com/*.gif$image
+
+! capitalnepal.com 
+capitalnepal.com#@#*[class*="bigya"]
+||www.capitalnepal.com/uploads/bigyaapan/*.gif$image
+||www.capitalnepal.com/uploads/photos/Aashish/*.gif$image
 
 ! celebritynepal.com
 celebritynepal.com##.vce-ad-container
