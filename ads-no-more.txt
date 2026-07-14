@@ -2997,7 +2997,7 @@ ukeraa.com##.mobile__interstitial
 ukeraa.com##.mobile-subscribe
 ukeraa.com##.mobile-newsletter
 ukeraa.com##.mobile__ad
-@@||cloudflareinsights.com^$script,domain=www.ukeraa.com
+@@*cloudflare*$domain=ukeraa.com
 ||ukeraa.com^$script,domain=ukeraa.com
 ||www.ukerra.com/*.gif$image
 
