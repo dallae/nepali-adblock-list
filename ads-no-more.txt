@@ -2998,7 +2998,7 @@ ukeraa.com##.mobile-subscribe
 ukeraa.com##.mobile-newsletter
 ukeraa.com##.mobile__ad
 @@*cloudflare*$domain=ukeraa.com
-||ukeraa.com^$script,domain=ukeraa.com
+@@||ukeraa.com^$script,first-party,domain=ukeraa.com
 ||www.ukerra.com/*.gif$image
 
 ! upaharkhabar.com
