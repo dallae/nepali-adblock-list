@@ -654,7 +654,7 @@ butwaltoday.com##.custom-reaction-box-container
 butwaltoday.com##.widget
 ||butwaltoday.com/*.gif$image
 
-! capitalnepal.com 
+! capitalnepal.com
 capitalnepal.com#@#*[class*="bigya"]
 ||www.capitalnepal.com/uploads/bigyaapan/*.gif$image
 ||www.capitalnepal.com/uploads/photos/Aashish/*.gif$image
