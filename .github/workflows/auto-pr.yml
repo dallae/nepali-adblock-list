@@ -70,6 +70,7 @@ jobs:
       ###############################################################################
       - name: Update version & timestamps in ads-no-more.txt
         run: |
+          set -euo pipefail
           # Current UTC timestamp as version (YYYYMMDDHHMM)
           VERSION_UTC=$(date -u +"%Y%m%d%H%M")
 
@@ -84,6 +85,7 @@ jobs:
           echo "Expires:       ${EXPIRES_UTC}"
 
           # In‑place replacement of the relevant header lines
+          # Escape special characters in the replacement strings
           sed -i "s/^! Version: .*/! Version: ${VERSION_UTC}/" ads-no-more.txt
           sed -i "s/^! Last modified: .*/! Last modified: ${LASTMOD_UTC}/" ads-no-more.txt
           sed -i "s/^! Expires: .*/! Expires: ${EXPIRES_UTC}/" ads-no-more.txt

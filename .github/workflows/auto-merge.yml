@@ -58,13 +58,15 @@ jobs:
                 prNumber = candidate.number;
                 core.info(`Found matching PR #${prNumber}`);
               } else {
-                core.setFailed(`No open PR found for commit ${commitSha} – skipping merge`);
+                core.info(`No open PR found for commit ${commitSha} – this may be a direct push to main. Skipping merge.`);
+                core.setOutput('skip_merge', 'true');
                 return;
               }
             }
             
             if (!prNumber) {
-              core.setFailed('Could not resolve PR number from event context');
+              core.info('Could not resolve PR number from event context – skipping merge');
+              core.setOutput('skip_merge', 'true');
               return;
             }
             
@@ -104,8 +106,8 @@ jobs:
             const prNumber = parseInt('${{ steps.pr-resolve.outputs.pr_number }}');
             
             let pr, attempts = 0;
-            const maxAttempts = 12;
-            let delay = 2000;
+            const maxAttempts = 15;
+            let delay = 5000;
             
             while (attempts < maxAttempts) {
               const { data } = await github.rest.pulls.get({
@@ -123,7 +125,7 @@ jobs:
               attempts++;
               core.info(`Waiting for mergeable state (attempt ${attempts}/${maxAttempts})...`);
               await new Promise(resolve => setTimeout(resolve, delay));
-              delay = Math.min(delay * 1.5, 10000);
+              delay = Math.min(delay * 2, 15000);
             }
             
             if (pr.mergeable !== true) {
@@ -167,5 +169,37 @@ jobs:
                 core.info(`Notification sent to webhook`);
               } catch (err) {
                 core.warning(`Failed to send webhook notification: ${err.message}`);
+              }
+            }
+
+      - name: Notify on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const runId = context.runId;
+            const repo = context.repo.owner + '/' + context.repo.repo;
+            const workflowName = context.workflow;
+            
+            core.error(`❌ Workflow ${workflowName} failed!`);
+            core.error(`Repository: ${repo}`);
+            core.error(`Run ID: ${runId}`);
+            core.error(`Check logs at: https://github.com/${repo}/actions/runs/${runId}`);
+            
+            const webhookUrl = process.env.NOTIFY_WEBHOOK;
+            if (webhookUrl) {
+              try {
+                await fetch(webhookUrl, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    text: `❌ Auto-merge workflow failed for ${repo}`,
+                    icon_emoji: ':x:',
+                    username: 'Auto-Merge Bot'
+                  })
+                });
+                core.info(`Failure notification sent to webhook`);
+              } catch (err) {
+                core.warning(`Failed to send failure webhook: ${err.message}`);
               }
             }
