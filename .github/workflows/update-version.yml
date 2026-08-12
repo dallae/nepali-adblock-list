@@ -1,0 +1,60 @@
+name: Update Version Header
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ads-no-more.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+    # Prevent running if the commit message already indicates a version update (avoid loops)
+    if: "!contains(github.event.head_commit.message, 'chore: update version')"
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get current UTC time and format it
+        id: time
+        run: |
+          echo "version=$(date -u +%Y%m%d%H%M)" >> $GITHUB_OUTPUT
+          echo "readable_date=$(date -u '+%d %B %Y %H:%M UTC')" >> $GITHUB_OUTPUT
+          echo "expire_date=$(date -u -d '+10 days' '+%d %B %Y %H:%M UTC')" >> $GITHUB_OUTPUT
+
+      - name: Update header in ads-no-more.txt
+        run: |
+          VERSION="${{ steps.time.outputs.version }}"
+          READABLE="${{ steps.time.outputs.readable_date }}"
+          EXPIRE="${{ steps.time.outputs.expire_date }}"
+          
+          # Update the Version line
+          sed -i "s/^! Version: .*/! Version: $VERSION/" ads-no-more.txt
+          
+          # Update the Last modified line
+          sed -i "s/^! Last modified: .*/! Last modified: $READABLE/" ads-no-more.txt
+          
+          # Update the Expires line
+          sed -i "s/^! Expires: .*/! Expires: $EXPIRE/" ads-no-more.txt
+          
+          echo "Updated header to Version $VERSION"
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add ads-no-more.txt
+          # Only commit if there are changes
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: update version header to ${{ steps.time.outputs.version }}"
+            git push origin main
+          else
+            echo "No changes detected, skipping commit."
+          fi
