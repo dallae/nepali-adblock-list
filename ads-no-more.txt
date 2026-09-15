@@ -11,6 +11,8 @@ www.18nepal.com##.sg-popup-content.sgpb-theme-4-content.sgpb-content-24933.sgpb-
 www.18nepal.com##.sgpb-popup-overlay.sgpb-popup-overlay-24933.sgpb-theme-4-overlay
 www.18nepal.com##.sgpb-popup-dialog-main-div-wrapper
 www.18nepal.com##.simplesocialbuttons
+www.18nepal.com##.sgpb-popup-overlay.sgpb-popup-overlay-28478.sgpb-theme-1-overlay
+www.18nepal.com##div.no-bod:nth-of-type(1)
 ||www.18nepal.com/wp-content/uploads/2025/05/web-ads-final.jpg$image
 ||www.18nepal.com/*.gif$image
 
@@ -428,6 +430,7 @@ www.arghakhanchi.com##.wp-image-81960
 www.arghakhanchi.com##.xe8uvvx
 www.arghakhanchi.com##p:nth-of-type(10)
 www.arghakhanchi.com##p:nth-of-type(23)
+www.arghakhanchi.com##.code-block-3.code-block
 ||ap-south-1.linodeobjects.com/*.gif$image
 ||cdn.fbsbx.com/*.gif$image
 ||kendrabindu.com/*UCAN.jpg$image
@@ -444,6 +447,7 @@ www.arghakhanchi.com##p:nth-of-type(23)
 ||www.arghakhanchi.com/wp-content/uploads/2025/02/b74c7e35-e118-48c4-b8b1-f1b1eaf33270.jpeg
 ||www.arghakhanchi.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-06-at-15.00.22_2c4ed3ac.jpg
 ||www.arghakhanchi.com/wp-content/uploads/2025/04/WhatsApp-Image-2025-04-08-at-00.59.19_1a2cbf5b.jpg
+
 
 ! arisenepal.com
 arisenepal.com##.advertise
