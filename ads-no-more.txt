@@ -3193,3 +3193,5 @@ yuwadaily.com##.mb-20.text-center
 ||www.yuwasandesh.com/*.gif$image
 ||yuwasandesh.com/*.gif$image
 
+! zen1news.com
+||zen1news.com/*.gif$image
