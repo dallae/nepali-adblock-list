@@ -5,10 +5,16 @@ on:
     branches: [main]
   push:
     branches: [main]
+    paths-ignore:
+      - '.github/**' # Ignore changes to workflow files themselves to prevent loops
 
 jobs:
   validate:
     runs-on: ubuntu-latest
+    # Skip this job entirely if the commit is from the version updater bot
+    if: |
+      !contains(github.event.head_commit.message, 'chore: update version') &&
+      github.actor != 'github-actions[bot]'
     concurrency:
       group: validate-${{ github.ref }}
       cancel-in-progress: true
@@ -58,27 +64,20 @@ jobs:
           # ----- 4. Duplicate detection (revised) -----
           echo "✓ Checking for duplicates..."
           
-          # Create a temporary file for normalized rules (trimmed, lowercased)
           normalized_file="${{ runner.temp }}/normalized_rules.txt"
           > "$normalized_file"
           
-          # Extract non‑comment, non‑header, non‑empty lines and normalize them
-          # Using process substitution to avoid subshell issues with while loops
           while IFS= read -r rule; do
-            # Trim leading/trailing whitespace and convert to lowercase
             rule_trimmed=$(echo "$rule" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
             rule_lower=$(echo "$rule_trimmed" | tr '[:upper:]' '[:lower:]')
             echo "$rule_lower" >> "$normalized_file"
           done < <(grep -E '^[^!\[[:space:]]' "$FILE")
           
-          # Find duplicate rules (those appearing more than once)
           duplicate_rules=$(sort "$normalized_file" | uniq -c | awk '$1 > 1 {print substr($0, index($0,$2))}')
           
           if [[ -n "$duplicate_rules" ]]; then
             echo "❌ Case-insensitive duplicate rules found:"
-            # For each duplicate rule, find all line numbers in the original file
             while IFS= read -r dup_rule; do
-              # Use `grep -n -i -F -x` to match whole lines exactly (case‑insensitive)
               lines=$(grep -n -i -F -x "$dup_rule" "$FILE" | cut -d: -f1 | tr '\n' ',' | sed 's/,$//')
               echo "  Line(s) $lines: $dup_rule"
             done <<< "$duplicate_rules"
